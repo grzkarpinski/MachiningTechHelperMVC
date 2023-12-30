@@ -15,4 +15,9 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MachiningTechHelperMVC.Application\MachiningTechHelperMVC.Application.csproj" />
+    <ProjectReference Include="..\MachiningTechHelperMVC.Infrastrucure\MachiningTechHelperMVC.Infrastrucure.csproj" />
+  </ItemGroup>
+
 </Project>
