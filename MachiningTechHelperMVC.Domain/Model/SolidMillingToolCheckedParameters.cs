@@ -19,6 +19,8 @@ namespace MachiningTechHelperMVC.Domain.Model
 
         public double cuttingDepth { get; set; }
 
+        public int SolidMillingToolId { get; set; }
+
         [ForeignKey("SolidMillingTool")]
         public virtual SolidMillingTool SolidMillingTool { get; set; }
 

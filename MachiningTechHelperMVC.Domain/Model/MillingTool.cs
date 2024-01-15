@@ -12,7 +12,7 @@ namespace MachiningTechHelperMVC.Domain.Model
         public int Id { get; set; }
         public double Diameter { get; set; }
         public string Designation { get; set; }
-        public string Descripion { get; set; }
+        public string Description { get; set; }
         public string InsertType { get; set; }
         public double TeethNumber { get; set; }
         public List<double> InsertRadiuses { get; set; }

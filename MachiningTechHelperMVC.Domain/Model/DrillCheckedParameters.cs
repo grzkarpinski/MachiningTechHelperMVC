@@ -17,6 +17,8 @@ namespace MachiningTechHelperMVC.Domain.Model
 
         public int FeedPerMinute { get; set; }
 
+        public int DrillId { get; set; }
+
         [ForeignKey("Drill")]
         public virtual Drill Drill { get; set; }
     }
