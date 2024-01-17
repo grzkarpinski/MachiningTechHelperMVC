@@ -18,15 +18,6 @@ namespace MachiningTechHelperMVC.Domain.Model
 
         public double Radius { get; set; }
 
-        public double NonAlloyedSteelFeedPerToothMinimum { get; set; }
-        public double NonAlloyedSteelFeedPerToothMaximum { get; set; }
-
-        public double StainlessSteelFeedPerToothMinimum { get; set; }
-        public double StainlessSteelFeedPerToothMaximum { get; set; }
-
-        public double AlluminiumFeedPerToothMinimum { get; set; }
-        public double AlluminiumFeedPerToothMaximum { get; set; }
-
         // foreign keys
         [ForeignKey("Grade")]
         public int GradeId { get; set; }
@@ -39,5 +30,8 @@ namespace MachiningTechHelperMVC.Domain.Model
 
         // navigation property
         public virtual ICollection<SolidMillingToolCheckedParameters> SolidMillingToolCheckedParameters { get; set; }
+
+        public virtual ICollection<FeedPerTooth> FeedPerTeeth { get; set; }
+
     }
 }

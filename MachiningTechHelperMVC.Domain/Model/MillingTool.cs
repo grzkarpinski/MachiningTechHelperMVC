@@ -23,6 +23,8 @@ namespace MachiningTechHelperMVC.Domain.Model
         public virtual Producer Producer { get; set; }
 
         // navigation property
+
+        public virtual ICollection<MillingToolMillingInsert> MillingToolMillingInserts { get; set; }
         public virtual ICollection<MillingToolCheckedParameters> MillingToolCheckedParameters { get; set; }
     }
 }

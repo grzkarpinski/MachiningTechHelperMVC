@@ -17,14 +17,6 @@ namespace MachiningTechHelperMVC.Domain.Model
 
         public int TipAngle { get; set; }
 
-        public double NonAlloyedSteelFeedPerRevisionMinimum { get; set; }
-        public double NonAlloyedSteelFeedPerRevisionMaximum { get; set; }
-
-        public double StainlessSteelFeedPerRevisionMinimum { get; set; }
-        public double StainlessSteelFeedPerRevisionMaximum { get; set; }
-        public double AlluminiumFeedPerRevisionMinimum { get; set; }
-        public double AlluminiumFeedPerRevisionMaximum { get; set; }
-
         // foreign keys
         [ForeignKey("Grade")]
         public int GradeId { get; set; }
@@ -36,5 +28,6 @@ namespace MachiningTechHelperMVC.Domain.Model
 
         // navigation property
         public virtual ICollection<DrillCheckedParameters> DrillCheckedParameters { get; set; }
+        public virtual ICollection<FeedPerRevision> FeedPerRevisions { get; set; }
     }
 }
