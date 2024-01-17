@@ -23,7 +23,7 @@ namespace MachiningTechHelperMVC.Domain.Model
         public int AlluminiumCuttingSpeedMaximum { get; set; }
 
         // navigation property
-        public virtual ICollection<MillingTool> MillingTools { get; set; }
+        public virtual ICollection<MillingInsert> MillingInserts { get; set; }
 
         public virtual ICollection<SolidMillingTool> SolidMillingTools { get; set; }
         public virtual ICollection<Drill> Drills { get; set; }

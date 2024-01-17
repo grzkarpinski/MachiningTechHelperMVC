@@ -13,27 +13,13 @@ namespace MachiningTechHelperMVC.Domain.Model
         public double Diameter { get; set; }
         public string Designation { get; set; }
         public string Description { get; set; }
-        public string InsertType { get; set; }
         public double TeethNumber { get; set; }
-        public List<double> InsertRadiuses { get; set; }
-
-        public double NonAlloyedSteelFeedPerToothMinimum { get; set; }
-        public double NonAlloyedSteelFeedPerToothMaximum { get; set; }
-
-        public double StainlessSteelFeedPerToothMinimum { get; set; }
-        public double StainlessSteelFeedPerToothMaximum { get; set; }
-
-        public double AlluminiumFeedPerToothMinimum { get; set; }
-        public double AlluminiumFeedPerToothMaximum { get; set; }
 
         // foreign keys
-        [ForeignKey("Grade")]
-        public int GradeId { get; set; }
 
         [ForeignKey("Producer")]
         public int ProducerId { get; set; }
 
-        public virtual Grade Grade { get; set; }
         public virtual Producer Producer { get; set; }
 
         // navigation property
