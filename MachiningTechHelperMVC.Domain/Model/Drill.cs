@@ -20,10 +20,11 @@ namespace MachiningTechHelperMVC.Domain.Model
         // foreign keys
         [ForeignKey("Grade")]
         public int GradeId { get; set; }
+        public virtual Grade Grade { get; set; }
+
         [ForeignKey("Producer")]
         public int ProducerId { get; set; }
 
-        public virtual Grade Grade { get; set; }
         public virtual Producer Producer { get; set; }
 
         // navigation property
