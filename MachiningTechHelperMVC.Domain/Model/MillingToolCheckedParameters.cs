@@ -21,7 +21,12 @@ namespace MachiningTechHelperMVC.Domain.Model
 
         public int MillingToolId { get; set; }
 
+        public int MillingInsertId { get; set; }
+
         [ForeignKey("MillingTool")]
         public virtual MillingTool MillingTool { get; set; }
+
+        [ForeignKey("MillingInsert")]
+        public virtual MillingInsert MillingInsert { get; set; }
     }
 }

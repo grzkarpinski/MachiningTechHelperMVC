@@ -22,5 +22,7 @@ namespace MachiningTechHelperMVC.Domain.Model
         public virtual ICollection<MillingToolMillingInsert> MillingToolMillingInserts { get; set; }
 
         public virtual ICollection<FeedPerTooth> FeedPerTeeth { get; set; }
+
+        public virtual ICollection<MillingToolCheckedParameters> MillingToolCheckedParameters { get; set; }
     }
 }
