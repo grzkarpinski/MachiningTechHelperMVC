@@ -29,9 +29,9 @@ namespace MachiningTechHelperMVC.Domain.Model
         public virtual Producer Producer { get; set; }
 
         // navigation property
-        public virtual ICollection<SolidMillingToolCheckedParameters> SolidMillingToolCheckedParameters { get; set; }
+        public virtual ICollection<SolidMillingToolCheckedParameters>? SolidMillingToolCheckedParameters { get; set; }
 
-        public virtual ICollection<FeedPerTooth> FeedPerTeeth { get; set; }
+        public virtual ICollection<FeedPerToothSolid>? FeedPerTeethSolid { get; set; }
 
     }
 }

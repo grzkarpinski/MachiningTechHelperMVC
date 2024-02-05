@@ -24,7 +24,6 @@ namespace MachiningTechHelperMVC.Domain.Model
 
         [ForeignKey("Producer")]
         public int ProducerId { get; set; }
-
         public virtual Producer Producer { get; set; }
 
         // navigation property

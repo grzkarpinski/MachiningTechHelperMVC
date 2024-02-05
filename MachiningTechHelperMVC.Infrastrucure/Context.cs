@@ -11,18 +11,19 @@ namespace MachiningTechHelperMVC.Infrastrucure
 {
     public class Context: IdentityDbContext
     {
-        public DbSet<Drill> Drills { get; set; }
-        public DbSet<DrillCheckedParameters> DrillsCheckedParameters { get; set; }
-        public DbSet<FeedPerRevision> FeedPerRevisions { get; set; }
-        public DbSet<FeedPerTooth> FeedPerTeeth { get; set; }
-        public DbSet<Grade> Grades { get; set; }
-        public DbSet<MillingInsert> MillingInserts { get; set; }
-        public DbSet<MillingTool> MillingTools { get; set; }
-        public DbSet<MillingToolCheckedParameters> MillingToolsCheckedParameters { get; set; }
-        public DbSet<MillingToolMillingInsert> MillingToolMillingInserts { get; set; }
-        public DbSet<Producer> Producers { get; set; }
-        public DbSet<SolidMillingTool> SolidMillingTools { get; set; }
-        public DbSet<SolidMillingToolCheckedParameters> SolidMillingToolsCheckedParameters { get; set; }
+        public DbSet<Drill>? Drills { get; set; }
+        public DbSet<DrillCheckedParameters>? DrillsCheckedParameters { get; set; }
+        public DbSet<FeedPerRevision>? FeedPerRevisions { get; set; }
+        public DbSet<FeedPerTooth>? FeedPerTeeth { get; set; }
+        public DbSet<FeedPerToothSolid>? FeedPerTeethSolid { get; set; }
+        public DbSet<Grade>? Grades { get; set; }
+        public DbSet<MillingInsert>? MillingInserts { get; set; }
+        public DbSet<MillingTool>? MillingTools { get; set; }
+        public DbSet<MillingToolCheckedParameters>? MillingToolsCheckedParameters { get; set; }
+        public DbSet<MillingToolMillingInsert>? MillingToolMillingInserts { get; set; }
+        public DbSet<Producer>? Producers { get; set; }
+        public DbSet<SolidMillingTool>? SolidMillingTools { get; set; }
+        public DbSet<SolidMillingToolCheckedParameters>? SolidMillingToolsCheckedParameters { get; set; }
         public Context(DbContextOptions<Context> options) : base(options)
         {
         }
@@ -67,14 +68,15 @@ namespace MachiningTechHelperMVC.Infrastrucure
                 .HasForeignKey(fpr => fpr.DrillId);
 
             builder.Entity<FeedPerTooth>()
-                .HasOne<MillingInsert>(m => m.MillingInsert)
+                .HasOne(m => m.MillingInsert)
                 .WithMany(mi => mi.FeedPerTeeth)
                 .HasForeignKey(m => m.MillingInsertId);
 
-            builder.Entity<FeedPerTooth>()
-                .HasOne<SolidMillingTool>(m => m.SolidMillingTool)
-                .WithMany(mi => mi.FeedPerTeeth)
-                .HasForeignKey(m => m.SolidMillingToolId);
+            builder.Entity<FeedPerToothSolid>()
+                .HasOne(m => m.SolidMillingTool)
+                .WithMany(mi => mi.FeedPerTeethSolid)
+                .HasForeignKey(m => m.SolidMillingToolId)
+                .OnDelete(DeleteBehavior.NoAction);
 
             builder.Entity<MillingInsert>()
                 .HasOne<Grade>(mi => mi.Grade)
