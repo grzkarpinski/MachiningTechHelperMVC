@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MachiningTechHelperMVC.Domain.Model.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -7,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace MachiningTechHelperMVC.Domain.Model
 {
-    public class DrillCheckedParameters
+    public class DrillCheckedParameters: BaseEntity
     {
-        public int Id { get; set; }
-
         public string Material { get; set; }
 
         public int RevisionsPerSecond { get; set; }

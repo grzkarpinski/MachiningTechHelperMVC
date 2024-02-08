@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MachiningTechHelperMVC.Domain.Model.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -7,13 +8,9 @@ using System.Threading.Tasks;
 
 namespace MachiningTechHelperMVC.Domain.Model
 {
-    public class Drill
+    public class Drill: BaseRoundTool
     {
-        public int Id { get; set; }
-        public double Diameter { get; set; }
         public string LengthXDiameter { get; set; }
-        public string Designation { get; set; }
-        public string Description { get; set; }
 
         public int TipAngle { get; set; }
 

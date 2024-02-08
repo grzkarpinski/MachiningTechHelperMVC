@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MachiningTechHelperMVC.Domain.Model.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace MachiningTechHelperMVC.Domain.Model
 {
-    public class Grade
+    public class Grade: BaseEntity
     {
-        public int Id { get; set; }
         public string GradeName { get; set; }
 
         public string Description { get; set; }
