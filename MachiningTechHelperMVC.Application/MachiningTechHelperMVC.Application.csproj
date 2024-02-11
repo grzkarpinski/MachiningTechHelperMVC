@@ -7,11 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< Updated upstream
     <Folder Include="Interfaces\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
+=======
+>>>>>>> Stashed changes
     <ProjectReference Include="..\MachiningTechHelperMVC.Domain\MachiningTechHelperMVC.Domain.csproj" />
   </ItemGroup>
 

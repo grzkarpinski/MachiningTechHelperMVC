@@ -12,7 +12,7 @@ namespace MachiningTechHelperMVC.Domain.Model
     {
         public string Material { get; set; }
 
-        public int RevisionsPerSecond { get; set; }
+        public int RevisionsPerMinute { get; set; }
 
         public int FeedPerMinute { get; set; }
 

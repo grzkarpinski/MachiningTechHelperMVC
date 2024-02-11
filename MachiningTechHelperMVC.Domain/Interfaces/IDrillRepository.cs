@@ -9,6 +9,7 @@ namespace MachiningTechHelperMVC.Domain.Interfaces
 {
     public interface IDrillRepository
     {
+        IQueryable<Drill> GetAllDrills();
         void DeleteDrill(int drillId);
 
         int AddDrill(Drill drill);

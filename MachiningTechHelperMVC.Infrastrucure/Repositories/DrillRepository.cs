@@ -49,5 +49,10 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             var drills = _context.Drills.Where(d => d.ProducerId == ProducerId);
             return drills;
         }
+
+        public IQueryable<Drill> GetAllDrills()
+        {
+            return _context.Drills;
+        }
     }
 }
