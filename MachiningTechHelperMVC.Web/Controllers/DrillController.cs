@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MachiningTechHelperMVC.Application.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MachiningTechHelperMVC.Web.Controllers
 {
@@ -6,7 +7,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
     {
         public IActionResult Index()
         {
-            var model = drillService.GetAllDrillsForList();
+            var model = DrillService.GetAllDrillsForList();
             return View(model);
         }
         [HttpGet]
@@ -18,13 +19,13 @@ namespace MachiningTechHelperMVC.Web.Controllers
         [HttpPost]
         public IActionResult AddDrill(DrillModel drill)
         {
-            var id = drillService.AddDrill(drill);
+            var id = DrillService.AddDrill(drill);
             return View();
         }
 
         public IActionResult ViewDrill(int id)
         {
-            var drillModel = DrillService.GetDrillDetails(id);
+            var drillModel = DrillService.GetDrillById(id);
             return View(drillModel);
         }
     }

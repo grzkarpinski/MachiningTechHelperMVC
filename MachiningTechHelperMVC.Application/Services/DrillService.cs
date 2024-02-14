@@ -69,7 +69,7 @@ namespace MachiningTechHelperMVC.Application.Services
                 foreach (var drillCheckedParameter in drill.DrillCheckedParameters)
                 {
                 var add = new DrillCheckedParametersForListVm()
-                {
+    {
                     Id = drillCheckedParameter.Id,
                     RevisionsPerMinute = drillCheckedParameter.RevisionsPerMinute,
                     FeedPerMinute = drillCheckedParameter.FeedPerMinute,
