@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MachiningTechHelperMVC.Application\MachiningTechHelperMVC.Application.csproj" />
+    <ProjectReference Include="..\MachiningTecgHelperMVC.Application\MachiningTecgHelperMVC.Application.csproj" />
     <ProjectReference Include="..\MachiningTechHelperMVC.Infrastrucure\MachiningTechHelperMVC.Infrastrucure.csproj" />
   </ItemGroup>
 

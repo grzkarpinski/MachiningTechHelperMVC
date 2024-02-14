@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachiningTechHelperMVC.Web", "MachiningTechHelperMVC.Web\MachiningTechHelperMVC.Web.csproj", "{1D4736A6-E2A5-44C8-B297-0EBFE52DA58E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MachiningTechHelperMVC.Web", "MachiningTechHelperMVC.Web\MachiningTechHelperMVC.Web.csproj", "{1D4736A6-E2A5-44C8-B297-0EBFE52DA58E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{DCD4CC5B-C626-41DC-A278-AC05AFAF7965}"
 EndProject
@@ -15,13 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{7AB1A89E-3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{C5334B64-B9CF-4ED5-8677-98B6B5DC6ABB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachiningTechHelperMVC.Application", "MachiningTechHelperMVC.Application\MachiningTechHelperMVC.Application.csproj", "{99B7B7AF-E2A0-45CE-81A2-D195D5934A5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MachiningTechHelperMVC.Domain", "MachiningTechHelperMVC.Domain\MachiningTechHelperMVC.Domain.csproj", "{7690F525-5282-4312-9F60-417A0387AAE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachiningTechHelperMVC.Domain", "MachiningTechHelperMVC.Domain\MachiningTechHelperMVC.Domain.csproj", "{7690F525-5282-4312-9F60-417A0387AAE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MachiningTechHelperMVC.Infrastrucure", "MachiningTechHelperMVC.Infrastrucure\MachiningTechHelperMVC.Infrastrucure.csproj", "{A0A046A7-9165-4745-AD4E-B8CE5EDD9CBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachiningTechHelperMVC.Infrastrucure", "MachiningTechHelperMVC.Infrastrucure\MachiningTechHelperMVC.Infrastrucure.csproj", "{A0A046A7-9165-4745-AD4E-B8CE5EDD9CBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MachiningTechHelperMVC.Tests", "MachiningTechHelperMVC.Tests\MachiningTechHelperMVC.Tests.csproj", "{F9421855-EFC6-46BB-AF4B-C19A6723AF79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachiningTechHelperMVC.Tests", "MachiningTechHelperMVC.Tests\MachiningTechHelperMVC.Tests.csproj", "{F9421855-EFC6-46BB-AF4B-C19A6723AF79}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachiningTecgHelperMVC.Application", "MachiningTecgHelperMVC.Application\MachiningTecgHelperMVC.Application.csproj", "{78BF87F3-133B-4D93-8AC7-9A2932A05B83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +33,6 @@ Global
 		{1D4736A6-E2A5-44C8-B297-0EBFE52DA58E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D4736A6-E2A5-44C8-B297-0EBFE52DA58E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D4736A6-E2A5-44C8-B297-0EBFE52DA58E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{99B7B7AF-E2A0-45CE-81A2-D195D5934A5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{99B7B7AF-E2A0-45CE-81A2-D195D5934A5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{99B7B7AF-E2A0-45CE-81A2-D195D5934A5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{99B7B7AF-E2A0-45CE-81A2-D195D5934A5D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7690F525-5282-4312-9F60-417A0387AAE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7690F525-5282-4312-9F60-417A0387AAE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7690F525-5282-4312-9F60-417A0387AAE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -49,16 +45,20 @@ Global
 		{F9421855-EFC6-46BB-AF4B-C19A6723AF79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9421855-EFC6-46BB-AF4B-C19A6723AF79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9421855-EFC6-46BB-AF4B-C19A6723AF79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78BF87F3-133B-4D93-8AC7-9A2932A05B83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78BF87F3-133B-4D93-8AC7-9A2932A05B83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78BF87F3-133B-4D93-8AC7-9A2932A05B83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78BF87F3-133B-4D93-8AC7-9A2932A05B83}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1D4736A6-E2A5-44C8-B297-0EBFE52DA58E} = {C5334B64-B9CF-4ED5-8677-98B6B5DC6ABB}
-		{99B7B7AF-E2A0-45CE-81A2-D195D5934A5D} = {DCD4CC5B-C626-41DC-A278-AC05AFAF7965}
 		{7690F525-5282-4312-9F60-417A0387AAE1} = {8512D445-2FA5-4974-A16C-F0E9A3C1FE2A}
 		{A0A046A7-9165-4745-AD4E-B8CE5EDD9CBF} = {E41C1925-D48D-4F8D-8CFE-705268EED3D5}
 		{F9421855-EFC6-46BB-AF4B-C19A6723AF79} = {7AB1A89E-366F-40DB-8086-8B5E1AE2BB01}
+		{78BF87F3-133B-4D93-8AC7-9A2932A05B83} = {DCD4CC5B-C626-41DC-A278-AC05AFAF7965}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5BF49CDD-6C8C-451B-B7A5-50741D29CBC9}
