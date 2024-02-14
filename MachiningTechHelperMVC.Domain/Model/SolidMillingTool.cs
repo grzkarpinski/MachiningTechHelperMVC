@@ -11,20 +11,14 @@ namespace MachiningTechHelperMVC.Domain.Model
     public class SolidMillingTool: BaseRoundTool
     {
         public double TeethNumber { get; set; }
-
         public double Radius { get; set; }
-
-        // foreign keys
-        [ForeignKey("Grade")]
+        
         public int GradeId { get; set; }
+        public virtual required Grade Grade { get; set; }
 
-        [ForeignKey("Producer")]
         public int ProducerId { get; set; }
+        public virtual required Producer Producer { get; set; }
 
-        public virtual Grade Grade { get; set; }
-        public virtual Producer Producer { get; set; }
-
-        // navigation property
         public virtual ICollection<SolidMillingToolCheckedParameters>? SolidMillingToolCheckedParameters { get; set; }
 
         public virtual ICollection<FeedPerToothSolid>? FeedPerTeethSolid { get; set; }

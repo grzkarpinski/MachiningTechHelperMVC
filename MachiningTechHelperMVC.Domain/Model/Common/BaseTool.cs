@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace MachiningTechHelperMVC.Domain.Model.Common
 {
-    public class BaseRoundTool: BaseTool
+    public class BaseTool: BaseEntity
     {
-        public double Diameter { get; set; }
+        public required string Designation { get; set; }
+        public string? Description { get; set; }
     }
 }

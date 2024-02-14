@@ -10,7 +10,6 @@ namespace MachiningTechHelperMVC.Domain.Model
     public class FeedPerTooth: MillingFeed
     {
         public int MillingInsertId { get; set; }
-
         public virtual MillingInsert? MillingInsert { get; set; }
     }
 }

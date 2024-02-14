@@ -10,22 +10,15 @@ namespace MachiningTechHelperMVC.Domain.Model
 {
     public class MillingToolCheckedParameters: BaseEntity
     {
-        public string Material { get; set; }
-
+        public required string Material { get; set; }
         public int RevisionsPerSecond { get; set; }
-
         public int FeedPerMinute { get; set; }
-
         public double CuttingDepth { get; set; }
 
         public int MillingToolId { get; set; }
+        public virtual required MillingTool MillingTool { get; set; }
 
         public int MillingInsertId { get; set; }
-
-        [ForeignKey("MillingToolId")]
-        public virtual MillingTool MillingTool { get; set; }
-
-        [ForeignKey("MillingInsertId")]
-        public virtual MillingInsert MillingInsert { get; set; }
+        public virtual required MillingInsert MillingInsert { get; set; }
     }
 }

@@ -10,6 +10,6 @@ namespace MachiningTechHelperMVC.Domain.Model.Common
     {
         public int Id { get; set; }
         public DateTime CreatedAt { get; set; }
-        public string CreatedBy { get; set; }
+        public string? CreatedBy { get; set; }
     }
 }

@@ -12,16 +12,10 @@ namespace MachiningTechHelperMVC.Domain.Model
     {
         public double TeethNumber { get; set; }
 
-        // foreign keys
-
-        [ForeignKey("Producer")]
         public int ProducerId { get; set; }
+        public virtual required Producer Producer { get; set; }
 
-        public virtual Producer Producer { get; set; }
-
-        // navigation property
-
-        public virtual ICollection<MillingToolMillingInsert> MillingToolMillingInserts { get; set; }
-        public virtual ICollection<MillingToolCheckedParameters> MillingToolCheckedParameters { get; set; }
+        public virtual ICollection<MillingToolMillingInsert>? MillingToolMillingInserts { get; set; }
+        public virtual ICollection<MillingToolCheckedParameters>? MillingToolCheckedParameters { get; set; }
     }
 }

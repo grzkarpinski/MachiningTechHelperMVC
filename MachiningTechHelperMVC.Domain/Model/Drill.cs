@@ -10,21 +10,16 @@ namespace MachiningTechHelperMVC.Domain.Model
 {
     public class Drill: BaseRoundTool
     {
-        public string LengthXDiameter { get; set; }
-
+        public required string LengthXDiameter { get; set; }
         public int TipAngle { get; set; }
 
-        // foreign keys
-        [ForeignKey("Grade")]
         public int GradeId { get; set; }
-        public virtual Grade Grade { get; set; }
+        public virtual required Grade Grade { get; set; }
 
-        [ForeignKey("Producer")]
         public int ProducerId { get; set; }
-        public virtual Producer Producer { get; set; }
+        public virtual required Producer Producer { get; set; }
 
-        // navigation property
-        public virtual ICollection<DrillCheckedParameters> DrillCheckedParameters { get; set; }
-        public virtual ICollection<FeedPerRevision> FeedPerRevisions { get; set; }
+        public virtual ICollection<DrillCheckedParameters>? DrillCheckedParameters { get; set; }
+        public virtual ICollection<FeedPerRevision>? FeedPerRevisions { get; set; }
     }
 }

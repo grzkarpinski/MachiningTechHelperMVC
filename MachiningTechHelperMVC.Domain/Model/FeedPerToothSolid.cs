@@ -9,7 +9,6 @@ namespace MachiningTechHelperMVC.Domain.Model
 {
     public class FeedPerToothSolid: MillingFeed
     {
-        // foreign keys
         public int SolidMillingToolId { get; set; }
         public virtual SolidMillingTool? SolidMillingTool { get; set; }
     }

@@ -9,11 +9,10 @@ namespace MachiningTechHelperMVC.Domain.Model
 {
     public class Producer: BaseEntity
     {
-        public string Name { get; set; }
+        public string CompanyName { get; set; }
 
-        // navigation property
-        public virtual ICollection<MillingTool> MillingTools { get; set; }
-        public virtual ICollection<SolidMillingTool> SolidMillingTools { get; set; }
-        public virtual ICollection<Drill> Drills { get; set; }
+        public virtual ICollection<MillingTool>? MillingTools { get; set; }
+        public virtual ICollection<SolidMillingTool>? SolidMillingTools { get; set; }
+        public virtual ICollection<Drill>? Drills { get; set; }
     }
 }

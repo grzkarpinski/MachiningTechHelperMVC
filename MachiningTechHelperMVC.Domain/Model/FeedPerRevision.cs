@@ -9,12 +9,11 @@ namespace MachiningTechHelperMVC.Domain.Model
 {
     public class FeedPerRevision: BaseEntity
     {
-        public string Material { get; set; }
+        public required string Material { get; set; }
         public double FeedPerRevisionMinimum { get; set; }
         public double FeedPerRevisionMaximum { get; set; }
 
-        // foreign keys
         public int DrillId { get; set; }
-        public virtual Drill Drill { get; set; }
+        public virtual required Drill Drill { get; set; }
     }
 }
