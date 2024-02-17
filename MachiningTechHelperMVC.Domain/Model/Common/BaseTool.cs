@@ -11,5 +11,6 @@ namespace MachiningTechHelperMVC.Domain.Model.Common
         public required string Designation { get; set; }
         public string? Description { get; set; }
         public required string ToolType { get; set; }
+        public bool IsToolActive { get; set; }
     }
 }
