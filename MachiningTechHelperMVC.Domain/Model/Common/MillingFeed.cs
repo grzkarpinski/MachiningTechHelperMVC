@@ -8,7 +8,7 @@ namespace MachiningTechHelperMVC.Domain.Model.Common
 {
     public class MillingFeed: BaseEntity
     {
-        public required string Material { get; set; }
+        public string Material { get; set; }
         public double FeedPerToothMinimum { get; set; }
         public double FeedPerToothMaximum { get; set; }
     }

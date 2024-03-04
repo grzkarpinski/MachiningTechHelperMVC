@@ -14,10 +14,10 @@ namespace MachiningTechHelperMVC.Domain.Model
         public double Radius { get; set; }
         
         public int GradeId { get; set; }
-        public virtual required Grade Grade { get; set; }
+        public virtual Grade Grade { get; set; }
 
         public int ProducerId { get; set; }
-        public virtual required Producer Producer { get; set; }
+        public virtual Producer Producer { get; set; }
 
         public virtual ICollection<SolidMillingToolCheckedParameters>? SolidMillingToolCheckedParameters { get; set; }
 

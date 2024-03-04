@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MachiningTechHelperMVC.Infrastrucure.Repositories
 {
-    internal class DrillRepository : IDrillRepository
+    public class DrillRepository : IDrillRepository
     {
         private readonly Context _context;
         public DrillRepository(Context context)
@@ -52,7 +52,7 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
 
         public IQueryable<Drill> GetAllDrills()
         {
-            return _context.Drills;
+            return _context.Drills.Where(p => p.IsToolActive);
         }
     }
 }

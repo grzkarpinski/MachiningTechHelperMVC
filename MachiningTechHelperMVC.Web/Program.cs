@@ -1,7 +1,10 @@
+using MachiningTechHelperMVC.Domain.Interfaces;
 using MachiningTechHelperMVC.Infrastrucure;
+using MachiningTechHelperMVC.Infrastrucure.Repositories;
 using MachiningTechHelperMVC.Web.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using MachiningTechHelperMVC.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +16,11 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<Context>();
+
+// dependency injection
+builder.Services.AddApplication();
+builder.Services.AddInfrastructure();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

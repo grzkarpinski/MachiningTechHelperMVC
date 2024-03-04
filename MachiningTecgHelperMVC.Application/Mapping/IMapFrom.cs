@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MachiningTecgHelperMVC.Application.Mapping
+namespace MachiningTechHelperMVC.Application.Mapping
 {
     public interface IMapFrom<T>
     {

@@ -8,9 +8,9 @@ namespace MachiningTechHelperMVC.Domain.Model.Common
 {
     public class BaseTool: BaseEntity
     {
-        public required string Designation { get; set; }
+        public string Designation { get; set; }
         public string? Description { get; set; }
-        public required ToolType ToolType { get; set; }
+        public ToolType ToolType { get; set; }
         public bool IsToolActive { get; set; }
     }
 }

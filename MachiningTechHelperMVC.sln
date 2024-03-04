@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MachiningTechHelperMVC.Infr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MachiningTechHelperMVC.Tests", "MachiningTechHelperMVC.Tests\MachiningTechHelperMVC.Tests.csproj", "{F9421855-EFC6-46BB-AF4B-C19A6723AF79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachiningTecgHelperMVC.Application", "MachiningTecgHelperMVC.Application\MachiningTecgHelperMVC.Application.csproj", "{78BF87F3-133B-4D93-8AC7-9A2932A05B83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MachiningTechelperMVC.Application", "MachiningTecgHelperMVC.Application\MachiningTechelperMVC.Application.csproj", "{78BF87F3-133B-4D93-8AC7-9A2932A05B83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

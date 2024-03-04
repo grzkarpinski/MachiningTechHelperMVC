@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MachiningTecgHelperMVC.Application.Mapping
+namespace MachiningTechHelperMVC.Application.Mapping
 {
     // auto mapper profile configuration
     // this class is used to autmate the mapping of the domain model to the view model
