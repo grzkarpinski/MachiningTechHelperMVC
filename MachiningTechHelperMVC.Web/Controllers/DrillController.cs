@@ -18,11 +18,11 @@ namespace MachiningTechHelperMVC.Web.Controllers
             return View(model);
         }
 
-        [HttpGet]
-        public IActionResult AddDrill()
-        {
-            return View();
-        }
+        //[HttpGet]
+        //public IActionResult AddDrill()
+        //{
+        //    return View();
+        //}
 
         //[HttpPost]
         //public IActionResult AddDrill(DrillModel drill)
@@ -31,11 +31,11 @@ namespace MachiningTechHelperMVC.Web.Controllers
         //    return View();
         //}
 
-        [HttpGet]
-        public IActionResult AddNewDrillCheckedParameters(int Drillid)
-        {
-            return View();
-        }
+        //[HttpGet]
+        //public IActionResult AddNewDrillCheckedParameters(int Drillid)
+        //{
+        //    return View();
+        //}
 
         //[HttpPost]
         //public IActionResult AddNewDrillCheckedParameters(DrillCheckedParametersModel model) 

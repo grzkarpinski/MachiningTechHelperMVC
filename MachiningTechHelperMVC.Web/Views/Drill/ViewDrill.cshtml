@@ -1,0 +1,55 @@
+﻿@model MachiningTechHelperMVC.Application.ViewModels.Drill.DrillDetailsVm
+
+<h2>Drill Details</h2>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">ID:</dt>
+        <dd class="col-sm-10">@Model.Id</dd>
+
+        <dt class="col-sm-2">Diameter:</dt>
+        <dd class="col-sm-10">@Model.Diameter</dd>
+
+        <dt class="col-sm-2">Length x Diameter:</dt>
+        <dd class="col-sm-10">@Model.LengthXDiameter</dd>
+
+        <dt class="col-sm-2">Tool Type:</dt>
+        <dd class="col-sm-10">@Model.ToolType</dd>
+
+        <dt class="col-sm-2">Description:</dt>
+        <dd class="col-sm-10">@Model.description</dd>
+
+        <dt class="col-sm-2">Producer:</dt>
+        <dd class="col-sm-10">@Model.Producer</dd>
+
+        <dt class="col-sm-2">Tip Angle:</dt>
+        <dd class="col-sm-10">@Model.TipAngle</dd>
+
+        <dt class="col-sm-2">Grade:</dt>
+        <dd class="col-sm-10">@Model.Grade</dd>
+
+        <dt class="col-sm-2">Checked Parameters:</dt>
+        <dd class="col-sm-10">
+            @if (Model.DrillCheckedParameters != null && Model.DrillCheckedParameters.Any())
+            {
+                <ul>
+                    @foreach (var parameter in Model.DrillCheckedParameters)
+                    {
+                        <li>
+                            Material: @parameter.Material, RPM: @parameter.RevisionsPerMinute, Feed: @parameter.FeedPerMinute
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p>No checked parameters available.</p>
+            }
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+    <!--Add button for adding AddNewDrillCheckedParameters parameters -->
+</div>
