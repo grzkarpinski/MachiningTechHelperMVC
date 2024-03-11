@@ -9,52 +9,92 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Id
-            </th>
-            <th>
-				Diameter
-            </th>
-            <th>
-				Length x Diameter
-            </th>
-            <th>
-                Tool Type
-            </th>
-            <th>
-				Producer
-             </th>
+<form asp-action="Index" asp-controller="Drill" method="post" style="width: 100%;">
+    <div class="row" style="width: 100%;">
+        <input type="text" value ="wpisz ToolType" asp-for="SearchString" name="searchString" id="searchString" style="max-width: 200px; width: calc(100% - 120px);" />
+        <input type="submit" value="Wyszukaj" style="width: 100px;" />
+    </div>
+    <div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+				    Diameter
+                </th>
+                <th>
+				    Length x Diameter
+                </th>
+                <th>
+                    Tool Type
+                </th>
+                <th>
+				    Producer
+                 </th>
 
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Drills) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-				@Html.DisplayFor(modelItem => item.Diameter)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LengthXDiameter)
-            </td>
-            <td>
-				@Html.DisplayFor(modelItem => item.ToolType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Producer)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                    @Html.ActionLink("Details", "ViewDrill", new { id = item.Id }) |<!--Check if this work! -->
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-            </td>
-        </tr>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model.Drills) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+				    @Html.DisplayFor(modelItem => item.Diameter)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LengthXDiameter)
+                </td>
+                <td>
+				    @Html.DisplayFor(modelItem => item.ToolType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Producer)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                        @Html.ActionLink("Details", "ViewDrill", new { id = item.Id }) |<!--Check if this work! -->
+                    @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+    </div>
+    <div class="row">
+        <table>
+            <tr>
+                @for (int i = 1; i < Math.Ceiling(Model.Count /(double) Model.PageSize); i++)
+                {
+                    <td>
+                        @if (i != Model.CurrentPage)
+                        {
+                           <a href="javascript:PagerClick(@i)">@i</a>
+                        }
+                        else
+						{
+							<span>@i</span>
+						}
+                    </td>
+                }
+            </tr>
+        </table>
+        <input type="hidden" name="pageNo" id="pageNo" />
+        <input type="hidden" name="pageSize" id="pageSize" value="10"/>
+    </div>
+</form>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        function PagerClick(index)
+        {
+            document.getElementById("pageNo").value = index;
+            document.forms[0].submit();
+        }
+    </script>
 }
-    </tbody>
-</table>

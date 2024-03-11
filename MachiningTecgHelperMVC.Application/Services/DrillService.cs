@@ -26,14 +26,19 @@ namespace MachiningTechHelperMVC.Application.Services
             throw new NotImplementedException();
         }
 
-        public ListDrillForListVm GetAllDrillsForList()
+        public ListDrillForListVm GetAllDrillsForList(int pageSize, int? pageNo, string searchString)
         {
             var drills = _drillRepo.GetAllDrills()
-                .ProjectTo<DrillForListVm>(_mapper.ConfigurationProvider).ToList(); //ProjectTo - collection
+                .ProjectTo<DrillForListVm>(_mapper.ConfigurationProvider).ToList().
+                Where(p => p.ToolType.ToString().ToLower().Contains(searchString.ToLower())).ToList(); //ProjectTo - collection
 
+            var drillsToShow = drills.Skip((int)((pageNo - 1) * pageSize)).Take(pageSize).ToList();
             var drillList = new ListDrillForListVm()
             {
-                Drills = drills,
+                PageSize = pageSize,
+                CurrentPage = (int)pageNo,
+                SearchString = searchString,
+                Drills = drillsToShow,
                 Count = drills.Count
             };
 

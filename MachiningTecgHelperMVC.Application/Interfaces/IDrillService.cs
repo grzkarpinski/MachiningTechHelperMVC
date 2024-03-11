@@ -10,7 +10,7 @@ namespace MachiningTechHelperMVC.Application.Interfaces
 {
     public interface IDrillService
     {
-        ListDrillForListVm GetAllDrillsForList();
+        ListDrillForListVm GetAllDrillsForList(int pageSize, int? pageNo, string searchString);
         int AddDrill(NewDrillVm drill);
 
         DrillDetailsVm GetDrillDetails(int id);

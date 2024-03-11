@@ -12,9 +12,27 @@ namespace MachiningTechHelperMVC.Web.Controllers
         {
             _drillService = drillService;
         }
+
+        [HttpGet]
         public IActionResult Index()
         {
-            var model = _drillService.GetAllDrillsForList();
+            var model = _drillService.GetAllDrillsForList(10, 1, "");
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Index(int pageSize, int? pageNo, string searchString)
+        {
+            if(!pageNo.HasValue)
+            {
+                pageNo = 1;
+            }
+            if(searchString is null)
+            {
+                searchString = String.Empty;
+            }
+
+            var model = _drillService.GetAllDrillsForList(pageSize, pageNo, searchString);
             return View(model);
         }
 
