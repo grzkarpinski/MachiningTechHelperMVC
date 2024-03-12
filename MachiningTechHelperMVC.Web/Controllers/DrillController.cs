@@ -1,5 +1,6 @@
 ﻿using MachiningTechHelperMVC.Application.Interfaces;
 using MachiningTechHelperMVC.Application.Services;
+using MachiningTechHelperMVC.Application.ViewModels.Drill;
 using MachiningTechHelperMVC.Domain.Model;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,18 +37,18 @@ namespace MachiningTechHelperMVC.Web.Controllers
             return View(model);
         }
 
-        //[HttpGet]
-        //public IActionResult AddDrill()
-        //{
-        //    return View();
-        //}
+        [HttpGet]
+        public IActionResult AddDrill()
+        {
+            return View(new NewDrillVm());
+        }
 
-        //[HttpPost]
-        //public IActionResult AddDrill(DrillModel drill)
-        //{
-        //    var id = _drillService.AddDrill(drill);
-        //    return View();
-        //}
+        [HttpPost]
+        public IActionResult AddDrill(NewDrillVm drill)
+        {
+            var id = _drillService.AddDrill(drill);
+            return RedirectToAction("Index");
+        }
 
         //[HttpGet]
         //public IActionResult AddNewDrillCheckedParameters(int Drillid)
@@ -56,7 +57,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
         //}
 
         //[HttpPost]
-        //public IActionResult AddNewDrillCheckedParameters(DrillCheckedParametersModel model) 
+        //public IActionResult AddNewDrillCheckedParameters(DrillCheckedParametersModel model)
         //{
         //    return View();
         //}

@@ -23,7 +23,9 @@ namespace MachiningTechHelperMVC.Application.Services
         }
         public int AddDrill(NewDrillVm drill)
         {
-            throw new NotImplementedException();
+            var drillToAdd = _mapper.Map<Domain.Model.Drill>(drill);
+            var id = _drillRepo.AddDrill(drillToAdd);
+            return id;
         }
 
         public ListDrillForListVm GetAllDrillsForList(int pageSize, int? pageNo, string searchString)

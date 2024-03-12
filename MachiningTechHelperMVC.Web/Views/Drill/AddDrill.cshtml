@@ -1,0 +1,75 @@
+﻿@model MachiningTechHelperMVC.Application.ViewModels.Drill.NewDrillVm
+
+@{
+    ViewData["Title"] = "AddDrill";
+}
+
+<h1>AddDrill</h1>
+
+<h4>NewDrillVm</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddDrill">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Diameter" class="control-label"></label>
+                <input asp-for="Diameter" class="form-control" />
+                <span asp-validation-for="Diameter" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Designation" class="control-label"></label>
+                <input asp-for="Designation" class="form-control" />
+                <span asp-validation-for="Designation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToolType" class="control-label"></label>
+                <input asp-for="ToolType" class="form-control" />
+                <span asp-validation-for="ToolType" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsToolActive" /> @Html.DisplayNameFor(model => model.IsToolActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="LengthXDiameter" class="control-label"></label>
+                <input asp-for="LengthXDiameter" class="form-control" />
+                <span asp-validation-for="LengthXDiameter" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipAngle" class="control-label"></label>
+                <input asp-for="TipAngle" class="form-control" />
+                <span asp-validation-for="TipAngle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Grade" class="control-label"></label>
+                <input asp-for="Grade" class="form-control" />
+                <span asp-validation-for="Grade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Producer" class="control-label"></label>
+                <input asp-for="Producer" class="form-control" />
+                <span asp-validation-for="Producer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

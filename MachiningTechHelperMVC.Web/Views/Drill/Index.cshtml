@@ -4,14 +4,14 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Katalog Wierteł</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="AddDrill">Create New</a>
 </p>
 <form asp-action="Index" asp-controller="Drill" method="post" style="width: 100%;">
     <div class="row" style="width: 100%;">
-        <input type="text" value ="wpisz ToolType" asp-for="SearchString" name="searchString" id="searchString" style="max-width: 200px; width: calc(100% - 120px);" />
+        <input type="text" value ="wpisz typ narzędzia" asp-for="SearchString" name="searchString" id="searchString" style="max-width: 200px; width: calc(100% - 120px);" />
         <input type="submit" value="Wyszukaj" style="width: 100px;" />
     </div>
     <div class="row">
