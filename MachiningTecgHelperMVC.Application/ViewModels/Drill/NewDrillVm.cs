@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using MachiningTechHelperMVC.Application.Mapping;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +17,8 @@ namespace MachiningTechHelperMVC.Application.ViewModels.Drill
         public string Designation { get; set; }
         public string Description { get; set; }
         public string ToolType { get; set; }
-        public bool IsToolActive { get; set; }
+		public IEnumerable<SelectListItem> ToolTypes { get; set; } // To use in dropdown list
+		public bool IsToolActive { get; set; }
 
         public string LengthXDiameter { get; set; }
         public int TipAngle { get; set; }
@@ -25,6 +28,20 @@ namespace MachiningTechHelperMVC.Application.ViewModels.Drill
         public void Mapping(Profile profile)
         {
             profile.CreateMap<NewDrillVm, Domain.Model.Drill>();
+        }
+    }
+
+    public class NewDrillValidation: AbstractValidator<NewDrillVm> 
+    {
+        public NewDrillValidation() 
+        {
+            RuleFor(x=> x.Id).NotNull();
+            RuleFor(x=> x.Diameter).GreaterThan(0);
+            RuleFor(x=> x.Designation).NotEmpty();
+            RuleFor(x=> x.Description).NotEmpty();
+            RuleFor(x=> x.ToolType).NotEmpty();
+            RuleFor(x=> x.LengthXDiameter).NotEmpty();
+            RuleFor(x=> x.TipAngle).GreaterThan(0);
         }
     }
 }

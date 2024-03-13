@@ -5,6 +5,9 @@ using MachiningTechHelperMVC.Web.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MachiningTechHelperMVC.Application;
+using FluentValidation.AspNetCore;
+using MachiningTechHelperMVC.Application.ViewModels.Drill;
+using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,7 +24,9 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure();
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddFluentValidation(fv => fv.DisableDataAnnotationsValidation = true); //FluentValidation
+
+builder.Services.AddTransient<IValidator<NewDrillVm>, NewDrillValidation>();
 
 var app = builder.Build();
 
