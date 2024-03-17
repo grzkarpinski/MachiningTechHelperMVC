@@ -15,19 +15,18 @@ namespace MachiningTechHelperMVC.Application.ViewModels.Drill
         public string LengthXDiameter { get; set; }
         public string ToolType { get; set; }
         public string description { get; set; }
-        public string Producer { get; set; }
+        public string? Producer { get; set; }
         public int TipAngle { get; set; }
-        public string Grade { get; set; }
+        public string? Grade { get; set; }
 
-        public List<DrillCheckedParametersVm> DrillCheckedParameters;
+        public List<DrillCheckedParametersVm>? DrillCheckedParameters;
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<MachiningTechHelperMVC.Domain.Model.Drill, DrillDetailsVm>()
-                .ForMember(d => d.Producer, opt => opt.MapFrom(s => s.Producer.CompanyName))
-                .ForMember(d => d.Grade, opt => opt.MapFrom(s => s.Grade.GradeName))
+            profile.CreateMap<Domain.Model.Drill, DrillDetailsVm>()
+                .ForMember(d => d.Producer, opt => opt.MapFrom(s => s.Producer != null ? s.Producer.CompanyName : "Not linked yet"))
+                .ForMember(d => d.Grade, opt => opt.MapFrom(s => s.Grade != null ? s.Grade.GradeName : "Not linked yet"))
                 .ForMember(d => d.DrillCheckedParameters, opt => opt.Ignore()); // TO CHANGE!!!!
-
         }
     }
 }

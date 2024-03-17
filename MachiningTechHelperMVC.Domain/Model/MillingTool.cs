@@ -12,8 +12,8 @@ namespace MachiningTechHelperMVC.Domain.Model
     {
         public double TeethNumber { get; set; }
 
-        public int ProducerId { get; set; }
-        public virtual Producer Producer { get; set; }
+        public int? ProducerId { get; set; }
+        public virtual Producer? Producer { get; set; }
 
         public virtual ICollection<MillingToolMillingInsert>? MillingToolMillingInserts { get; set; }
         public virtual ICollection<MillingToolCheckedParameters>? MillingToolCheckedParameters { get; set; }

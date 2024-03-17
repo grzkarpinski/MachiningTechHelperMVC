@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using FluentValidation;
 using MachiningTechHelperMVC.Application.Mapping;
+using MachiningTechHelperMVC.Domain.Model;
+using MachiningTechHelperMVC.Domain.Model.Common;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
@@ -19,15 +21,17 @@ namespace MachiningTechHelperMVC.Application.ViewModels.Drill
         public string ToolType { get; set; }
 		public IEnumerable<SelectListItem> ToolTypes { get; set; } // To use in dropdown list
 		public bool IsToolActive { get; set; }
-
         public string LengthXDiameter { get; set; }
         public int TipAngle { get; set; }
-        public string Grade { get; set; }
-        public string Producer { get; set; }
+        //public string Grade { get; set; }  // DELETE
+        //public string Producer { get; set; } // DELETE
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<NewDrillVm, Domain.Model.Drill>();
+            profile.CreateMap<NewDrillVm, Domain.Model.Drill>()
+            .ForMember(dest => dest.ToolType, opt => opt.MapFrom(src => (ToolType)Enum.Parse(typeof(ToolType), src.ToolType)));
+            //.ForMember(dest => dest.Grade, opt => opt.MapFrom(src => new Grade { GradeName = src.Grade }))
+            //.ForMember(dest => dest.Producer, opt => opt.MapFrom(src => new Producer { CompanyName = src.Producer }));
         }
     }
 

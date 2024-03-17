@@ -10,7 +10,7 @@ namespace MachiningTechHelperMVC.Domain.Model
     public class Grade: BaseEntity
     {
         public string GradeName { get; set; }
-        public string Description { get; set; }
+        public string? Description { get; set; }
         public int NonAlloyedSteelCuttingSpeedMinimum { get; set; }
         public int NonAlloyedSteelCuttingSpeedMaximum { get; set; }
         public int StainlessSteelCuttingSpeedMinimum { get; set; }

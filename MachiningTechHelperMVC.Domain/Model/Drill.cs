@@ -13,11 +13,11 @@ namespace MachiningTechHelperMVC.Domain.Model
         public string LengthXDiameter { get; set; }
         public int TipAngle { get; set; }
 
-        public int GradeId { get; set; }
-        public virtual Grade Grade { get; set; }
+        public int? GradeId { get; set; }
+        public virtual Grade? Grade { get; set; }
 
-        public int ProducerId { get; set; }
-        public virtual Producer Producer { get; set; }
+        public int? ProducerId { get; set; }
+        public virtual Producer? Producer { get; set; }
 
         public virtual ICollection<DrillCheckedParameters>? DrillCheckedParameters { get; set; }
         public virtual ICollection<FeedPerRevision>? FeedPerRevisions { get; set; }

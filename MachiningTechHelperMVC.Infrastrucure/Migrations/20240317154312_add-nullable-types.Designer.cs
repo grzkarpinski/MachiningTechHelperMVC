@@ -4,6 +4,7 @@ using MachiningTechHelperMVC.Infrastrucure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MachiningTechHelperMVC.Infrastrucure.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240317154312_add-nullable-types")]
+    partial class addnullabletypes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,7 +49,7 @@ namespace MachiningTechHelperMVC.Infrastrucure.Migrations
                     b.Property<double>("Diameter")
                         .HasColumnType("float");
 
-                    b.Property<int?>("GradeId")
+                    b.Property<int>("GradeId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsToolActive")
@@ -56,7 +59,7 @@ namespace MachiningTechHelperMVC.Infrastrucure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ProducerId")
+                    b.Property<int>("ProducerId")
                         .HasColumnType("int");
 
                     b.Property<int>("TipAngle")
@@ -272,7 +275,7 @@ namespace MachiningTechHelperMVC.Infrastrucure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("GradeId")
+                    b.Property<int>("GradeId")
                         .HasColumnType("int");
 
                     b.Property<double>("Radius")
@@ -312,7 +315,7 @@ namespace MachiningTechHelperMVC.Infrastrucure.Migrations
                     b.Property<bool>("IsToolActive")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("ProducerId")
+                    b.Property<int>("ProducerId")
                         .HasColumnType("int");
 
                     b.Property<double>("TeethNumber")
@@ -432,13 +435,13 @@ namespace MachiningTechHelperMVC.Infrastrucure.Migrations
                     b.Property<double>("Diameter")
                         .HasColumnType("float");
 
-                    b.Property<int?>("GradeId")
+                    b.Property<int>("GradeId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsToolActive")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("ProducerId")
+                    b.Property<int>("ProducerId")
                         .HasColumnType("int");
 
                     b.Property<double>("Radius")
@@ -702,11 +705,15 @@ namespace MachiningTechHelperMVC.Infrastrucure.Migrations
                 {
                     b.HasOne("MachiningTechHelperMVC.Domain.Model.Grade", "Grade")
                         .WithMany("Drills")
-                        .HasForeignKey("GradeId");
+                        .HasForeignKey("GradeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("MachiningTechHelperMVC.Domain.Model.Producer", "Producer")
                         .WithMany("Drills")
-                        .HasForeignKey("ProducerId");
+                        .HasForeignKey("ProducerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Grade");
 
@@ -761,7 +768,9 @@ namespace MachiningTechHelperMVC.Infrastrucure.Migrations
                 {
                     b.HasOne("MachiningTechHelperMVC.Domain.Model.Grade", "Grade")
                         .WithMany("MillingInserts")
-                        .HasForeignKey("GradeId");
+                        .HasForeignKey("GradeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Grade");
                 });
@@ -770,7 +779,9 @@ namespace MachiningTechHelperMVC.Infrastrucure.Migrations
                 {
                     b.HasOne("MachiningTechHelperMVC.Domain.Model.Producer", "Producer")
                         .WithMany("MillingTools")
-                        .HasForeignKey("ProducerId");
+                        .HasForeignKey("ProducerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Producer");
                 });
@@ -817,11 +828,15 @@ namespace MachiningTechHelperMVC.Infrastrucure.Migrations
                 {
                     b.HasOne("MachiningTechHelperMVC.Domain.Model.Grade", "Grade")
                         .WithMany("SolidMillingTools")
-                        .HasForeignKey("GradeId");
+                        .HasForeignKey("GradeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("MachiningTechHelperMVC.Domain.Model.Producer", "Producer")
                         .WithMany("SolidMillingTools")
-                        .HasForeignKey("ProducerId");
+                        .HasForeignKey("ProducerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Grade");
 

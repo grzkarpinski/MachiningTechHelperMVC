@@ -55,16 +55,19 @@ namespace MachiningTechHelperMVC.Application.Services
 
             drillVm.DrillCheckedParameters = new List<DrillCheckedParametersVm>();
 
-            foreach (var checkedParameter in drill.DrillCheckedParameters)
-            {
-                var checkedParameterVm = new DrillCheckedParametersVm()
+            if (drill.DrillCheckedParameters != null)
+               {
+                foreach (var checkedParameter in drill.DrillCheckedParameters)
                 {
-                    Id = checkedParameter.Id,
-                    Material = checkedParameter.Material,
-                    RevisionsPerMinute = checkedParameter.RevisionsPerMinute,
-                    FeedPerMinute = checkedParameter.FeedPerMinute,
-                };
-                drillVm.DrillCheckedParameters.Add(checkedParameterVm);
+                    var checkedParameterVm = new DrillCheckedParametersVm()
+                    {
+                        Id = checkedParameter.Id,
+                        Material = checkedParameter.Material,
+                        RevisionsPerMinute = checkedParameter.RevisionsPerMinute,
+                        FeedPerMinute = checkedParameter.FeedPerMinute,
+                    };
+                    drillVm.DrillCheckedParameters.Add(checkedParameterVm);
+                }
             }
             return drillVm;
 
