@@ -56,8 +56,8 @@
                     @Html.DisplayFor(modelItem => item.Producer)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                        @Html.ActionLink("Details", "ViewDrill", new { id = item.Id }) |<!--Check if this work! -->
+                    @Html.ActionLink("Edit", "EditDrill", new { id=item.Id }) |
+                        @Html.ActionLink("Details", "ViewDrill", new { id = item.Id }) |
                     @Html.ActionLink("Delete", "Delete", new { id=item.Id })
                 </td>
             </tr>

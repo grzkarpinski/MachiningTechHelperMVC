@@ -18,5 +18,6 @@ namespace MachiningTechHelperMVC.Domain.Interfaces
         Drill GetDrillById(int drillId);
 
         IQueryable<Drill> GetDrillByProducer(int ProducerId);
+        void UpdateDrill(Drill drillToUpdate);
     }
 }

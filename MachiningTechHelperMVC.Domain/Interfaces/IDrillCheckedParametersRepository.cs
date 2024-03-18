@@ -14,5 +14,7 @@ namespace MachiningTechHelperMVC.Domain.Interfaces
         int AddDrillCheckedParameters(DrillCheckedParameters drillCheckedParameters);
 
         IQueryable<DrillCheckedParameters> GetDrillCheckedParametersbyTool(int drillId);
+
+        void UpdateDrillCheckedParameters(DrillCheckedParameters drillCheckedParametersToUpdate);
     }
 }

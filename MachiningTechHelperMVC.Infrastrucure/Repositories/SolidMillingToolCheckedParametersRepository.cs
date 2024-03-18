@@ -37,5 +37,15 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             var solidMillingToolCheckedParameters = _context.SolidMillingToolsCheckedParameters.Where(m => m.SolidMillingToolId == solidMillingToolId);
             return solidMillingToolCheckedParameters;
         }
+
+        public void UpdateSolidMillingToolCheckedParameters(SolidMillingToolCheckedParameters solidMillingToolCheckedParametersToUpdate)
+        {
+            _context.Attach(solidMillingToolCheckedParametersToUpdate);
+            _context.Entry(solidMillingToolCheckedParametersToUpdate).Property("Material").IsModified = true;
+            _context.Entry(solidMillingToolCheckedParametersToUpdate).Property("RevisionsPerSecond").IsModified = true;
+            _context.Entry(solidMillingToolCheckedParametersToUpdate).Property("FeedPerMinute").IsModified = true;
+            _context.Entry(solidMillingToolCheckedParametersToUpdate).Property("cuttingDepth").IsModified = true;
+            _context.SaveChanges();
+        }
     }
 }

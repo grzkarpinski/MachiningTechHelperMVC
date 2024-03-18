@@ -28,6 +28,11 @@ namespace MachiningTechHelperMVC.Application.Services
             return id;
         }
 
+        public void DeleteDrill(int id)
+        {
+            _drillRepo.DeleteDrill(id);
+        }
+
         public ListDrillForListVm GetAllDrillsForList(int pageSize, int? pageNo, string searchString)
         {
             var drills = _drillRepo.GetAllDrills()
@@ -71,6 +76,19 @@ namespace MachiningTechHelperMVC.Application.Services
             }
             return drillVm;
 
+        }
+
+        public NewDrillVm GetDrillForEdit(int id)
+        {
+            var drill = _drillRepo.GetDrillById(id);
+            var drillVm = _mapper.Map<NewDrillVm>(drill);
+            return drillVm;
+        }
+
+        public void UpdateDrill(NewDrillVm drill)
+        {
+            var drillToUpdate = _mapper.Map<Domain.Model.Drill>(drill);
+            _drillRepo.UpdateDrill(drillToUpdate);
         }
     }
 }

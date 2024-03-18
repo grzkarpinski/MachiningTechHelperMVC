@@ -1,19 +1,19 @@
 ﻿@model MachiningTechHelperMVC.Application.ViewModels.Drill.NewDrillVm
 
 @{
-    ViewData["Title"] = "AddDrill";
+    ViewData["Title"] = "EditDrill";
 }
 
-<h1>AddDrill</h1>
+<h1>EditDrill</h1>
 
 <h4>NewDrillVm</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="AddDrill">
+        <form asp-action="EditDrill">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="Id" class="form-control" />
             </div>
             <div class="form-group">
                 <label asp-for="Diameter" class="control-label"></label>
@@ -32,12 +32,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="ToolType" class="control-label"></label>
-                @Html.DropDownListFor(m => m.ToolType, Model.ToolTypes, "Select a Tool Type", new { @class = "form-control" })
+                <select asp-for="ToolType" asp-items="ViewBag.ToolTypeList" class="form-control"></select>
                 <span asp-validation-for="ToolType" class="text-danger"></span>
             </div>
-                <div class="form-group form-check">
-                        <input type="hidden" asp-for="IsToolActive" value="true" />
-                </div>
+            <div class="form-group form-check">
+                <input type="hidden" asp-for="IsToolActive" value="true" />
+            </div>
             <div class="form-group">
                 <label asp-for="LengthXDiameter" class="control-label"></label>
                 <input asp-for="LengthXDiameter" class="form-control" />
@@ -49,7 +49,7 @@
                 <span asp-validation-for="TipAngle" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>

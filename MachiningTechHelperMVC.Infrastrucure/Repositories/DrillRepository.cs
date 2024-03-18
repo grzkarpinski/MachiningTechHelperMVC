@@ -54,5 +54,18 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
         {
             return _context.Drills.Where(p => p.IsToolActive);
         }
+
+        public void UpdateDrill(Drill drillToUpdate)
+        {
+            _context.Attach(drillToUpdate);
+            _context.Entry(drillToUpdate).Property("Diameter").IsModified = true;
+            _context.Entry(drillToUpdate).Property("Designation").IsModified = true;
+            _context.Entry(drillToUpdate).Property("Description").IsModified = true;
+            _context.Entry(drillToUpdate).Property("ToolType").IsModified = true;
+            _context.Entry(drillToUpdate).Property("LengthXDiameter").IsModified = true;
+            _context.Entry(drillToUpdate).Property("TipAngle").IsModified = true;
+            _context.SaveChanges();
+
+        }
     }
 }

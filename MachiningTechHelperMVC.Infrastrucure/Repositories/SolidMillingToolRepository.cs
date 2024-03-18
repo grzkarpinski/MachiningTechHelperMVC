@@ -49,5 +49,14 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             var solidMillingTools = _context.SolidMillingTools.Where(s => s.ProducerId == ProducerId);
             return solidMillingTools;
         }
+
+        public void UpdateSolidMillingTool(SolidMillingTool solidMillingToolToUpdate)
+        {
+            _context.Attach(solidMillingToolToUpdate);
+            _context.Entry(solidMillingToolToUpdate).Property("Diameter").IsModified = true;
+            _context.Entry(solidMillingToolToUpdate).Property("TeethNumber").IsModified = true;
+            _context.Entry(solidMillingToolToUpdate).Property("Radius").IsModified = true;
+            _context.SaveChanges();
+        }
     }
 }

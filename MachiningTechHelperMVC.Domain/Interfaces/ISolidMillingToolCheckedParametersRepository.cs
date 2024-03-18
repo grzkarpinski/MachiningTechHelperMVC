@@ -14,5 +14,7 @@ namespace MachiningTechHelperMVC.Domain.Interfaces
         int AddSolidMillingToolCheckedParameters(SolidMillingToolCheckedParameters solidMillingToolCheckedParameters);
 
         IQueryable<SolidMillingToolCheckedParameters> GetSolidMillingToolCheckedParametersbyTool(int solidMillingToolId);
+
+        void UpdateSolidMillingToolCheckedParameters(SolidMillingToolCheckedParameters solidMillingToolCheckedParametersToUpdate);
     }
 }

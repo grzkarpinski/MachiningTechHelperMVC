@@ -14,5 +14,9 @@ namespace MachiningTechHelperMVC.Application.Interfaces
         int AddDrill(NewDrillVm drill);
 
         DrillDetailsVm GetDrillDetails(int id);
+
+        NewDrillVm GetDrillForEdit(int id);
+        void UpdateDrill(NewDrillVm drill);
+        void DeleteDrill(int id);
     }
 }

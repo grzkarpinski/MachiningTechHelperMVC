@@ -29,9 +29,8 @@ namespace MachiningTechHelperMVC.Application.ViewModels.Drill
         public void Mapping(Profile profile)
         {
             profile.CreateMap<NewDrillVm, Domain.Model.Drill>()
-            .ForMember(dest => dest.ToolType, opt => opt.MapFrom(src => (ToolType)Enum.Parse(typeof(ToolType), src.ToolType)));
-            //.ForMember(dest => dest.Grade, opt => opt.MapFrom(src => new Grade { GradeName = src.Grade }))
-            //.ForMember(dest => dest.Producer, opt => opt.MapFrom(src => new Producer { CompanyName = src.Producer }));
+            .ForMember(dest => dest.ToolType, opt => opt.MapFrom(src => (ToolType)Enum.Parse(typeof(ToolType), src.ToolType)))
+            .ReverseMap();
         }
     }
 

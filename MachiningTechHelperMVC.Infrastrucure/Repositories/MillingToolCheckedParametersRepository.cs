@@ -37,5 +37,15 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             var millingToolCheckedParameters = _context.MillingToolsCheckedParameters.Where(m => m.MillingToolId == millingToolId);
             return millingToolCheckedParameters;
         }
+
+        public void UpdateMillingToolCheckedParameters(MillingToolCheckedParameters millingToolCheckedParametersToUpdate)
+        {
+            _context.Attach(millingToolCheckedParametersToUpdate);
+            _context.Entry(millingToolCheckedParametersToUpdate).Property("Material").IsModified = true;
+            _context.Entry(millingToolCheckedParametersToUpdate).Property("RevisionsPerSecond").IsModified = true;
+            _context.Entry(millingToolCheckedParametersToUpdate).Property("FeedPerMinute").IsModified = true;
+            _context.Entry(millingToolCheckedParametersToUpdate).Property("CuttingDepth").IsModified = true;
+            _context.SaveChanges();
+        }
     }
 }

@@ -18,6 +18,6 @@ namespace MachiningTechHelperMVC.Domain.Interfaces
 
         IQueryable<SolidMillingTool> GetSolidMillingToolByProducer(int ProducerId);
 
-
+        void UpdateSolidMillingTool(SolidMillingTool solidMillingToolToUpdate);
     }
 }

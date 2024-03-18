@@ -39,12 +39,6 @@ namespace MachiningTechHelperMVC.Web.Controllers
             return View(model);
         }
 
-        //[HttpGet]
-        //public IActionResult AddDrill()
-        //{
-        //    return View(new NewDrillVm());
-        //}
-
 		[HttpGet]
 		public IActionResult AddDrill()
 		{
@@ -69,22 +63,51 @@ namespace MachiningTechHelperMVC.Web.Controllers
             return RedirectToAction("Index");
         }
 
-		//[HttpGet]
-		//public IActionResult AddNewDrillCheckedParameters(int Drillid)
-		//{
-		//    return View();
-		//}
-
-		//[HttpPost]
-		//public IActionResult AddNewDrillCheckedParameters(DrillCheckedParametersModel model)
-		//{
-		//    return View();
-		//}
-
 		public IActionResult ViewDrill(int id)
         {
             var drillModel = _drillService.GetDrillDetails(id);
             return View(drillModel);
         }
+
+        [HttpGet]
+        public IActionResult EditDrill(int id)
+        {
+            var drill = _drillService.GetDrillForEdit(id);
+            ViewBag.ToolTypeList = Enum.GetValues(typeof(ToolType))
+                           .Cast<ToolType>()
+                           .Select(t => new SelectListItem
+                           {
+                               Value = ((int)t).ToString(),
+                               Text = t.ToString()
+                           })
+                           .ToList();
+
+            return View(drill);
+        }
+
+        [HttpPost]
+        public IActionResult EditDrill(NewDrillVm drill)
+        {
+            _drillService.UpdateDrill(drill);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            _drillService.DeleteDrill(id);
+            return RedirectToAction("Index");
+        }
+
+        //[HttpGet]
+        //public IActionResult AddNewDrillCheckedParameters(int Drillid)
+        //{
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //public IActionResult AddNewDrillCheckedParameters(DrillCheckedParametersModel model)
+        //{
+        //    return View();
+        //}
     }
 }
