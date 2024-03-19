@@ -14,6 +14,7 @@ namespace MachiningTechHelperMVC.Infrastrucure
         public static IServiceCollection AddInfrastructure (this IServiceCollection services)
         {
             services.AddTransient<IDrillRepository, DrillRepository>();
+            services.AddTransient<IProducerRepository, ProducerRepository>();
             return services;
         }
     }
