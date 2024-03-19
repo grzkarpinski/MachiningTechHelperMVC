@@ -1,4 +1,6 @@
-﻿using MachiningTechHelperMVC.Application.Interfaces;
+﻿using MachiningTechelperMVC.Application.Interfaces;
+using MachiningTechelperMVC.Application.Services;
+using MachiningTechHelperMVC.Application.Interfaces;
 using MachiningTechHelperMVC.Application.Services;
 using MachiningTechHelperMVC.Domain.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +18,7 @@ namespace MachiningTechHelperMVC.Application
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddTransient<IDrillService, DrillService>();
+            services.AddTransient<IProducerService, ProducerService>();
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             return services;
         }
