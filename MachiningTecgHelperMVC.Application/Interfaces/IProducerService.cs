@@ -13,7 +13,7 @@ namespace MachiningTechelperMVC.Application.Interfaces
         ListProducersVM GetAllProducers();
         int AddProducer(ProducerVm producer);
         ProducerVm GetProducerForEdit(int id);
-        int UpdateProducer(ProducerVm producer);
+        void UpdateProducer(ProducerVm producer);
         ProducerVm GetProducerById(int producerId);
         void DeleteProducer(int producerId);
     }
