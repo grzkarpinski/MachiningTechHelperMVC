@@ -1,5 +1,6 @@
 ﻿using MachiningTechHelperMVC.Domain.Interfaces;
 using MachiningTechHelperMVC.Domain.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,9 +40,11 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             return millingTools;
 
         }
-        public MillingTool GetMillingToolById(int millingToolId)
+        public MillingTool GetMillingToolById(int millingToolId) // Need to add other nested properties !!!
         {
-            var millingTool = _context.MillingTools.FirstOrDefault(m => m.Id == millingToolId);
+            var millingTool = _context.MillingTools
+                .Include(m => m.Producer)
+                .FirstOrDefault(m => m.Id == millingToolId);
             return millingTool;
         }
 
@@ -59,11 +62,18 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
 
         public void UpdateMillingTool(MillingTool millingToolToUpdate)
         {
-            _context.Attach(millingToolToUpdate);
-            _context.Entry(millingToolToUpdate).Property("Diameter").IsModified = true;
-            _context.Entry(millingToolToUpdate).Property("Designation").IsModified = true;
-            _context.Entry(millingToolToUpdate).Property("TeethNumber").IsModified = true;
-            _context.SaveChanges();
+            var existingMillingTool = _context.MillingTools
+                .Include(m => m.Producer)
+                .FirstOrDefault(m => m.Id == millingToolToUpdate.Id);
+
+            if (existingMillingTool != null)
+            {
+                _context.Attach(millingToolToUpdate);
+                _context.Entry(millingToolToUpdate).Property("Diameter").IsModified = true;
+                _context.Entry(millingToolToUpdate).Property("Designation").IsModified = true;
+                _context.Entry(millingToolToUpdate).Property("TeethNumber").IsModified = true;
+                _context.SaveChanges();
+            }
         }
     }
 }

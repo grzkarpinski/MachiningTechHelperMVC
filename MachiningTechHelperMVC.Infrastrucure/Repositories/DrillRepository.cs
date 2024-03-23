@@ -39,7 +39,7 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             return drills;
         }
 
-        public Drill GetDrillById(int drillId)
+        public Drill GetDrillById(int drillId) // Need to add other nested properties !!!
         {
             var drill = _context.Drills
                 .Include(d => d.Producer)
@@ -80,7 +80,7 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
                 {
                     // Update the properties of the existing Producer
                     existingDrill.Producer.CompanyName = drillToUpdate.Producer.CompanyName;
-                    // Add other Producer properties here... Grade , etc.
+                    // // Need to add other nested properties !!!
                 }
 
                 _context.SaveChanges();

@@ -1,5 +1,6 @@
 ﻿using MachiningTechHelperMVC.Domain.Interfaces;
 using MachiningTechHelperMVC.Domain.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,9 +39,11 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             return solidMillingTools;
         }
 
-        public SolidMillingTool GetSolidMillingToolById(int solidMillingToolId)
+        public SolidMillingTool GetSolidMillingToolById(int solidMillingToolId) // Need to add other nested properties !!!
         {
-            var solidMillingTool = _context.SolidMillingTools.FirstOrDefault(s => s.Id == solidMillingToolId);
+            var solidMillingTool = _context.SolidMillingTools
+                .Include(s => s.Producer)
+                .FirstOrDefault(s => s.Id == solidMillingToolId);
             return solidMillingTool;
         }
 
