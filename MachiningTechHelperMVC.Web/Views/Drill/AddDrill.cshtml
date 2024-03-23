@@ -35,9 +35,9 @@
                 @Html.DropDownListFor(m => m.ToolType, Model.ToolTypes, "Select a Tool Type", new { @class = "form-control" })
                 <span asp-validation-for="ToolType" class="text-danger"></span>
             </div>
-                <div class="form-group form-check">
-                        <input type="hidden" asp-for="IsToolActive" value="true" />
-                </div>
+            <div class="form-group form-check">
+                <input type="hidden" asp-for="IsToolActive" value="true" />
+            </div>
             <div class="form-group">
                 <label asp-for="LengthXDiameter" class="control-label"></label>
                 <input asp-for="LengthXDiameter" class="form-control" />
@@ -48,6 +48,14 @@
                 <input asp-for="TipAngle" class="form-control" />
                 <span asp-validation-for="TipAngle" class="text-danger"></span>
             </div>
+
+            <!-- Input field for new producer -->
+            <div class="form-group">
+                <label>Add a new Producer:</label>
+                <input type="text" asp-for="NewProducer.CompanyName" class="form-control" />
+                <span asp-validation-for="NewProducer.CompanyName" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -60,5 +68,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

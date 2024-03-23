@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MachiningTechHelperMVC.Application.Mapping;
+using MachiningTechHelperMVC.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,4 +1,6 @@
-﻿using MachiningTechHelperMVC.Application.Interfaces;
+﻿using MachiningTechelperMVC.Application.Interfaces;
+using MachiningTechelperMVC.Application.ViewModels.Producer;
+using MachiningTechHelperMVC.Application.Interfaces;
 using MachiningTechHelperMVC.Application.Services;
 using MachiningTechHelperMVC.Application.ViewModels.Drill;
 using MachiningTechHelperMVC.Domain.Model;
@@ -11,7 +13,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
     public class DrillController : Controller
     {
         private readonly IDrillService _drillService;
-        public DrillController(IDrillService drillService) 
+        public DrillController(IDrillService drillService)
         {
             _drillService = drillService;
         }
@@ -40,30 +42,31 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
 		[HttpGet]
-		public IActionResult AddDrill()
-		{
-			var model = new NewDrillVm
-			{
-				ToolTypes = Enum.GetValues(typeof(ToolType))
-								.Cast<ToolType>()
-								.Select(t => new SelectListItem
-								{
-									Value = ((int)t).ToString(),
-									Text = t.ToString()
-								})
-			};
+        public IActionResult AddDrill()
+        {
+            var model = new NewDrillVm
+            {
+                ToolTypes = Enum.GetValues(typeof(ToolType))
+                                .Cast<ToolType>()
+                                .Select(t => new SelectListItem
+                                {
+                                    Value = ((int)t).ToString(),
+                                    Text = t.ToString()
+                                })
+            };
 
-			return View(model);
-		}
+            return View(model);
+        }
 
-		[HttpPost]
+        [HttpPost]
         public IActionResult AddDrill(NewDrillVm drill)
         {
             var id = _drillService.AddDrill(drill);
             return RedirectToAction("Index");
         }
 
-		public IActionResult ViewDrill(int id)
+        [HttpGet]
+        public IActionResult ViewDrill(int id)
         {
             var drillModel = _drillService.GetDrillDetails(id);
             return View(drillModel);
@@ -81,6 +84,10 @@ namespace MachiningTechHelperMVC.Web.Controllers
                                Text = t.ToString()
                            })
                            .ToList();
+            if (drill.NewProducer != null)
+            {
+                drill.NewProducer = new ProducerVm { CompanyName = drill.NewProducer.CompanyName };
+            }
 
             return View(drill);
         }

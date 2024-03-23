@@ -1,5 +1,6 @@
 ﻿using MachiningTechHelperMVC.Domain.Interfaces;
 using MachiningTechHelperMVC.Domain.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +41,9 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
 
         public Drill GetDrillById(int drillId)
         {
-            var drill = _context.Drills.FirstOrDefault(d => d.Id == drillId);
+            var drill = _context.Drills
+                .Include(d => d.Producer)
+                .FirstOrDefault(d => d.Id == drillId);
             return drill;
         }
 
@@ -57,15 +60,31 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
 
         public void UpdateDrill(Drill drillToUpdate)
         {
-            _context.Attach(drillToUpdate);
-            _context.Entry(drillToUpdate).Property("Diameter").IsModified = true;
-            _context.Entry(drillToUpdate).Property("Designation").IsModified = true;
-            _context.Entry(drillToUpdate).Property("Description").IsModified = true;
-            _context.Entry(drillToUpdate).Property("ToolType").IsModified = true;
-            _context.Entry(drillToUpdate).Property("LengthXDiameter").IsModified = true;
-            _context.Entry(drillToUpdate).Property("TipAngle").IsModified = true;
-            _context.SaveChanges();
+            // Check if the Drill already exists in the database
+            var existingDrill = _context.Drills
+                                        .Include(d => d.Producer)
+                                        .FirstOrDefault(d => d.Id == drillToUpdate.Id);
 
+            if (existingDrill != null)
+            {
+                // Update the properties of the existing Drill
+                existingDrill.Diameter = drillToUpdate.Diameter;
+                existingDrill.Designation = drillToUpdate.Designation;
+                existingDrill.Description = drillToUpdate.Description;
+                existingDrill.ToolType = drillToUpdate.ToolType;
+                existingDrill.LengthXDiameter = drillToUpdate.LengthXDiameter;
+                existingDrill.TipAngle = drillToUpdate.TipAngle;
+
+                // Check if the Producer is not null before trying to update it
+                if (drillToUpdate.Producer != null)
+                {
+                    // Update the properties of the existing Producer
+                    existingDrill.Producer.CompanyName = drillToUpdate.Producer.CompanyName;
+                    // Add other Producer properties here... Grade , etc.
+                }
+
+                _context.SaveChanges();
+            }
         }
     }
 }

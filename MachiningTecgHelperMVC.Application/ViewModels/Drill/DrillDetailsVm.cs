@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MachiningTechelperMVC.Application.ViewModels.Producer;
 using MachiningTechHelperMVC.Application.Mapping;
 using System;
 using System.Collections.Generic;
@@ -15,8 +16,12 @@ namespace MachiningTechHelperMVC.Application.ViewModels.Drill
         public string LengthXDiameter { get; set; }
         public string ToolType { get; set; }
         public string description { get; set; }
-        public string? Producer { get; set; }
         public int TipAngle { get; set; }
+
+        //producer
+        public ProducerVm? Producer { get; set; }
+
+        //to implement
         public string? Grade { get; set; }
 
         public List<DrillCheckedParametersVm>? DrillCheckedParameters;
@@ -24,8 +29,8 @@ namespace MachiningTechHelperMVC.Application.ViewModels.Drill
         public void Mapping(Profile profile)
         {
             profile.CreateMap<Domain.Model.Drill, DrillDetailsVm>()
-                .ForMember(d => d.Producer, opt => opt.MapFrom(s => s.Producer != null ? s.Producer.CompanyName : "Not linked yet"))
-                .ForMember(d => d.Grade, opt => opt.MapFrom(s => s.Grade != null ? s.Grade.GradeName : "Not linked yet"))
+                .ForMember(dest => dest.Producer, opt => opt.MapFrom(src => src.Producer))
+                .ForMember(d => d.Grade, opt => opt.Ignore()) // TO CHANGE!!!!
                 .ForMember(d => d.DrillCheckedParameters, opt => opt.Ignore()); // TO CHANGE!!!!
         }
     }
