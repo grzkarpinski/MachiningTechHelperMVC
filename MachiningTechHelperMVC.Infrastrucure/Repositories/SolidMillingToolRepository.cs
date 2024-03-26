@@ -43,6 +43,7 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
         {
             var solidMillingTool = _context.SolidMillingTools
                 .Include(s => s.Producer)
+                .Include(s => s.Grade)
                 .FirstOrDefault(s => s.Id == solidMillingToolId);
             return solidMillingTool;
         }
@@ -59,6 +60,8 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             _context.Entry(solidMillingToolToUpdate).Property("Diameter").IsModified = true;
             _context.Entry(solidMillingToolToUpdate).Property("TeethNumber").IsModified = true;
             _context.Entry(solidMillingToolToUpdate).Property("Radius").IsModified = true;
+            _context.Entry(solidMillingToolToUpdate).Property("Producer").IsModified = true;
+            _context.Entry(solidMillingToolToUpdate).Property("Grade").IsModified = true;
             _context.SaveChanges();
         }
     }
