@@ -12,9 +12,6 @@ namespace MachiningTechHelperMVC.Domain.Model
     {
         public double TeethNumber { get; set; }
         public double Radius { get; set; }
-        
-        public int? GradeId { get; set; }
-        public virtual Grade? Grade { get; set; }
 
         public int? ProducerId { get; set; }
         public virtual Producer? Producer { get; set; }

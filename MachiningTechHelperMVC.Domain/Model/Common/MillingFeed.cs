@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace MachiningTechHelperMVC.Domain.Model.Common
 {
-    public class MillingFeed: BaseEntity
+    public class MillingFeed: BaseParameters
     {
-        public string Material { get; set; }
         public double FeedPerToothMinimum { get; set; }
         public double FeedPerToothMaximum { get; set; }
     }

@@ -16,7 +16,6 @@ namespace MachiningTechHelperMVC.Infrastrucure
         public DbSet<FeedPerRevision>? FeedPerRevisions { get; set; }
         public DbSet<FeedPerTooth>? FeedPerTeeth { get; set; }
         public DbSet<FeedPerToothSolid>? FeedPerTeethSolid { get; set; }
-        public DbSet<Grade>? Grades { get; set; }
         public DbSet<MillingInsert>? MillingInserts { get; set; }
         public DbSet<MillingTool>? MillingTools { get; set; }
         public DbSet<MillingToolCheckedParameters>? MillingToolsCheckedParameters { get; set; }
@@ -47,10 +46,6 @@ namespace MachiningTechHelperMVC.Infrastrucure
                 .HasForeignKey(mi => mi.MillingInsertId);
 
             //one to many
-            builder.Entity<Drill>()
-                .HasOne<Grade>(d => d.Grade)
-                .WithMany(g => g.Drills)
-                .HasForeignKey(d => d.GradeId);
 
             builder.Entity<Drill>()
                 .HasOne<Producer>(d => d.Producer)
@@ -78,11 +73,6 @@ namespace MachiningTechHelperMVC.Infrastrucure
                 .HasForeignKey(m => m.SolidMillingToolId)
                 .OnDelete(DeleteBehavior.NoAction);
 
-            builder.Entity<MillingInsert>()
-                .HasOne<Grade>(mi => mi.Grade)
-                .WithMany(g => g.MillingInserts)
-                .HasForeignKey(mi => mi.GradeId);
-
             builder.Entity<MillingTool>()
                 .HasOne<Producer>(mt => mt.Producer)
                 .WithMany(p => p.MillingTools)
@@ -92,11 +82,6 @@ namespace MachiningTechHelperMVC.Infrastrucure
                 .HasOne<MillingTool>(mtcp => mtcp.MillingTool)
                 .WithMany(mt => mt.MillingToolCheckedParameters)
                 .HasForeignKey(mtcp => mtcp.MillingToolId);
-
-            builder.Entity<SolidMillingTool>()
-                .HasOne<Grade>(smt => smt.Grade)
-                .WithMany(g => g.SolidMillingTools)
-                .HasForeignKey(smt => smt.GradeId);
 
             builder.Entity<SolidMillingTool>()
                 .HasOne<Producer>(smt => smt.Producer)

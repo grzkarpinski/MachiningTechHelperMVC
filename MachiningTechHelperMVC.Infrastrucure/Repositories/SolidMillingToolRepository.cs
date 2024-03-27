@@ -43,7 +43,6 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
         {
             var solidMillingTool = _context.SolidMillingTools
                 .Include(s => s.Producer)
-                .Include(s => s.Grade)
                 .FirstOrDefault(s => s.Id == solidMillingToolId);
             return solidMillingTool;
         }

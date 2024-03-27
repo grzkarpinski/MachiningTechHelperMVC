@@ -43,7 +43,6 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
         {
             var drill = _context.Drills
                 .Include(d => d.Producer)
-                .Include(d => d.Grade)
                 .FirstOrDefault(d => d.Id == drillId);
             return drill;
         }
@@ -64,7 +63,6 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             // Check if the Drill already exists in the database
             var existingDrill = _context.Drills
                                         .Include(d => d.Producer)
-                                        .Include(d => d.Grade)
                                         .FirstOrDefault(d => d.Id == drillToUpdate.Id);
 
             if (existingDrill != null)
@@ -83,10 +81,6 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
                     // Update the properties of the existing Producer
                     existingDrill.Producer.CompanyName = drillToUpdate.Producer.CompanyName;
                     // // Need to add other nested properties !!!
-                }
-                if (drillToUpdate.Grade != null) 
-                {
-                    existingDrill.Grade.GradeName = drillToUpdate.Grade.GradeName;
                 }
 
                 _context.SaveChanges();

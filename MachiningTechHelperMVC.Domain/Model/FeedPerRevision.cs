@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace MachiningTechHelperMVC.Domain.Model
 {
-    public class FeedPerRevision: BaseEntity
+    public class FeedPerRevision: BaseParameters
     {
-        public string Material { get; set; }
         public double FeedPerRevisionMinimum { get; set; }
         public double FeedPerRevisionMaximum { get; set; }
 
