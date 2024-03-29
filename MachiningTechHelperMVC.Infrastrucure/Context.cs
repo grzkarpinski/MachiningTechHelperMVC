@@ -13,9 +13,9 @@ namespace MachiningTechHelperMVC.Infrastrucure
     {
         public DbSet<Drill>? Drills { get; set; }
         public DbSet<DrillCheckedParameters>? DrillsCheckedParameters { get; set; }
-        public DbSet<FeedPerRevision>? FeedPerRevisions { get; set; }
-        public DbSet<FeedPerTooth>? FeedPerTeeth { get; set; }
-        public DbSet<FeedPerToothSolid>? FeedPerTeethSolid { get; set; }
+        public DbSet<DrillParametersRange>? DrillParametersRanges { get; set; }
+        public DbSet<MillingInsertParametersRange>? MillingInsertParametersRange { get; set; }
+        public DbSet<SolidMillingToolParametersRange>? SolidMillingToolParametersRanges { get; set; }
         public DbSet<MillingInsert>? MillingInserts { get; set; }
         public DbSet<MillingTool>? MillingTools { get; set; }
         public DbSet<MillingToolCheckedParameters>? MillingToolsCheckedParameters { get; set; }
@@ -57,19 +57,19 @@ namespace MachiningTechHelperMVC.Infrastrucure
                 .WithMany(d => d.DrillCheckedParameters)
                 .HasForeignKey(dcp => dcp.DrillId);
 
-            builder.Entity<FeedPerRevision>()
+            builder.Entity<DrillParametersRange>()
                 .HasOne<Drill>(fpr => fpr.Drill)
-                .WithMany(d => d.FeedPerRevisions)
+                .WithMany(d => d.DrillParametersRanges)
                 .HasForeignKey(fpr => fpr.DrillId);
 
-            builder.Entity<FeedPerTooth>()
+            builder.Entity<MillingInsertParametersRange>()
                 .HasOne(m => m.MillingInsert)
-                .WithMany(mi => mi.FeedPerTeeth)
+                .WithMany(mi => mi.MillingInsertParametersRanges)
                 .HasForeignKey(m => m.MillingInsertId);
 
-            builder.Entity<FeedPerToothSolid>()
+            builder.Entity<SolidMillingToolParametersRange>()
                 .HasOne(m => m.SolidMillingTool)
-                .WithMany(mi => mi.FeedPerTeethSolid)
+                .WithMany(mi => mi.SolidMillingToolParametersRanges)
                 .HasForeignKey(m => m.SolidMillingToolId)
                 .OnDelete(DeleteBehavior.NoAction);
 

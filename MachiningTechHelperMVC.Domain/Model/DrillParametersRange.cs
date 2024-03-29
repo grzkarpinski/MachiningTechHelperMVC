@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MachiningTechHelperMVC.Domain.Model
 {
-    public class FeedPerRevision: BaseParameters
+    public class DrillParametersRange: BaseParameters
     {
         public double FeedPerRevisionMinimum { get; set; }
         public double FeedPerRevisionMaximum { get; set; }

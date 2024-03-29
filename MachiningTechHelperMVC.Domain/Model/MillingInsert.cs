@@ -13,7 +13,7 @@ namespace MachiningTechHelperMVC.Domain.Model
         public double Radius { get; set; }
 
         public virtual ICollection<MillingToolMillingInsert>? MillingToolMillingInserts { get; set; }
-        public virtual ICollection<FeedPerTooth>? FeedPerTeeth { get; set; }
+        public virtual ICollection<MillingInsertParametersRange>? MillingInsertParametersRanges { get; set; }
         public virtual ICollection<MillingToolCheckedParameters>? MillingToolCheckedParameters { get; set; }
     }
 }

@@ -18,7 +18,7 @@ namespace MachiningTechHelperMVC.Domain.Model
 
         public virtual ICollection<SolidMillingToolCheckedParameters>? SolidMillingToolCheckedParameters { get; set; }
 
-        public virtual ICollection<FeedPerToothSolid>? FeedPerTeethSolid { get; set; }
+        public virtual ICollection<SolidMillingToolParametersRange>? SolidMillingToolParametersRanges { get; set; }
 
     }
 }

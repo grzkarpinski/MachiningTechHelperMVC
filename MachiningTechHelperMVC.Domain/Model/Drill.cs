@@ -17,6 +17,6 @@ namespace MachiningTechHelperMVC.Domain.Model
         public virtual Producer? Producer { get; set; }
 
         public virtual ICollection<DrillCheckedParameters>? DrillCheckedParameters { get; set; }
-        public virtual ICollection<FeedPerRevision>? FeedPerRevisions { get; set; }
+        public virtual ICollection<DrillParametersRange>? DrillParametersRanges { get; set; }
     }
 }

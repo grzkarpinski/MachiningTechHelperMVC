@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace MachiningTechHelperMVC.Domain.Model
 {
-    public class FeedPerToothSolid: MillingFeed
+    public class MillingInsertParametersRange: MillingFeed
     {
-        public int SolidMillingToolId { get; set; }
-        public virtual SolidMillingTool? SolidMillingTool { get; set; }
+        public int MillingInsertId { get; set; }
+        public virtual MillingInsert? MillingInsert { get; set; }
     }
 }
