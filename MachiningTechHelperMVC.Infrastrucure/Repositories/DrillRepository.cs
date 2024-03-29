@@ -43,6 +43,7 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
         {
             var drill = _context.Drills
                 .Include(d => d.Producer)
+                .Include(d => d.DrillParametersRanges)
                 .FirstOrDefault(d => d.Id == drillId);
             return drill;
         }
@@ -63,6 +64,7 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             // Check if the Drill already exists in the database
             var existingDrill = _context.Drills
                                         .Include(d => d.Producer)
+                                        .Include(d => d.DrillParametersRanges)
                                         .FirstOrDefault(d => d.Id == drillToUpdate.Id);
 
             if (existingDrill != null)
