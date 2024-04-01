@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MachiningTechelperMVC.Application.ViewModels.DrillParametersRange;
 using MachiningTechelperMVC.Application.ViewModels.Producer;
 using MachiningTechHelperMVC.Application.Mapping;
 using System;
@@ -21,8 +22,8 @@ namespace MachiningTechHelperMVC.Application.ViewModels.Drill
         //producer
         public ProducerVm? Producer { get; set; }
 
-        //to implement
-        public string? Grade { get; set; }
+        //DrillParametersRange
+        public List<DrillParametersRangeVm>? drillParametersRangesVms;
 
         public List<DrillCheckedParametersVm>? DrillCheckedParameters;
 
@@ -30,7 +31,7 @@ namespace MachiningTechHelperMVC.Application.ViewModels.Drill
         {
             profile.CreateMap<Domain.Model.Drill, DrillDetailsVm>()
                 .ForMember(dest => dest.Producer, opt => opt.MapFrom(src => src.Producer))
-                .ForMember(d => d.Grade, opt => opt.Ignore()) // TO CHANGE!!!!
+                .ForMember(dest => dest.drillParametersRangesVms, opt => opt.MapFrom(src => src.DrillParametersRanges))
                 .ForMember(d => d.DrillCheckedParameters, opt => opt.Ignore()); // TO CHANGE!!!!
         }
     }

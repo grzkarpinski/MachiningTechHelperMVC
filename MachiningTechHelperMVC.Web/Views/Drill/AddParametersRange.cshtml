@@ -1,0 +1,67 @@
+﻿@model MachiningTechelperMVC.Application.ViewModels.DrillParametersRange.DrillParametersRangeVm
+
+@{
+    ViewData["Title"] = "AddParametersRange";
+}
+
+<h1>AddParametersRange</h1>
+
+<h4>DrillParametersRangeVm</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddParametersRange">
+            <div class="form-group">
+                <input asp-for="DrillId" type="hidden" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="GradeName" class="control-label"></label>
+                <input asp-for="GradeName" class="form-control" />
+                <span asp-validation-for="GradeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Material" class="control-label"></label>
+                <input asp-for="Material" class="form-control" />
+                <span asp-validation-for="Material" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CuttingSpeedMinimum" class="control-label"></label>
+                <input asp-for="CuttingSpeedMinimum" class="form-control" />
+                <span asp-validation-for="CuttingSpeedMinimum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CuttingSpeedMaximum" class="control-label"></label>
+                <input asp-for="CuttingSpeedMaximum" class="form-control" />
+                <span asp-validation-for="CuttingSpeedMaximum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FeedPerRevisionMinimum" class="control-label"></label>
+                <input asp-for="FeedPerRevisionMinimum" class="form-control" type="number" step="0.01" />
+                <span asp-validation-for="FeedPerRevisionMinimum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FeedPerRevisionMaximum" class="control-label"></label>
+                <input asp-for="FeedPerRevisionMaximum" class="form-control" type="number" step="0.01" />
+                <span asp-validation-for="FeedPerRevisionMaximum" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

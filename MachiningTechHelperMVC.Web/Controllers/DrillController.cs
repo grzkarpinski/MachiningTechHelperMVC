@@ -1,4 +1,5 @@
 ﻿using MachiningTechelperMVC.Application.Interfaces;
+using MachiningTechelperMVC.Application.ViewModels.DrillParametersRange;
 using MachiningTechelperMVC.Application.ViewModels.Producer;
 using MachiningTechHelperMVC.Application.Interfaces;
 using MachiningTechHelperMVC.Application.Services;
@@ -13,9 +14,11 @@ namespace MachiningTechHelperMVC.Web.Controllers
     public class DrillController : Controller
     {
         private readonly IDrillService _drillService;
-        public DrillController(IDrillService drillService)
+        private readonly IDrillParametersRangeService _drillParametersRangeService;
+        public DrillController(IDrillService drillService, IDrillParametersRangeService drillParametersRangeService)
         {
             _drillService = drillService;
+            _drillParametersRangeService = drillParametersRangeService;
         }
 
         [HttpGet]
@@ -103,6 +106,29 @@ namespace MachiningTechHelperMVC.Web.Controllers
         {
             _drillService.DeleteDrill(id);
             return RedirectToAction("Index");
+        }
+
+        public IActionResult AddParametersRange(int id)
+        {
+            var model = new DrillParametersRangeVm
+            {
+                DrillId = id
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult AddParametersRange(DrillParametersRangeVm model)
+        {
+            _drillParametersRangeService.AddDrillParametersRange(model);
+            return RedirectToAction("ViewDrill", new { id = model.DrillId });
+        }
+
+        public IActionResult DeleteParametersRange(int id)
+        {
+            var drillParametersRange = _drillParametersRangeService.GetDrillParametersRangeById(id);
+            _drillParametersRangeService.DeleteDrillParametersRange(id);
+            return RedirectToAction("ViewDrill", new { id = drillParametersRange.DrillId });
         }
 
         //[HttpGet]
