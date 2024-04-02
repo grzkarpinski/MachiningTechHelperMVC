@@ -38,6 +38,12 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             return millingToolCheckedParameters;
         }
 
+        public MillingToolCheckedParameters GetMillingToolCheckedParametersById(int millingToolCheckedParametersId)
+        {
+            var millingToolCheckedParameters = _context.MillingToolsCheckedParameters.Find(millingToolCheckedParametersId);
+            return millingToolCheckedParameters;
+        }
+
         public void UpdateMillingToolCheckedParameters(MillingToolCheckedParameters millingToolCheckedParametersToUpdate)
         {
             _context.Attach(millingToolCheckedParametersToUpdate);

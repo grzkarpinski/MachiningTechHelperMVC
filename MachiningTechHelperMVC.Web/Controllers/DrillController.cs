@@ -15,10 +15,14 @@ namespace MachiningTechHelperMVC.Web.Controllers
     {
         private readonly IDrillService _drillService;
         private readonly IDrillParametersRangeService _drillParametersRangeService;
-        public DrillController(IDrillService drillService, IDrillParametersRangeService drillParametersRangeService)
+        private readonly IDrillCheckedParametersService _drillCheckedParametersService;
+        public DrillController(IDrillService drillService,
+                               IDrillParametersRangeService drillParametersRangeService,
+                               IDrillCheckedParametersService drillCheckedParametersService)
         {
             _drillService = drillService;
             _drillParametersRangeService = drillParametersRangeService;
+            _drillCheckedParametersService = drillCheckedParametersService;
         }
 
         [HttpGet]

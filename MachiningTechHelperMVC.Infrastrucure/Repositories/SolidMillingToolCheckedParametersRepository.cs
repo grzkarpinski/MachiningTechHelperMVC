@@ -38,6 +38,12 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             return solidMillingToolCheckedParameters;
         }
 
+        public SolidMillingToolCheckedParameters GetSolidMillingToolCheckedParametersById(int Id)
+        {
+            var solidMillingToolCheckedParameters = _context.SolidMillingToolsCheckedParameters.Find(Id);
+            return solidMillingToolCheckedParameters;
+        }
+
         public void UpdateSolidMillingToolCheckedParameters(SolidMillingToolCheckedParameters solidMillingToolCheckedParametersToUpdate)
         {
             _context.Attach(solidMillingToolCheckedParametersToUpdate);

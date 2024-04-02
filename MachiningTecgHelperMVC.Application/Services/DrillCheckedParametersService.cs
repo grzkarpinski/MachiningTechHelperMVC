@@ -46,17 +46,22 @@ namespace MachiningTechelperMVC.Application.Services
 
         public DrillCheckedParametersVm GetDrillCheckedParametersById(int drillCheckedParametersId)
         {
-            throw new NotImplementedException();
+            var drillCheckedParameters = _drillCheckedParametersRepo.GetDrillCheckedParametersById(drillCheckedParametersId);
+            var drillCheckedParametersVm = _mapper.Map<DrillCheckedParametersVm>(drillCheckedParameters);
+            return drillCheckedParametersVm;
         }
 
         public DrillCheckedParametersVm GetDrillCheckedParametersForEdit(int id)
         {
-            throw new NotImplementedException();
+            var drillCheckedParameters = _drillCheckedParametersRepo.GetDrillCheckedParametersById(id);
+            var drillCheckedParametersVm = _mapper.Map<DrillCheckedParametersVm>(drillCheckedParameters);
+            return drillCheckedParametersVm;
         }
 
         public void UpdateDrillCheckedParameters(DrillCheckedParametersVm drillCheckedParameters)
         {
-            throw new NotImplementedException();
+            var drillCheckedParametersToUpdate = _mapper.Map<MachiningTechHelperMVC.Domain.Model.DrillCheckedParameters>(drillCheckedParameters);
+            _drillCheckedParametersRepo.UpdateDrillCheckedParameters(drillCheckedParametersToUpdate);
         }
     }
 }

@@ -46,5 +46,11 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             _context.Entry(drillCheckedParametersToUpdate).Property("FeedPerMinute").IsModified = true;
             _context.SaveChanges();
         }
+
+        public DrillCheckedParameters GetDrillCheckedParametersById(int drillCheckedParametersId)
+        {
+            var drillCheckedParameters = _context.DrillsCheckedParameters.Find(drillCheckedParametersId);
+            return drillCheckedParameters;
+        }
     }
 }
