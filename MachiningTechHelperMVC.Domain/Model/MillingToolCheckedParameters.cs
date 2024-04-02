@@ -14,6 +14,7 @@ namespace MachiningTechHelperMVC.Domain.Model
         public int RevisionsPerSecond { get; set; }
         public int FeedPerMinute { get; set; }
         public double CuttingDepth { get; set; }
+        public string? Comment { get; set; }
 
         public int MillingToolId { get; set; }
         public virtual MillingTool MillingTool { get; set; }

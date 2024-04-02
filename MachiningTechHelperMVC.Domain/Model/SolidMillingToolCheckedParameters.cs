@@ -14,6 +14,7 @@ namespace MachiningTechHelperMVC.Domain.Model
         public int RevisionsPerSecond { get; set; }
         public int FeedPerMinute { get; set; }
         public double cuttingDepth { get; set; }
+        public string? Comment { get; set; }
 
         public int SolidMillingToolId { get; set; }
         public virtual SolidMillingTool SolidMillingTool { get; set; }

@@ -13,6 +13,7 @@ namespace MachiningTechHelperMVC.Domain.Model
         public string Material { get; set; }
         public int RevisionsPerMinute { get; set; }
         public int FeedPerMinute { get; set; }
+        public string? Comment { get; set; }
 
         public int DrillId { get; set; }
         public virtual required Drill Drill { get; set; }
