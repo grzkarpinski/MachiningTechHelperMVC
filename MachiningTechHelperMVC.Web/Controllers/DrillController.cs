@@ -8,6 +8,7 @@ using MachiningTechHelperMVC.Domain.Model;
 using MachiningTechHelperMVC.Domain.Model.Common;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using MachiningTechelperMVC.Application.ViewModels.DrillCheckedParameters;
 
 namespace MachiningTechHelperMVC.Web.Controllers
 {
@@ -135,16 +136,28 @@ namespace MachiningTechHelperMVC.Web.Controllers
             return RedirectToAction("ViewDrill", new { id = drillParametersRange.DrillId });
         }
 
-        //[HttpGet]
-        //public IActionResult AddNewDrillCheckedParameters(int Drillid)
-        //{
-        //    return View();
-        //}
+        [HttpGet]
+        public IActionResult AddDrillCheckedParameters(int id)
+        {
+            var model = new DrillCheckedParametersVm
+            {
+                DrillId = id
+            };
+            return View(model);
+        }
 
-        //[HttpPost]
-        //public IActionResult AddNewDrillCheckedParameters(DrillCheckedParametersModel model)
-        //{
-        //    return View();
-        //}
+        [HttpPost]
+        public IActionResult AddDrillCheckedParameters(DrillCheckedParametersVm checkedParameters)
+        {
+            _drillCheckedParametersService.AddDrillCheckedParameters(checkedParameters);
+            return RedirectToAction("ViewDrill", new { id = checkedParameters.DrillId });
+        }
+
+        public IActionResult DeleteDrillCheckedParameters(int id)
+        {
+            var drillCheckedParameters = _drillCheckedParametersService.GetDrillCheckedParametersById(id);
+            _drillCheckedParametersService.DeleteDrillCheckedParameters(id);
+            return RedirectToAction("ViewDrill", new { id = drillCheckedParameters.DrillId });
+        }
     }
 }

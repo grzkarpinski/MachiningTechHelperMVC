@@ -39,11 +39,12 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             return drills;
         }
 
-        public Drill GetDrillById(int drillId) // Need to add other nested properties !!!
+        public Drill GetDrillById(int drillId)
         {
             var drill = _context.Drills
                 .Include(d => d.Producer)
                 .Include(d => d.DrillParametersRanges)
+                .Include(d => d.DrillCheckedParameters)
                 .FirstOrDefault(d => d.Id == drillId);
             return drill;
         }
@@ -65,6 +66,7 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             var existingDrill = _context.Drills
                                         .Include(d => d.Producer)
                                         .Include(d => d.DrillParametersRanges)
+                                        .Include(d => d.DrillCheckedParameters)
                                         .FirstOrDefault(d => d.Id == drillToUpdate.Id);
 
             if (existingDrill != null)

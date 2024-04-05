@@ -10,7 +10,7 @@ namespace MachiningTechelperMVC.Application.Interfaces
     public interface IDrillCheckedParametersService
     {
         ListDrillCheckedParametersVm GetAllDrillCheckedParameters(int drillId);
-        int AddDrillCheckedParameters(DrillCheckedParametersVm drillCheckedParameters);
+        int AddDrillCheckedParameters(DrillCheckedParametersVm checkedParameters);
         DrillCheckedParametersVm GetDrillCheckedParametersForEdit(int id);
         void UpdateDrillCheckedParameters(DrillCheckedParametersVm drillCheckedParameters);
         DrillCheckedParametersVm GetDrillCheckedParametersById(int drillCheckedParametersId);

@@ -2,6 +2,7 @@
 using MachiningTechelperMVC.Application.Interfaces;
 using MachiningTechelperMVC.Application.ViewModels.DrillCheckedParameters;
 using MachiningTechHelperMVC.Domain.Interfaces;
+using MachiningTechHelperMVC.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -23,7 +24,7 @@ namespace MachiningTechelperMVC.Application.Services
         }
         public int AddDrillCheckedParameters(DrillCheckedParametersVm drillCheckedParameters)
         {
-            var drillCheckedParametersToAdd = _mapper.Map<MachiningTechHelperMVC.Domain.Model.DrillCheckedParameters>(drillCheckedParameters);
+            var drillCheckedParametersToAdd = _mapper.Map<DrillCheckedParameters>(drillCheckedParameters);
             var id = _drillCheckedParametersRepo.AddDrillCheckedParameters(drillCheckedParametersToAdd);
             return id;
         }

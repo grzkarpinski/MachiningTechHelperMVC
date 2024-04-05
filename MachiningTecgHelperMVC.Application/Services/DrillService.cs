@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using MachiningTechelperMVC.Application.ViewModels.DrillCheckedParameters;
 using MachiningTechHelperMVC.Application.Interfaces;
 using MachiningTechHelperMVC.Application.ViewModels.Drill;
 using MachiningTechHelperMVC.Domain.Interfaces;
@@ -55,27 +56,8 @@ namespace MachiningTechHelperMVC.Application.Services
         public DrillDetailsVm GetDrillDetails(int id)
         {
             var drill = _drillRepo.GetDrillById(id);
-
             var drillVm = _mapper.Map<DrillDetailsVm>(drill); //Map - single object
-
-            drillVm.DrillCheckedParameters = new List<DrillCheckedParametersVm>();
-
-            if (drill.DrillCheckedParameters != null)
-               {
-                foreach (var checkedParameter in drill.DrillCheckedParameters)
-                {
-                    var checkedParameterVm = new DrillCheckedParametersVm()
-                    {
-                        Id = checkedParameter.Id,
-                        Material = checkedParameter.Material,
-                        RevisionsPerMinute = checkedParameter.RevisionsPerMinute,
-                        FeedPerMinute = checkedParameter.FeedPerMinute,
-                    };
-                    drillVm.DrillCheckedParameters.Add(checkedParameterVm);
-                }
-            }
             return drillVm;
-
         }
 
         public NewDrillVm GetDrillForEdit(int id)
