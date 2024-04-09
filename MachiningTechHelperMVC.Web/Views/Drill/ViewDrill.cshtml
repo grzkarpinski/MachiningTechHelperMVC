@@ -4,26 +4,33 @@
 
 <div>
     <dl class="row">
-        <dt class="col-sm-2">ID:</dt>
-        <dd class="col-sm-10">@Model.Id</dd>
 
-        <dt class="col-sm-2">Diameter:</dt>
-        <dd class="col-sm-10">@Model.Diameter</dd>
-
-        <dt class="col-sm-2">Length x Diameter:</dt>
-        <dd class="col-sm-10">@Model.LengthXDiameter</dd>
-
-        <dt class="col-sm-2">Tool Type:</dt>
-        <dd class="col-sm-10">@Model.ToolType</dd>
-
-        <dt class="col-sm-2">Description:</dt>
-        <dd class="col-sm-10">@Model.description</dd>
-
-        <dt class="col-sm-2">Tip Angle:</dt>
-        <dd class="col-sm-10">@Model.TipAngle</dd>
-
-        <dt class="col-sm-2">Producer:</dt>
-        <dd class="col-sm-10">@Model.Producer.CompanyName</dd>
+        <table class="table table-bordered">
+            <tr>
+                <td class="col-sm-2">Diameter:</td>
+                <td class="col-sm-10">@Model.Diameter</td>
+            </tr>
+            <tr>
+                <td class="col-sm-2">Length x Diameter:</td>
+                <td class="col-sm-10">@Model.LengthXDiameter</td>
+            </tr>
+            <tr>
+                <td class="col-sm-2">Tool Type:</td>
+                <td class="col-sm-10">@Model.ToolType</td>
+            </tr>
+            <tr>
+                <td class="col-sm-2">Description:</td>
+                <td class="col-sm-10">@Model.description</td>
+            </tr>
+            <tr>
+                <td class="col-sm-2">Tip Angle:</td>
+                <td class="col-sm-10">@Model.TipAngle</td>
+            </tr>
+            <tr>
+                <td class="col-sm-2">Producer:</td>
+                <td class="col-sm-10">@Model.Producer.CompanyName</td>
+            </tr>
+        </table>
 
         <div>
         <dt class="col-sm-2">Drill Parameters Range:</dt>
@@ -35,12 +42,12 @@
                     <thead>
                         <tr>
                             <th>Grade Name</th>
-                            <th>Description</th>
                             <th>Material</th>
                             <th>Cutting Speed Min</th>
                             <th>Cutting Speed Max</th>
                             <th>Feed Per Rev Min</th>
                             <th>Feed Per Rev Max</th>
+                            <th>Description</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -80,6 +87,7 @@
                                 <th>Material</th>
                                 <th>Revisions Per Minute</th>
                                 <th>Feed Per Minute</th>
+                                <th>Comment</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -90,6 +98,7 @@
                                     <td>@parameter.Material</td>
                                     <td>@parameter.RevisionsPerMinute</td>
                                     <td>@parameter.FeedPerMinute</td>
+                                    <td>@parameter.Comment</td>
                                     <td>
                                         <a asp-action="DeleteDrillCheckedParameters" asp-route-id="@parameter.Id" class="btn btn-danger">Delete</a>
                                     </td>

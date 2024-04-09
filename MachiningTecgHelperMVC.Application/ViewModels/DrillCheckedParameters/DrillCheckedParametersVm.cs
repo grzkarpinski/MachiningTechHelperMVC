@@ -10,6 +10,7 @@ namespace MachiningTechelperMVC.Application.ViewModels.DrillCheckedParameters
     public class DrillCheckedParametersVm : IMapFrom<MachiningTechHelperMVC.Domain.Model.DrillCheckedParameters>
     {
         public int Id { get; set; }
+        public string Comment { get; set; }
         public string Material { get; set; }
         public int RevisionsPerMinute { get; set; }
         public int FeedPerMinute { get; set; }
