@@ -2,6 +2,7 @@
 using MachiningTechelperMVC.Application.Services;
 using MachiningTechHelperMVC.Application.Interfaces;
 using MachiningTechHelperMVC.Application.Services;
+using MachiningTechHelperMVC.Domain.Calculators;
 using MachiningTechHelperMVC.Domain.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -21,6 +22,7 @@ namespace MachiningTechHelperMVC.Application
             services.AddTransient<IProducerService, ProducerService>();
             services.AddTransient<IDrillParametersRangeService, DrillParametersRangeService>();
             services.AddTransient<IDrillCheckedParametersService, DrillCheckedParametersService>();
+            services.AddTransient<ISimpleCalculatorLogic, SimpleCalculatorLogic>();
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             return services;
         }

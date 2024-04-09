@@ -1,0 +1,65 @@
+﻿@model MachiningTechelperMVC.Application.ViewModels.SimpleCalculator.SimpleCalculatorVm
+
+<h2>Simple Calculator</h2>
+<form method="post" asp-action="Calculate">
+    <div class="form-check">
+        <input asp-for="IsMilling" class="form-check-input" type="radio" value="true" />
+        <label class="form-check-label">Milling</label>
+    </div>
+    <div class="form-check">
+        <input asp-for="IsMilling" class="form-check-input" type="radio" value="false" />
+        <label class="form-check-label">Drilling</label>
+    </div>
+    <div class="form-group">
+        <label>Cutting Speed:</label>
+        <input asp-for="CuttingSpeed" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Diameter:</label>
+        <input asp-for="Diameter" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Feed Per Tooth:</label>
+        <input asp-for="FeedPerTooth" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Feed Per Revolution:</label>
+        <input asp-for="FeedPerRevolution" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Teeth:</label>
+        <input asp-for="Teeth" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Calculate</button>
+</form>
+
+@if (Model != null && Model.RevolutionsPerMinute != null && Model.FeedPerMinute != null)
+{
+    <p>Results:</p>
+    <p>Revolutions Per Minute: @Model.RevolutionsPerMinute</p>
+    <p>Feed Per Minute: @Model.FeedPerMinute</p>
+}
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var millingRadio = document.querySelector('input[value="true"]');
+            var drillingRadio = document.querySelector('input[value="false"]');
+            var feedPerToothInput = document.querySelector('input[name="FeedPerTooth"]');
+            var feedPerRevolutionInput = document.querySelector('input[name="FeedPerRevolution"]');
+            var teethInput = document.querySelector('input[name="Teeth"]');
+
+            millingRadio.addEventListener('change', function () {
+                feedPerRevolutionInput.disabled = this.checked;
+                feedPerToothInput.disabled = !this.checked;
+                teethInput.disabled = !this.checked;
+            });
+
+            drillingRadio.addEventListener('change', function () {
+                feedPerRevolutionInput.disabled = !this.checked;
+                feedPerToothInput.disabled = this.checked;
+                teethInput.disabled = this.checked;
+            });
+        });
+    </script>
+}

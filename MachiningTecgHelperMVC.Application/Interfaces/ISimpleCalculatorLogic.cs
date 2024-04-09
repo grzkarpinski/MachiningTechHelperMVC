@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MachiningTechelperMVC.Application.Interfaces
+{
+    public interface ISimpleCalculatorLogic
+    {
+        double CalculateRevitonsPerMinute(double cuttingSpeed, double diameter);
+        double CalculateMillingFeed(double feedPerTooth, int teeth, double revolutionsPerMinute);
+        double CalculateDrillingFeed(double feedPerRevolution, double revolutionsPerMinute);
+    }
+}
