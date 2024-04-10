@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FluentValidation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace MachiningTechelperMVC.Application.ViewModels.SimpleCalculator
 {
     public class SimpleCalculatorVm
     {
-        public bool? IsMilling { get; set; }
+        public bool? IsMilling { get; set; } // leave only IsMilling!!!
         public bool? IsDrilling { get; set; }
         public double CuttingSpeed { get; set; }
         public double Diameter { get; set; }
@@ -18,6 +19,6 @@ namespace MachiningTechelperMVC.Application.ViewModels.SimpleCalculator
 
         // results
         public int RevolutionsPerMinute { get; set; }
-        public double FeedPerMinute { get; set; }
+        public int FeedPerMinute { get; set; }
     }
 }

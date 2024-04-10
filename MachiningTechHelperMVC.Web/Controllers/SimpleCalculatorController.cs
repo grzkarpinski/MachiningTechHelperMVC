@@ -16,30 +16,26 @@ namespace MachiningTechHelperMVC.Web.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+			var model = new SimpleCalculatorVm();
+            return View(model);
         }
 
-        [HttpPost]
-        public IActionResult Calculate(SimpleCalculatorVm model)
-        {
-            if (ModelState.IsValid)
+		[HttpPost]
+		public IActionResult Index(SimpleCalculatorVm model)
+		{
+            if (!ModelState.IsValid)
             {
-                if ((bool)model.IsMilling)
-                {
-                    model.RevolutionsPerMinute = (int)_calculatorLogic.CalculateRevitonsPerMinute(model.CuttingSpeed, model.Diameter);
-                    model.FeedPerMinute = _calculatorLogic.CalculateMillingFeed(model.FeedPerTooth, model.Teeth, model.RevolutionsPerMinute);
-                }
-                else if ((bool)model.IsDrilling)
-                {
-                    model.RevolutionsPerMinute = (int)_calculatorLogic.CalculateRevitonsPerMinute(model.CuttingSpeed, model.Diameter);
-                    model.FeedPerMinute = _calculatorLogic.CalculateDrillingFeed(model.FeedPerRevolution, model.RevolutionsPerMinute);
-                }
-                return View("Index", model);
-            }
-            else
-            {
-                return View("Index", model);
-            }
-        }
-    }
+				return View("Index", model);
+			}
+
+			var result = _calculatorLogic.Calculate(model);
+			return View("Result", result);
+		}
+
+		[HttpGet]
+		public IActionResult Result()
+		{
+			return View();
+		}
+	}
 }

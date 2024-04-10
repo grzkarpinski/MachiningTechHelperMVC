@@ -1,0 +1,19 @@
+﻿@model MachiningTechelperMVC.Application.ViewModels.SimpleCalculator.SimpleCalculatorVm
+
+<h2>Calculation Result</h2>
+
+<p>Results:</p>
+<p>Process: 
+    @if (Model.IsMilling == true) 
+    { 
+        @:Frezowanie
+    } 
+    else if (Model.IsDrilling == true) 
+    { 
+        @:Wiercenie
+    }
+</p>
+<p>Revolutions Per Minute: @Model.RevolutionsPerMinute</p>
+<p>Feed Per Minute: @Model.FeedPerMinute</p>
+
+<a asp-action="Index" class="btn btn-primary">Back to Calculator</a>
