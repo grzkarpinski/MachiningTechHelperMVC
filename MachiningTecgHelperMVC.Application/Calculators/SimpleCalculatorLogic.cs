@@ -20,7 +20,7 @@ namespace MachiningTechHelperMVC.Domain.Calculators
 				model.RevolutionsPerMinute = (int)CalculateRevitonsPerMinute(model.CuttingSpeed, model.Diameter);
 				model.FeedPerMinute = (int)CalculateMillingFeed(model.FeedPerTooth, model.Teeth, model.RevolutionsPerMinute);
 			}
-			else if (model.IsDrilling == true)
+			else
 			{
 				model.RevolutionsPerMinute = (int)CalculateRevitonsPerMinute(model.CuttingSpeed, model.Diameter);
 				model.FeedPerMinute = (int)CalculateDrillingFeed(model.FeedPerRevolution, model.RevolutionsPerMinute);

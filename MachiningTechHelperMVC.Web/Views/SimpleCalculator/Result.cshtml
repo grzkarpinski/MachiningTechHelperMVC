@@ -3,14 +3,29 @@
 <h2>Calculation Result</h2>
 
 <p>Results:</p>
-<p>Process: 
-    @if (Model.IsMilling == true) 
-    { 
+<p>
+    Process:
+    @if (Model.IsMilling == true)
+    {
         @:Frezowanie
-    } 
-    else if (Model.IsDrilling == true) 
-    { 
+        <br />
+        <strong>Diameter:</strong> @Model.Diameter
+        <br />
+        <strong>Cutting Speed:</strong> @Model.CuttingSpeed
+        <br />
+        <strong>Feed Per Tooth:</strong> @Model.FeedPerTooth
+        <br />
+        <strong>Teeth:</strong> @Model.Teeth
+    }
+    else
+    {
         @:Wiercenie
+        <br />
+        <strong>Diameter:</strong> @Model.Diameter
+        <br />
+        <strong>Cutting Speed:</strong> @Model.CuttingSpeed
+        <br />
+        <strong>Feed Per Revolution:</strong> @Model.FeedPerRevolution
     }
 </p>
 <p>Revolutions Per Minute: @Model.RevolutionsPerMinute</p>

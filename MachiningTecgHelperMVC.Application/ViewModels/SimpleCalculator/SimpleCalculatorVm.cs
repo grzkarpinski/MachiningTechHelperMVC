@@ -9,8 +9,7 @@ namespace MachiningTechelperMVC.Application.ViewModels.SimpleCalculator
 {
     public class SimpleCalculatorVm
     {
-        public bool? IsMilling { get; set; } // leave only IsMilling!!!
-        public bool? IsDrilling { get; set; }
+        public bool IsMilling { get; set; }
         public double CuttingSpeed { get; set; }
         public double Diameter { get; set; }
         public double FeedPerTooth { get; set; }

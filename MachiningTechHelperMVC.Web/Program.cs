@@ -8,8 +8,13 @@ using MachiningTechHelperMVC.Application;
 using FluentValidation.AspNetCore;
 using MachiningTechHelperMVC.Application.ViewModels.Drill;
 using FluentValidation;
+using Serilog;
+using Serilog.Events;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//use serilog logger
+// ???
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
