@@ -12,12 +12,25 @@ namespace MachiningTechelperMVC.Application.Services
     {
         public CostEstimationVm CalculateCosts(CostEstimationVm model)
         {
-            throw new NotImplementedException();
+            model.TPZCosts = TimeCosts(model.MachineTypes, model.TPZTimes);
+            model.TJCosts = TimeCosts(model.MachineTypes, model.TJTimes);
+
+            model.TotalTPZCost = model.TPZCosts.Sum();
+            model.TotalTJCost = model.TJCosts.Sum();
+
+            return model;
         }
 
-        public List<decimal> TimeCosts(List<decimal> Costs)
+        public List<decimal> TimeCosts(List<string> machineType, List<decimal> times)
         {
-            throw new NotImplementedException();
+            List<decimal> costs = new List<decimal>();
+
+            for (int i = 0; i < machineType.Count; i++)
+            {
+                costs.Add(times[i] / 60 * MachineCostsConfig.MachineCosts[machineType[i]]);
+            }
+
+            return costs;
         }
     }
 }

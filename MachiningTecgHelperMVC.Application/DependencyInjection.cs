@@ -23,6 +23,7 @@ namespace MachiningTechHelperMVC.Application
             services.AddTransient<IDrillParametersRangeService, DrillParametersRangeService>();
             services.AddTransient<IDrillCheckedParametersService, DrillCheckedParametersService>();
             services.AddTransient<ISimpleCalculatorLogic, SimpleCalculatorLogic>();
+            services.AddTransient<ICostEstimationLogic, CostEstimationLogic>();
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             return services;
         }
