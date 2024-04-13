@@ -1,0 +1,15 @@
+﻿@model MachiningTechelperMVC.Application.ViewModels.CostEstimation.CostEstimationVm
+
+<h2>Cost Estimation Result</h2>
+
+@if (Model != null)
+{
+    <p>Total TPZ Cost: @Model.TotalTPZCost</p>
+    <p>Total TJ Cost: @Model.TotalTJCost</p>
+}
+else
+{
+    <p>No results to display.</p>
+}
+
+<a asp-action="Index" class="btn btn-primary">Back to Cost Estimation</a>
