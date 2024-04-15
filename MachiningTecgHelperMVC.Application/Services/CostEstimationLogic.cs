@@ -21,13 +21,21 @@ namespace MachiningTechelperMVC.Application.Services
             return model;
         }
 
-        public List<decimal> TimeCosts(List<string> machineType, List<decimal> times)
+        public List<decimal?> TimeCosts(List<string> machineType, List<decimal?> times)
         {
-            List<decimal> costs = new List<decimal>();
+            List<decimal?> costs = new List<decimal?>();
 
-            for (int i = 0; i < machineType.Count; i++)
+            for (int i = 0; i < times.Count; i++)
             {
-                costs.Add(times[i] / 60 * MachineCostsConfig.MachineCosts[machineType[i]]);
+                if (times[i].HasValue && machineType[i] != null)
+                {
+                    decimal cost = times[i].Value / 60 * MachineCostsConfig.MachineCosts[machineType[i]];
+                    costs.Add(Math.Round(cost, 2));
+                }
+                else
+                {
+                    costs.Add(null);
+                }
             }
 
             return costs;

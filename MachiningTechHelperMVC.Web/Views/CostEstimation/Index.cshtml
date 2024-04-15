@@ -4,21 +4,32 @@
 <h2>Cost Estimation</h2>
 
 <form method="post">
+    <div class="row">
+        <div class="col-md-4 form-group">
+            <label>Machine Type:</label>
+        </div>
+        <div class="col-md-4 form-group">
+            <label>TPZ Time (minutes):</label>
+        </div>
+        <div class="col-md-4 form-group">
+            <label>TJ Time (minutes):</label>
+        </div>
+    </div>
+
     @for (int i = 0; i < 10; i++)
     {
-        <div class="form-group">
-            <label>Machine Type:</label>
-            <select name="MachineTypes[@i]" class="form-control" asp-items="@(new SelectList(MachineCostsConfig.MachineCosts.Keys))">
-                <option value="">Select Machine Type</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>TPZ Time (minutes):</label>
-            <input type="number" name="TPZTimes[@i]" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label>TJ Time (minutes):</label>
-            <input type="number" name="TJTimes[@i]" class="form-control" />
+        <div class="row">
+            <div class="col-md-4 form-group">
+                <select name="MachineTypes[@i]" class="form-control" asp-items="@(new SelectList(MachineCostsConfig.MachineCosts.Keys))">
+                    <option value="">Select Machine Type</option>
+                </select>
+            </div>
+            <div class="col-md-4 form-group">
+                <input type="number" name="TPZTimes[@i]" class="form-control" />
+            </div>
+            <div class="col-md-4 form-group">
+                <input type="number" name="TJTimes[@i]" class="form-control" />
+            </div>
         </div>
     }
     <button type="submit" class="btn btn-primary">Calculate</button>

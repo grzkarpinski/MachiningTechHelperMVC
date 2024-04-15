@@ -10,6 +10,6 @@ namespace MachiningTechelperMVC.Application.Interfaces
     public interface ICostEstimationLogic
     {
         CostEstimationVm CalculateCosts(CostEstimationVm model);
-        List<decimal> TimeCosts(List<string> machineType ,List<decimal> times);
+        List<decimal?> TimeCosts(List<string> machineType ,List<decimal?> times);
     }
 }
