@@ -1,15 +1,15 @@
 ﻿@model MachiningTechelperMVC.Application.ViewModels.CostEstimation.CostEstimationVm
 
-<h2>Cost Estimation Result</h2>
+<h2>Wynik obliczeń kosztów obróbki</h2>
 
 @if (Model != null)
 {
-    <p>Total TPZ Cost: @Model.TotalTPZCost</p>
-    <p>Total TJ Cost: @Model.TotalTJCost</p>
+    <p>Całkowity koszt czasów TPZ: @Model.TotalTPZCost</p>
+    <p>Całkowity koszt czasów TJ: @Model.TotalTJCost</p>
 }
 else
 {
-    <p>No results to display.</p>
+    <p>Brak wyniku do wyświetlenia</p>
 }
 
-<a asp-action="Index" class="btn btn-primary">Back to Cost Estimation</a>
+<a asp-action="Index" class="btn btn-primary">Wróć do kalkulatora</a>

@@ -1,18 +1,18 @@
 ﻿@model MachiningTechelperMVC.Application.ViewModels.CostEstimation.CostEstimationVm
 @using MachiningTechelperMVC.Application.ViewModels.CostEstimation
 
-<h2>Cost Estimation</h2>
+<h2>Kalkulator kosztów obróbki</h2>
 
 <form method="post">
     <div class="row">
         <div class="col-md-4 form-group">
-            <label>Machine Type:</label>
+            <label>Grupa maszyn:</label>
         </div>
         <div class="col-md-4 form-group">
-            <label>TPZ Time (minutes):</label>
+            <label>TPZ (min):</label>
         </div>
         <div class="col-md-4 form-group">
-            <label>TJ Time (minutes):</label>
+            <label>TJ (min):</label>
         </div>
     </div>
 
@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col-md-4 form-group">
                 <select name="MachineTypes[@i]" class="form-control" asp-items="@(new SelectList(MachineCostsConfig.MachineCosts.Keys))">
-                    <option value="">Select Machine Type</option>
+                    <option value="">maszyna</option>
                 </select>
             </div>
             <div class="col-md-4 form-group">
@@ -32,5 +32,5 @@
             </div>
         </div>
     }
-    <button type="submit" class="btn btn-primary">Calculate</button>
+    <button type="submit" class="btn btn-primary">Oblicz</button>
 </form>

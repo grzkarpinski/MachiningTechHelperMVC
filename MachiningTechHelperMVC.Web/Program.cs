@@ -10,6 +10,8 @@ using MachiningTechHelperMVC.Application.ViewModels.Drill;
 using FluentValidation;
 using Serilog;
 using Serilog.Events;
+using MachiningTechelperMVC.Application.ViewModels.DrillCheckedParameters;
+using MachiningTechelperMVC.Application.ViewModels.DrillParametersRange;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +34,8 @@ builder.Services.AddInfrastructure();
 builder.Services.AddControllersWithViews().AddFluentValidation(fv => fv.DisableDataAnnotationsValidation = true); //FluentValidation
 
 builder.Services.AddTransient<IValidator<NewDrillVm>, NewDrillValidation>();
+builder.Services.AddTransient<IValidator<DrillCheckedParametersVm>, DrillCheckedParametersValidation>();
+builder.Services.AddTransient<IValidator<DrillParametersRangeVm>, DrillParametersRangeValidation>();
 
 var app = builder.Build();
 

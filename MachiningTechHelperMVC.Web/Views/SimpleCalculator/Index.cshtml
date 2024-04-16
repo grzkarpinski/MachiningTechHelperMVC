@@ -1,37 +1,37 @@
 ﻿@model MachiningTechelperMVC.Application.ViewModels.SimpleCalculator.SimpleCalculatorVm
 
-<h2>Simple Calculator</h2>
+<h2>Prosty kalkulator parametrów</h2>
 
 <form method="post">
     <div class="form-check">
         <input asp-for="IsMilling" class="form-check-input" type="radio" value="true" />
-        <label class="form-check-label">Milling</label>
+        <label class="form-check-label">Frezowanie</label>
     </div>
     <div class="form-check">
         <input asp-for="IsMilling" class="form-check-input" type="radio" value="false" />
-        <label class="form-check-label">Drilling</label>
+        <label class="form-check-label">Wiercenie</label>
     </div>
     <div class="form-group">
-        <label>Diameter:</label>
+        <label>Średnica mm:</label>
         <input asp-for="Diameter" class="form-control" />
     </div>
     <div class="form-group">
-        <label>Cutting Speed:</label>
+        <label>Vc m/min:</label>
         <input asp-for="CuttingSpeed" class="form-control" />
     </div>
     <div class="form-group">
-        <label>Feed Per Tooth:</label>
+        <label>fz mm/z:</label>
         <input asp-for="FeedPerTooth" class="form-control" />
     </div>
     <div class="form-group">
-        <label>Feed Per Revolution:</label>
+        <label>fn mm/obr:</label>
         <input asp-for="FeedPerRevolution" class="form-control" />
     </div>
     <div class="form-group">
-        <label>Teeth:</label>
+        <label>Z:</label>
         <input asp-for="Teeth" class="form-control" />
     </div>
-    <button type="submit" class="btn btn-primary">Calculate</button>
+    <button type="submit" class="btn btn-primary">Oblicz</button>
 </form>
 
 @section Scripts {

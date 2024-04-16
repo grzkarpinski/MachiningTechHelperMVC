@@ -1,34 +1,32 @@
 ﻿@model MachiningTechelperMVC.Application.ViewModels.SimpleCalculator.SimpleCalculatorVm
 
-<h2>Calculation Result</h2>
-
-<p>Results:</p>
+<h2>Wyniki</h2>
 <p>
     Process:
     @if (Model.IsMilling == true)
     {
         @:Frezowanie
         <br />
-        <strong>Diameter:</strong> @Model.Diameter
+        <strong>Średnica mm:</strong> @Model.Diameter
         <br />
-        <strong>Cutting Speed:</strong> @Model.CuttingSpeed
+        <strong>Vc m/min:</strong> @Model.CuttingSpeed
         <br />
-        <strong>Feed Per Tooth:</strong> @Model.FeedPerTooth
+        <strong>Posuw na ząb mm/z:</strong> @Model.FeedPerTooth
         <br />
-        <strong>Teeth:</strong> @Model.Teeth
+        <strong>Ilość ostrzy z:</strong> @Model.Teeth
     }
     else
     {
         @:Wiercenie
         <br />
-        <strong>Diameter:</strong> @Model.Diameter
+        <strong>Średnica mm:</strong> @Model.Diameter
         <br />
-        <strong>Cutting Speed:</strong> @Model.CuttingSpeed
+        <strong>Vc m/min:</strong> @Model.CuttingSpeed
         <br />
-        <strong>Feed Per Revolution:</strong> @Model.FeedPerRevolution
+        <strong>Posuw na obrót mm/rev:</strong> @Model.FeedPerRevolution
     }
 </p>
-<p>Revolutions Per Minute: @Model.RevolutionsPerMinute</p>
-<p>Feed Per Minute: @Model.FeedPerMinute</p>
+<p>Obroty obr/min: @Model.RevolutionsPerMinute</p>
+<p>Posuw mm/min: @Model.FeedPerMinute</p>
 
-<a asp-action="Index" class="btn btn-primary">Back to Calculator</a>
+<a asp-action="Index" class="btn btn-primary">Wróć do kalkulatora</a>

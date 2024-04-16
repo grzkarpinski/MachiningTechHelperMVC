@@ -7,6 +7,7 @@ using MachiningTechHelperMVC.Domain.Model.Common;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,16 +17,21 @@ namespace MachiningTechHelperMVC.Application.ViewModels.Drill
     public class NewDrillVm : IMapFrom<Domain.Model.Drill>
     {
         public int Id { get; set; }
+        [Display(Name = "Średnica mm")]
         public double Diameter { get; set; }
+        [Display(Name = "Symbol")]
         public string Designation { get; set; }
+        [Display(Name = "Opis")]
         public string Description { get; set; }
+        [Display(Name = "Typ narzędzia")]
         public string ToolType { get; set; }
 		public IEnumerable<SelectListItem> ToolTypes { get; set; } // To use in dropdown list
 		public bool IsToolActive { get; set; }
+        [Display(Name = "L x Średnica")]
         public string LengthXDiameter { get; set; }
+        [Display(Name = "Kąt wierzchołka")]
         public int TipAngle { get; set; }
 
-        //producer
         public ProducerVm NewProducer { get; set; }
 
         public void Mapping(Profile profile)

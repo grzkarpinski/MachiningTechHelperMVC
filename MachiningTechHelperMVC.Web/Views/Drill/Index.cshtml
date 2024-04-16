@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Katalog Wierteł</h1>
+<h1>Magazyn Wierteł</h1>
 
 <p>
-    <a asp-action="AddDrill">Create New</a>
+    <a asp-action="AddDrill">Dodaj Nowe</a>
 </p>
 <form asp-action="Index" asp-controller="Drill" method="post" style="width: 100%;">
     <div class="row" style="width: 100%;">
@@ -18,20 +18,17 @@
     <table class="table">
         <thead>
             <tr>
-@*                 <th>
-                    Id
-                </th> *@
                 <th>
-				    Diameter
+				    Średnica D mm
                 </th>
                 <th>
-				    Length x Diameter
+				    L x D
                 </th>
                 <th>
-                    Tool Type
+                    Typ
                 </th>
                 <th>
-				    Producer
+				    Producent
                  </th>
 
                 <th></th>
@@ -40,9 +37,6 @@
         <tbody>
     @foreach (var item in Model.Drills) {
             <tr>
-@*                 <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td> *@
                 <td>
 				    @Html.DisplayFor(modelItem => item.Diameter)
                 </td>
@@ -56,9 +50,9 @@
                     @Html.DisplayFor(modelItem => item.Producer)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "EditDrill", new { id=item.Id }) |
-                        @Html.ActionLink("Details", "ViewDrill", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                    @Html.ActionLink("Edytuj", "EditDrill", new { id=item.Id }) |
+                        @Html.ActionLink("Szczegóły", "ViewDrill", new { id = item.Id }) |
+                    @Html.ActionLink("Usuń", "Delete", new { id=item.Id })
                 </td>
             </tr>
     }

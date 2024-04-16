@@ -1,39 +1,39 @@
 ﻿@model MachiningTechHelperMVC.Application.ViewModels.Drill.DrillDetailsVm
 
-<h2>Drill Details</h2>
+<h2>Szczegóły wiertła</h2>
 
 <div>
     <dl class="row">
 
         <table class="table table-bordered">
             <tr>
-                <td class="col-sm-2">Diameter:</td>
+                <td class="col-sm-2">Średnica mm:</td>
                 <td class="col-sm-10">@Model.Diameter</td>
             </tr>
             <tr>
-                <td class="col-sm-2">Length x Diameter:</td>
+                <td class="col-sm-2">L x D:</td>
                 <td class="col-sm-10">@Model.LengthXDiameter</td>
             </tr>
             <tr>
-                <td class="col-sm-2">Tool Type:</td>
+                <td class="col-sm-2">Rodzaj narzędzia:</td>
                 <td class="col-sm-10">@Model.ToolType</td>
             </tr>
             <tr>
-                <td class="col-sm-2">Description:</td>
+                <td class="col-sm-2">Opis:</td>
                 <td class="col-sm-10">@Model.description</td>
             </tr>
             <tr>
-                <td class="col-sm-2">Tip Angle:</td>
+                <td class="col-sm-2">Kąt wierzchołka:</td>
                 <td class="col-sm-10">@Model.TipAngle</td>
             </tr>
             <tr>
-                <td class="col-sm-2">Producer:</td>
+                <td class="col-sm-2">Producent:</td>
                 <td class="col-sm-10">@Model.Producer.CompanyName</td>
             </tr>
         </table>
 
         <div>
-        <dt class="col-sm-2">Drill Parameters Range:</dt>
+        <dt class="col-sm-2">Zakresy parametrów:</dt>
         </div>
         <dd class="col-sm-10">
             @if (Model.drillParametersRangesVms != null && Model.drillParametersRangesVms.Any())
@@ -41,14 +41,14 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Grade Name</th>
-                            <th>Material</th>
-                            <th>Cutting Speed Min</th>
-                            <th>Cutting Speed Max</th>
-                            <th>Feed Per Rev Min</th>
-                            <th>Feed Per Rev Max</th>
-                            <th>Description</th>
-                            <th>Actions</th>
+                            <th>Gatunek</th>
+                            <th>Materiał</th>
+                            <th>Vc Min m/min</th>
+                            <th>Vc Max m/min</th>
+                            <th>Posuw na obrót Min mm/rev</th>
+                            <th>Posuw na obrót Max mm/rev</th>
+                            <th>Opis</th>
+                            <th>Akcje</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -56,14 +56,14 @@
                         {
                             <tr>
                                 <td>@parameter.GradeName</td>
-                                <td>@parameter.Description</td>
                                 <td>@parameter.Material</td>
                                 <td>@parameter.CuttingSpeedMinimum</td>
                                 <td>@parameter.CuttingSpeedMaximum</td>
                                 <td>@parameter.FeedPerRevisionMinimum</td>
                                 <td>@parameter.FeedPerRevisionMaximum</td>
+                                <td>@parameter.Description</td>
                                 <td>
-                                    <a asp-action="DeleteParametersRange" asp-route-id="@parameter.Id" class="btn btn-danger">Delete</a>
+                                    <a asp-action="DeleteParametersRange" asp-route-id="@parameter.Id" class="btn btn-danger">Usuń</a>
                                 </td>
                             </tr>
                         }
@@ -72,11 +72,11 @@
             }
             else
             {
-                <p>No parameters range available.</p>
+                <p>Brak dodanych parametrów</p>
             }
         </dd>
         <div>
-        <a asp-action="AddParametersRange" asp-route-id="@Model.Id" class="btn btn-primary" style="width: 200px;">Add Parameters Range</a>
+        <a asp-action="AddParametersRange" asp-route-id="@Model.Id" class="btn btn-primary" style="width: 200px;">Dodaj zakres parametrów</a>
             <dt class="col-sm-2">Checked Parameters:</dt>
             <dd class="col-sm-10">
                 @if (Model.DrillCheckedParameters != null && Model.DrillCheckedParameters.Any())
@@ -84,11 +84,11 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Material</th>
-                                <th>Revisions Per Minute</th>
-                                <th>Feed Per Minute</th>
-                                <th>Comment</th>
-                                <th>Actions</th>
+                                <th>Materiał</th>
+                                <th>Obroty obr/min</th>
+                                <th>Posuw mm/min</th>
+                                <th>Uwagi</th>
+                                <th>Akcje</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -100,7 +100,7 @@
                                     <td>@parameter.FeedPerMinute</td>
                                     <td>@parameter.Comment</td>
                                     <td>
-                                        <a asp-action="DeleteDrillCheckedParameters" asp-route-id="@parameter.Id" class="btn btn-danger">Delete</a>
+                                        <a asp-action="DeleteDrillCheckedParameters" asp-route-id="@parameter.Id" class="btn btn-danger">Usuń</a>
                                     </td>
                                 </tr>
                             }
@@ -109,15 +109,15 @@
                 }
                 else
                 {
-                    <p>No checked parameters available.</p>
+                    <p>Brak dodanych parametrów</p>
                 }
             </dd>
     </dl>
 </div>
 
 <div>
-    <a asp-action="AddDrillCheckedParameters" asp-route-id="@Model.Id" class="btn btn-primary">Add Checked Parameters</a>
+    <a asp-action="AddDrillCheckedParameters" asp-route-id="@Model.Id" class="btn btn-primary">Dodaj sprawdzone parametry</a>
 </div>
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Wróc do listy</a>
 </div>
