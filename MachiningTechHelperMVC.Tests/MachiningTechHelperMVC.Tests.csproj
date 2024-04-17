@@ -22,4 +22,11 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MachiningTecgHelperMVC.Application\MachiningTechelperMVC.Application.csproj" />
+    <ProjectReference Include="..\MachiningTechHelperMVC.Domain\MachiningTechHelperMVC.Domain.csproj" />
+    <ProjectReference Include="..\MachiningTechHelperMVC.Infrastrucure\MachiningTechHelperMVC.Infrastrucure.csproj" />
+    <ProjectReference Include="..\MachiningTechHelperMVC.Web\MachiningTechHelperMVC.Web.csproj" />
+  </ItemGroup>
+
 </Project>
