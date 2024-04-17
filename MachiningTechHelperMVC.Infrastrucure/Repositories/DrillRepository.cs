@@ -84,7 +84,6 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
                 {
                     // Update the properties of the existing Producer
                     existingDrill.Producer.CompanyName = drillToUpdate.Producer.CompanyName;
-                    // // Need to add other nested properties !!!
                 }
 
                 _context.SaveChanges();

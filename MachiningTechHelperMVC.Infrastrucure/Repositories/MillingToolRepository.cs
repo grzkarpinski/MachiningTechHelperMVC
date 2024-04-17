@@ -44,6 +44,8 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
         {
             var millingTool = _context.MillingTools
                 .Include(m => m.Producer)
+                .Include(m => m.MillingToolMillingInserts)
+                .Include(m => m.MillingToolCheckedParameters)
                 .FirstOrDefault(m => m.Id == millingToolId);
             return millingTool;
         }
@@ -64,14 +66,22 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
         {
             var existingMillingTool = _context.MillingTools
                 .Include(m => m.Producer)
+                .Include(m => m.MillingToolMillingInserts)
+                .Include(m => m.MillingToolCheckedParameters)
                 .FirstOrDefault(m => m.Id == millingToolToUpdate.Id);
 
             if (existingMillingTool != null)
             {
-                _context.Attach(millingToolToUpdate);
-                _context.Entry(millingToolToUpdate).Property("Diameter").IsModified = true;
-                _context.Entry(millingToolToUpdate).Property("Designation").IsModified = true;
-                _context.Entry(millingToolToUpdate).Property("TeethNumber").IsModified = true;
+                existingMillingTool.Diameter = millingToolToUpdate.Diameter;
+                existingMillingTool.Designation = millingToolToUpdate.Designation;
+                existingMillingTool.Description = millingToolToUpdate.Description;
+                existingMillingTool.TeethNumber = millingToolToUpdate.TeethNumber;
+                _context.SaveChanges();
+            }
+
+            if (millingToolToUpdate.Producer != null)
+            {
+                existingMillingTool.Producer = millingToolToUpdate.Producer;
                 _context.SaveChanges();
             }
         }

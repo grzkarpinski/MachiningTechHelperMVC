@@ -43,6 +43,8 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
         {
             var solidMillingTool = _context.SolidMillingTools
                 .Include(s => s.Producer)
+                .Include(s => s.SolidMillingToolParametersRanges)
+                .Include(s => s.SolidMillingToolCheckedParameters)
                 .FirstOrDefault(s => s.Id == solidMillingToolId);
             return solidMillingTool;
         }
@@ -55,13 +57,27 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
 
         public void UpdateSolidMillingTool(SolidMillingTool solidMillingToolToUpdate)
         {
-            _context.Attach(solidMillingToolToUpdate);
-            _context.Entry(solidMillingToolToUpdate).Property("Diameter").IsModified = true;
-            _context.Entry(solidMillingToolToUpdate).Property("TeethNumber").IsModified = true;
-            _context.Entry(solidMillingToolToUpdate).Property("Radius").IsModified = true;
-            _context.Entry(solidMillingToolToUpdate).Property("Producer").IsModified = true;
-            _context.Entry(solidMillingToolToUpdate).Property("Grade").IsModified = true;
-            _context.SaveChanges();
+            var existingSolidMillingTool = _context.SolidMillingTools
+                .Include(s => s.Producer)
+                .Include(s => s.SolidMillingToolParametersRanges)
+                .Include(s => s.SolidMillingToolCheckedParameters)
+                .FirstOrDefault(s => s.Id == solidMillingToolToUpdate.Id);
+
+            if (existingSolidMillingTool != null)
+            {
+                existingSolidMillingTool.Diameter = solidMillingToolToUpdate.Diameter;
+                existingSolidMillingTool.Designation = solidMillingToolToUpdate.Designation;
+                existingSolidMillingTool.Description = solidMillingToolToUpdate.Description;
+                existingSolidMillingTool.Radius = solidMillingToolToUpdate.Radius;
+                existingSolidMillingTool.TeethNumber = solidMillingToolToUpdate.TeethNumber;
+                _context.SaveChanges();
+            }
+
+            if (solidMillingToolToUpdate.Producer != null)
+            {
+                existingSolidMillingTool.Producer = solidMillingToolToUpdate.Producer;
+                _context.SaveChanges();
+            }
         }
     }
 }

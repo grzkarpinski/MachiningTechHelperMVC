@@ -13,10 +13,19 @@ namespace MachiningTechHelperMVC.Infrastrucure
     {
         public static IServiceCollection AddInfrastructure (this IServiceCollection services)
         {
-            services.AddTransient<IDrillRepository, DrillRepository>();
             services.AddTransient<IProducerRepository, ProducerRepository>();
+
+            services.AddTransient<IDrillRepository, DrillRepository>();
             services.AddTransient<IDrillParametersRangeRepository, DrillParametersRangeRepository>();
             services.AddTransient<IDrillCheckedParametersRepository, DrillCheckedParametersRepository>();
+
+            services.AddTransient<IMillingToolRepository, MillingToolRepository>();
+            services.AddTransient<IMillingInsertParametersRangeRepository, MillingInsertParametersRangeRepository>();
+            services.AddTransient<IMillingToolCheckedParametersRepository, MillingToolCheckedParametersRepository>();
+
+            services.AddTransient<ISolidMillingToolRepository, SolidMillingToolRepository>();
+            services.AddTransient<ISolidMillingToolParametersRangeRepository, SolidMillingToolParametersRangeRepository>();
+            services.AddTransient<ISolidMillingToolCheckedParametersRepository, SolidMillingToolCheckedParametersRepository>();
             return services;
         }
     }
