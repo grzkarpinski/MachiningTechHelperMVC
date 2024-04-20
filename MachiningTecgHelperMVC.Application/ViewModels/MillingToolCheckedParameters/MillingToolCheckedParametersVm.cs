@@ -1,9 +1,14 @@
 ﻿using MachiningTechHelperMVC.Application.Mapping;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace MachiningTechelperMVC.Application.ViewModels.SolidMillingToolCheckedParameters
+namespace MachiningTechelperMVC.Application.ViewModels.MillingToolCheckedParameters
 {
-    public class SolidMillingToolCheckedParametersVm : IMapFrom<MachiningTechHelperMVC.Domain.Model.SolidMillingToolCheckedParameters>
+    public class MillingToolCheckedParametersVm : IMapFrom<MachiningTechHelperMVC.Domain.Model.MillingToolCheckedParameters>
     {
         public int Id { get; set; }
         [Display(Name = "Uwagi")]
@@ -14,10 +19,10 @@ namespace MachiningTechelperMVC.Application.ViewModels.SolidMillingToolCheckedPa
         public int RevisionsPerMinute { get; set; }
         [Display(Name = "Posuw mm/min")]
         public int FeedPerMinute { get; set; }
-        public int SolidMillingToolId { get; set; }
+        public int MillingToolId { get; set; }
         public void Mapping(AutoMapper.Profile profile)
         {
-            profile.CreateMap<MachiningTechHelperMVC.Domain.Model.SolidMillingToolCheckedParameters, SolidMillingToolCheckedParametersVm>().ReverseMap()
+            profile.CreateMap<MachiningTechHelperMVC.Domain.Model.MillingToolCheckedParameters, MillingToolCheckedParametersVm>().ReverseMap()
                 .ForMember(dest => dest.Id, opt => opt.Ignore());
         }
     }
