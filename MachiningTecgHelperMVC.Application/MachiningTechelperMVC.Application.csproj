@@ -17,4 +17,8 @@
     <ProjectReference Include="..\MachiningTechHelperMVC.Domain\MachiningTechHelperMVC.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModels\MillingTool\" />
+  </ItemGroup>
+
 </Project>
