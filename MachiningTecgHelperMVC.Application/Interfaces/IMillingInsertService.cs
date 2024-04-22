@@ -11,9 +11,7 @@ namespace MachiningTechelperMVC.Application.Interfaces
     {
         ListMillingInsertVm GetAllMillingInserts();
         int AddMillingInsert(MillingInsertVm millingInsert);
-        MillingInsertVm GetMillingInsertForEdit(int id);
-        void UpdateMillingInsert(MillingInsertVm millingInsert);
-        MillingInsertVm GetMillingInsertById(int millingInsertId);
         void DeleteMillingInsert(int millingInsertId);
+        MillingInsertVm GetMillingInsertById(int millingInsertId);
     }
 }

@@ -85,5 +85,14 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
                 _context.SaveChanges();
             }
         }
+
+        public IQueryable<MillingTool> GetAllMillingTools()
+        {
+            var millingTools = _context.MillingTools
+                .Include(m => m.Producer)
+                .Include(m => m.MillingToolMillingInserts)
+                .Include(m => m.MillingToolCheckedParameters);
+            return millingTools;
+        }
     }
 }

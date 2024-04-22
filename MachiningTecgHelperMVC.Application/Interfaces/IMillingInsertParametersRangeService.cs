@@ -11,6 +11,7 @@ namespace MachiningTechelperMVC.Application.Interfaces
     {
         MillingInsertParametersRangeListVm GetAllMillingInsertParametersRanges();
         int AddMillingInsertParametersRange(MillingInsertParametersRangeVm millingInsertParametersRange);
+        void DeleteMillingInsertParametersRange(int millingInsertParametersRangeId);
         MillingInsertParametersRangeVm GetMillingInsertParametersRangeForEdit(int id);
         void UpdateMillingInsertParametersRange(MillingInsertParametersRangeVm millingInsertParametersRange);
         MillingInsertParametersRangeVm GetMillingInsertParametersRangeById(int milling);

@@ -19,6 +19,7 @@ namespace MachiningTechHelperMVC.Infrastrucure
             services.AddTransient<IDrillParametersRangeRepository, DrillParametersRangeRepository>();
             services.AddTransient<IDrillCheckedParametersRepository, DrillCheckedParametersRepository>();
 
+            services.AddTransient<IMillingInsertRepository, MillingInsertRepository>();
             services.AddTransient<IMillingToolRepository, MillingToolRepository>();
             services.AddTransient<IMillingInsertParametersRangeRepository, MillingInsertParametersRangeRepository>();
             services.AddTransient<IMillingToolCheckedParametersRepository, MillingToolCheckedParametersRepository>();

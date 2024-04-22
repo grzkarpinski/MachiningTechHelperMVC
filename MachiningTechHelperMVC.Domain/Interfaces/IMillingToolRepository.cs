@@ -23,5 +23,7 @@ namespace MachiningTechHelperMVC.Domain.Interfaces
 
         void UpdateMillingTool(MillingTool millingToolToUpdate);
 
+        IQueryable<MillingTool> GetAllMillingTools();
+
     }
 }

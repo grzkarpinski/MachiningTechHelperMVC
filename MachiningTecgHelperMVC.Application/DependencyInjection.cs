@@ -19,11 +19,25 @@ namespace MachiningTechHelperMVC.Application
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddTransient<IDrillService, DrillService>();
-            services.AddTransient<IProducerService, ProducerService>();
             services.AddTransient<IDrillParametersRangeService, DrillParametersRangeService>();
             services.AddTransient<IDrillCheckedParametersService, DrillCheckedParametersService>();
+
+            services.AddTransient<IProducerService, ProducerService>();
+
             services.AddTransient<ISimpleCalculatorLogic, SimpleCalculatorLogic>();
+
             services.AddTransient<ICostEstimationLogic, CostEstimationLogic>();
+
+            services.AddTransient<ISolidMillingToolService, SolidMillingToolService>();
+            services.AddTransient<ISolidMillingToolParametersRangeService, SolidMillingToolParametersRangeService>();
+            services.AddTransient<ISolidMillingToolCheckedParametersService, SolidMillingToolCheckedParametersService>();
+
+            services.AddTransient<IMillingInsertService, MillingInsertService>();
+            services.AddTransient<IMillingInsertParametersRangeService, MillingInsertParametersRangeService>();
+            services.AddTransient<IMillingToolService, MillingToolService>();
+            services.AddTransient<IMillingToolCheckedParametersService, MillingToolCheckedParametersService>();
+
+
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             return services;
         }

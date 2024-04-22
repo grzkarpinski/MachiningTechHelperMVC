@@ -8,7 +8,7 @@ namespace MachiningTechelperMVC.Application.ViewModels.MillingInsert
 {
     public class ListMillingInsertVm
     {
-        public List<MillingInsertVm> List { get; set; }
+        public List<MillingInsertVm> Inserts { get; set; }
         public int Count { get; set; }
     }
 }
