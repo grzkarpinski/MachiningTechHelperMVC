@@ -1,4 +1,5 @@
-﻿using MachiningTechHelperMVC.Application.Mapping;
+﻿using MachiningTechelperMVC.Application.ViewModels.MillingInsert;
+using MachiningTechHelperMVC.Application.Mapping;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -20,6 +21,10 @@ namespace MachiningTechelperMVC.Application.ViewModels.MillingToolCheckedParamet
         [Display(Name = "Posuw mm/min")]
         public int FeedPerMinute { get; set; }
         public int MillingToolId { get; set; }
+
+        [Display(Name = "Płytka")]
+        public MillingInsertVm? MillingInsert { get; set; }
+
         public void Mapping(AutoMapper.Profile profile)
         {
             profile.CreateMap<MachiningTechHelperMVC.Domain.Model.MillingToolCheckedParameters, MillingToolCheckedParametersVm>().ReverseMap()
