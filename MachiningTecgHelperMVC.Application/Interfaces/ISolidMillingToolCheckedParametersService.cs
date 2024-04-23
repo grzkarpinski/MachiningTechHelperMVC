@@ -11,7 +11,7 @@ namespace MachiningTechelperMVC.Application.Interfaces
     public interface ISolidMillingToolCheckedParametersService
     {
         ListMillingToolCheckedParametersVm GetAllMillingToolCheckedParameters(int solidMillingToolid);
-        int AddMillingToolCheckedParameters(MillingToolCheckedParametersVm millingToolCheckedParameters);
+        int AddSolidMillingToolCheckedParameters(SolidMillingToolCheckedParametersVm millingToolCheckedParameters);
         SolidMillingToolCheckedParametersVm GetSolidMillingToolCheckedParametersForEdit(int solidMillingToolid);
         void UpdateSolidMillingToolCheckedParameters(SolidMillingToolCheckedParametersVm solidMillingToolCheckedParameters);
         SolidMillingToolCheckedParametersVm GetSolidMillingToolCheckedParametersById(int solidMillingToolid);

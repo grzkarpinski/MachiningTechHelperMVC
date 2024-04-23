@@ -22,7 +22,7 @@ namespace MachiningTechelperMVC.Application.Services
             _solidMillingToolCheckedParametersRepo = solidMillingToolCheckedParametersRepo;
             _mapper = mapper;
         }
-        public int AddMillingToolCheckedParameters(MillingToolCheckedParametersVm millingToolCheckedParameters)
+        public int AddSolidMillingToolCheckedParameters(SolidMillingToolCheckedParametersVm millingToolCheckedParameters)
         {
             var solidMillingToolCheckedParametersToAdd = _mapper.Map<SolidMillingToolCheckedParameters>(millingToolCheckedParameters);
             var id = _solidMillingToolCheckedParametersRepo.AddSolidMillingToolCheckedParameters(solidMillingToolCheckedParametersToAdd);

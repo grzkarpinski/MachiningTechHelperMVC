@@ -1,14 +1,12 @@
 ﻿using MachiningTechelperMVC.Application.Interfaces;
+using MachiningTechelperMVC.Application.ViewModels.DrillCheckedParameters;
 using MachiningTechelperMVC.Application.ViewModels.DrillParametersRange;
 using MachiningTechelperMVC.Application.ViewModels.Producer;
 using MachiningTechHelperMVC.Application.Interfaces;
-using MachiningTechHelperMVC.Application.Services;
 using MachiningTechHelperMVC.Application.ViewModels.Drill;
-using MachiningTechHelperMVC.Domain.Model;
 using MachiningTechHelperMVC.Domain.Model.Common;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using MachiningTechelperMVC.Application.ViewModels.DrillCheckedParameters;
 
 namespace MachiningTechHelperMVC.Web.Controllers
 {
@@ -36,11 +34,11 @@ namespace MachiningTechHelperMVC.Web.Controllers
         [HttpPost]
         public IActionResult Index(int pageSize, int? pageNo, string searchString)
         {
-            if(!pageNo.HasValue)
+            if (!pageNo.HasValue)
             {
                 pageNo = 1;
             }
-            if(searchString is null)
+            if (searchString is null)
             {
                 searchString = String.Empty;
             }
@@ -49,7 +47,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
             return View(model);
         }
 
-		[HttpGet]
+        [HttpGet]
         public IActionResult AddDrill()
         {
             var model = new NewDrillVm
