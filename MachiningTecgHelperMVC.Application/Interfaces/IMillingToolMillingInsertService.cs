@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace MachiningTechelperMVC.Application.Interfaces
 {
-    public interface IMillingToolInsertService // for junction table
+    public interface IMillingToolMillingInsertService // for junction table
     {
-        void AddMillingToolInsert(MillingInsertVm millingToolInsert);
+        void AddMillingToolInsert(int millingToolId, int millingInsertId);
         void DeleteMillingToolInsert(int millingToolId, int millingInsertId);
         MillingInsertVm GetMillingToolInsert(int millingToolId, int millingInsertId);
     }

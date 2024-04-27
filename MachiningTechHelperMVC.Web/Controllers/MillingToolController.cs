@@ -15,16 +15,19 @@ namespace MachiningTechHelperMVC.Web.Controllers
         private readonly IMillingInsertService _millingInsertService;
         private readonly IMillingInsertParametersRangeService _millingInsertParametersRangeService;
         private readonly IMillingToolCheckedParametersService _millingToolCheckedParametersService;
+        private readonly IMillingToolMillingInsertService _millingToolMillingInsertService;
 
         public MillingToolController(IMillingToolService millingToolService,
                                      IMillingInsertService millingInsertService,
                                      IMillingInsertParametersRangeService millingInsertParametersRangeService,
-                                     IMillingToolCheckedParametersService millingToolCheckedParametersService)
+                                     IMillingToolCheckedParametersService millingToolCheckedParametersService,
+                                     IMillingToolMillingInsertService millingToolMillingInsertService)
         {
             _millingToolService = millingToolService;
             _millingInsertService = millingInsertService;
             _millingInsertParametersRangeService = millingInsertParametersRangeService;
             _millingToolCheckedParametersService = millingToolCheckedParametersService;
+            _millingToolMillingInsertService = millingToolMillingInsertService;
         }
 
 

@@ -35,6 +35,7 @@ namespace MachiningTechHelperMVC.Application
             services.AddTransient<IMillingInsertService, MillingInsertService>();
             services.AddTransient<IMillingInsertParametersRangeService, MillingInsertParametersRangeService>();
             services.AddTransient<IMillingToolService, MillingToolService>();
+            services.AddTransient<IMillingToolMillingInsertService, MillingToolMillingInsertService>();
             services.AddTransient<IMillingToolCheckedParametersService, MillingToolCheckedParametersService>();
 
 
