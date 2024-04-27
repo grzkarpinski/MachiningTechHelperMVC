@@ -9,5 +9,6 @@ namespace MachiningTechHelperMVC.Domain.Model.Common
     public class BaseRoundTool: BaseTool
     {
         public double Diameter { get; set; }
+        public int TeethNumber { get; set; }
     }
 }

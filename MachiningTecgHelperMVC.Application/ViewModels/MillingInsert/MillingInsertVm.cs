@@ -18,6 +18,8 @@ namespace MachiningTechelperMVC.Application.ViewModels.MillingInsert
         [Display(Name = "R Płytki")]
         public double Radius { get; set; }
 
+        public int MillingToolId { get; set; }
+
         public List<MillingInsertParametersRangeVm>? millingInsertParametersRanges { get; set; }
 
         public void Mapping(AutoMapper.Profile profile)

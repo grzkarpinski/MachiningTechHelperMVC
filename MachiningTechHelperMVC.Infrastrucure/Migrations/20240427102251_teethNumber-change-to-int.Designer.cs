@@ -4,6 +4,7 @@ using MachiningTechHelperMVC.Infrastrucure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MachiningTechHelperMVC.Infrastrucure.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240427102251_teethNumber-change-to-int")]
+    partial class teethNumberchangetoint
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -301,7 +304,7 @@ namespace MachiningTechHelperMVC.Infrastrucure.Migrations
                     b.Property<int>("MillingToolId")
                         .HasColumnType("int");
 
-                    b.Property<int>("RevisionsPerMinute")
+                    b.Property<int>("RevisionsPerSecond")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -424,7 +427,7 @@ namespace MachiningTechHelperMVC.Infrastrucure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RevisionsPerMinute")
+                    b.Property<int>("RevisionsPerSecond")
                         .HasColumnType("int");
 
                     b.Property<int>("SolidMillingToolId")

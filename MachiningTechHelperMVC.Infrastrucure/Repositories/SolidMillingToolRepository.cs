@@ -70,6 +70,8 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
                 existingSolidMillingTool.Description = solidMillingToolToUpdate.Description;
                 existingSolidMillingTool.Radius = solidMillingToolToUpdate.Radius;
                 existingSolidMillingTool.TeethNumber = solidMillingToolToUpdate.TeethNumber;
+                existingSolidMillingTool.Lcut = solidMillingToolToUpdate.Lcut;
+                existingSolidMillingTool.ToolType = solidMillingToolToUpdate.ToolType;
                 _context.SaveChanges();
             }
 

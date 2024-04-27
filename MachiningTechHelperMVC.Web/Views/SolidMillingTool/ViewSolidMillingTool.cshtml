@@ -1,0 +1,127 @@
+﻿@model MachiningTechelperMVC.Application.ViewModels.SolidMillingTool.SolidMillingToolDetailsVm
+
+<h2>Szczegóły Freza</h2>
+
+<div>
+    <dl class="row">
+
+        <table class="table table-bordered">
+            <tr>
+                <td class="col-sm-2">Średnica mm:</td>
+                <td class="col-sm-10">@Model.Diameter</td>
+            </tr>
+            <tr>
+                <td class="col-sm-2">Liczba ostrzy:</td>
+                <td class="col-sm-10">@Model.TeethNumber</td>
+            </tr>
+            <tr>
+                <td class="col-sm-2">Promień zaokrąglenia:</td>
+                <td class="col-sm-10">@Model.Radius</td>
+            </tr>
+            <tr>
+                <td class="col-sm-2">Długość robocza:</td>
+                <td class="col-sm-10">@Model.Lcut</td>
+            </tr>
+            <tr>
+                <td class="col-sm-2">Rodzaj narzędzia:</td>
+                <td class="col-sm-10">@Model.ToolType</td>
+            </tr>
+            <tr>
+                <td class="col-sm-2">Opis:</td>
+                <td class="col-sm-10">@Model.Description</td>
+            </tr>
+            <tr>
+                <td class="col-sm-2">Producent:</td>
+                <td class="col-sm-10">@Model.Producer.CompanyName</td>
+            </tr>
+        </table>
+
+        <div>
+            <dt class="col-sm-2">Zakresy parametrów:</dt>
+        </div>
+        <dd class="col-sm-10">
+            @if (Model.SolidMillingToolParametersRanges != null && Model.SolidMillingToolParametersRanges.Any())
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Gatunek</th>
+                            <th>Materiał</th>
+                            <th>Vc Min m/min</th>
+                            <th>Vc Max m/min</th>
+                            <th>Posuw na ostrze Min mm/z</th>
+                            <th>Posuw na ostrze Max mm/z</th>
+                            <th>Opis</th>
+                            <th>Akcje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var parameter in Model.SolidMillingToolParametersRanges)
+                        {
+                            <tr>
+                                <td>@parameter.GradeName</td>
+                                <td>@parameter.Material</td>
+                                <td>@parameter.CuttingSpeedMinimum</td>
+                                <td>@parameter.CuttingSpeedMaximum</td>
+                                <td>@parameter.FeedPerToothMinimum</td>
+                                <td>@parameter.FeedPerToothMaximum</td>
+                                <td>@parameter.Description</td>
+                                <td>
+                                    <a asp-action="DeleteParametersRange" asp-route-id="@parameter.Id" class="btn btn-danger">Usuń</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p>Brak dodanych parametrów</p>
+            }
+        </dd>
+        <div>
+            <a asp-action="AddParametersRange" asp-route-id="@Model.Id" class="btn btn-primary" style="width: 200px;">Dodaj zakres parametrów</a>
+            <dt class="col-sm-2">Checked Parameters:</dt>
+            <dd class="col-sm-10">
+                @if (Model.SolidMillingToolCheckedParameters != null && Model.SolidMillingToolCheckedParameters.Any())
+                {
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Materiał</th>
+                                <th>Obroty obr/min</th>
+                                <th>Posuw mm/min</th>
+                                <th>Uwagi</th>
+                                <th>Akcje</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var parameter in Model.SolidMillingToolCheckedParameters)
+                            {
+                                <tr>
+                                    <td>@parameter.Material</td>
+                                    <td>@parameter.RevisionsPerMinute</td>
+                                    <td>@parameter.FeedPerMinute</td>
+                                    <td>@parameter.Comment</td>
+                                    <td>
+                                        <a asp-action="DeleteSolidMillingToolCheckedParameters" asp-route-id="@parameter.Id" class="btn btn-danger">Usuń</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p>Brak dodanych parametrów</p>
+                }
+            </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="AddSolidMillingToolCheckedParameters" asp-route-id="@Model.Id" class="btn btn-primary">Dodaj sprawdzone parametry</a>
+</div>
+<div>
+    <a asp-action="Index">Wróc do listy</a>
+</div>

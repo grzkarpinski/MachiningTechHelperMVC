@@ -11,7 +11,7 @@ namespace MachiningTechHelperMVC.Domain.Model
     public class MillingToolCheckedParameters: BaseEntity
     {
         public string Material { get; set; }
-        public int RevisionsPerSecond { get; set; }
+        public int RevisionsPerMinute { get; set; }
         public int FeedPerMinute { get; set; }
         public double CuttingDepth { get; set; }
         public string? Comment { get; set; }

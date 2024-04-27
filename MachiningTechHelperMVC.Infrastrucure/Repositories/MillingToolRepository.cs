@@ -45,6 +45,7 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             var millingTool = _context.MillingTools
                 .Include(m => m.Producer)
                 .Include(m => m.MillingToolMillingInserts)
+                .ThenInclude(m => m.MillingInsert)
                 .Include(m => m.MillingToolCheckedParameters)
                 .FirstOrDefault(m => m.Id == millingToolId);
             return millingTool;
@@ -67,6 +68,7 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             var existingMillingTool = _context.MillingTools
                 .Include(m => m.Producer)
                 .Include(m => m.MillingToolMillingInserts)
+                .ThenInclude(m => m.MillingInsert)
                 .Include(m => m.MillingToolCheckedParameters)
                 .FirstOrDefault(m => m.Id == millingToolToUpdate.Id);
 
@@ -76,6 +78,7 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
                 existingMillingTool.Designation = millingToolToUpdate.Designation;
                 existingMillingTool.Description = millingToolToUpdate.Description;
                 existingMillingTool.TeethNumber = millingToolToUpdate.TeethNumber;
+                existingMillingTool.ToolType = millingToolToUpdate.ToolType;
                 _context.SaveChanges();
             }
 

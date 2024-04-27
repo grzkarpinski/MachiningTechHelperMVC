@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using AutoMapper;
+using FluentValidation;
 using MachiningTechHelperMVC.Application.Mapping;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System;
@@ -28,6 +29,12 @@ namespace MachiningTechelperMVC.Application.ViewModels.SolidMillingToolParameter
         public double FeedPerToothMinimum { get; set; }
         [Display(Name = "Posuw na ząb max mm/ Z")]
         public double FeedPerToothMaximum { get; set; }
+
+        public void Mapping(Profile profile)
+        {
+            profile.CreateMap<MachiningTechHelperMVC.Domain.Model.SolidMillingToolParametersRange, SolidMillingToolParametersRangeVm>().ReverseMap()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
+        }
     }
 
     public class SolidMillingToolParametersRangeValidation : AbstractValidator<SolidMillingToolParametersRangeVm>

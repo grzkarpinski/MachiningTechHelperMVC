@@ -10,8 +10,6 @@ namespace MachiningTechHelperMVC.Domain.Model
 {
     public class MillingTool: BaseRoundTool
     {
-        public double TeethNumber { get; set; }
-
         public int? ProducerId { get; set; }
         public virtual Producer? Producer { get; set; }
 
