@@ -24,7 +24,7 @@ namespace MachiningTechelperMVC.Application.ViewModels.MillingTool
         [Display(Name = "Typ narzędzia")]
         public string ToolType { get; set; }
         [Display(Name = "Ilość ostrzy")]
-        public double TeethNumber { get; set; }
+        public int TeethNumber { get; set; }
         public IEnumerable<SelectListItem> ToolTypes { get; set; } // To use in dropdown list
         public bool IsToolActive { get; set; }
 

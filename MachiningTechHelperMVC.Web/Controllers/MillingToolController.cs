@@ -94,7 +94,8 @@ namespace MachiningTechHelperMVC.Web.Controllers
                            .Select(t => new SelectListItem
                            {
                                Value = ((int)t).ToString(),
-                               Text = t.ToString()
+                               Text = t.ToString(),
+                               Selected = t.ToString() == tool.ToolType // BUG: selected iten should be tool.toolType
                            })
                            .ToList();
             if (tool.NewProducer != null)
@@ -137,9 +138,15 @@ namespace MachiningTechHelperMVC.Web.Controllers
             return RedirectToAction("ViewMillingTool", new { id = millingToolId });
         }
 
-        // view milling insert
+        //milling inserts view: when insert / inserts are linked to the tool, display them in the ViewMillingTool.
+        // When specific insert selected go to view with theirs MillingInsertParametersRanges.
+        // If insert is not linked to the tool, display "there is no insert linked to this tool" message
+        // Add button to Add Milling Insert to the tool
 
-        // add checked parameters
+        // Add Milling Insert to the tool view: field where user enters insert name, then link insert when it exists
+        // in the database, then add insert to the tool
+
+        // add checked parameters to the milling tool
 
         // delete checked parameters
 

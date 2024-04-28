@@ -11,7 +11,7 @@ namespace MachiningTechelperMVC.Application.ViewModels.MillingTool
     {
         public int Id { get; set; }
         public double Diameter { get; set; }
-        public double TeethNumber { get; set; }
+        public int TeethNumber { get; set; }
         public string ToolType { get; set; }
         public string? Producer { get; set; }
 
