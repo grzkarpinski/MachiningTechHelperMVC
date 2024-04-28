@@ -15,6 +15,6 @@ namespace MachiningTechHelperMVC.Domain.Interfaces
 
         MillingInsert GetMillingInsertById(int milling);
 
-        List<MillingInsert> GetAllMillingInserts();
+        IQueryable<MillingInsert> GetAllMillingInserts();
     }
 }

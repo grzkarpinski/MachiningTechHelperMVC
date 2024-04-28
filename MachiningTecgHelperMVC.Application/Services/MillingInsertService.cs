@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using MachiningTechelperMVC.Application.Interfaces;
 using MachiningTechelperMVC.Application.ViewModels.MillingInsert;
 using MachiningTechHelperMVC.Domain.Interfaces;
@@ -22,15 +23,25 @@ namespace MachiningTechelperMVC.Application.Services
             _mapper = mapper;
         }
 
-        public ListMillingInsertVm GetAllMillingInserts()
+        public ListMillingInsertVm GetAllMillingInserts(int pageSize, int? pageNo, string searchString)
         {
-            var inserts = _millingInsertRepository.GetAllMillingInserts();
-            var insertVm = new ListMillingInsertVm()
+            var millingInserts = _millingInsertRepository.GetAllMillingInserts()
+                .ProjectTo<MillingInsertVm>(_mapper.ConfigurationProvider)
+                .ToList()
+                .Where(p => p.Designation.ToLower().Contains(searchString.ToLower()))
+                .ToList();
+
+            var millingInsertsToShow = millingInserts.Skip((int)((pageNo - 1) * pageSize)).Take(pageSize).ToList();
+            var millingInsertList = new ListMillingInsertVm()
             {
-                Inserts = _mapper.Map<List<MillingInsertVm>>(inserts),
-                Count = inserts.Count()
+                PageSize = pageSize,
+                CurrentPage = (int)pageNo,
+                SearchString = searchString,
+                MillingInserts = millingInsertsToShow,
+                Count = millingInserts.Count
             };
-            return insertVm;
+
+            return millingInsertList;
         }
 
         public int AddMillingInsert(MillingInsertVm millingInsert)

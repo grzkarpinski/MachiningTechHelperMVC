@@ -1,0 +1,113 @@
+﻿@model MachiningTechelperMVC.Application.ViewModels.MillingTool.MillingToolDetailsVm
+
+@{
+    ViewData["Title"] = "ViewMillingTool";
+}
+
+<h2>Szczegóły Freza Składanego</h2>
+
+<div>
+    <dl class="row">
+
+        <table class="table table-bordered">
+            <tr>
+                <td class="col-sm-2">Średnica mm:</td>
+                <td class="col-sm-10">@Model.Diameter</td>
+            </tr>
+            <tr>
+                <td class="col-sm-2">Liczba ostrzy:</td>
+                <td class="col-sm-10">@Model.TeethNumber</td>
+            </tr>
+            <tr>
+                <td class="col-sm-2">Rodzaj narzędzia:</td>
+                <td class="col-sm-10">@Model.ToolType</td>
+            </tr>
+            <tr>
+                <td class="col-sm-2">Opis:</td>
+                <td class="col-sm-10">@Model.Description</td>
+            </tr>
+            <tr>
+                <td class="col-sm-2">Producent:</td>
+                <td class="col-sm-10">@Model.Producer.CompanyName</td>
+            </tr>
+        </table>
+
+        <div>
+            <dt class="col-sm-2">Pasujące płytki:</dt>
+        </div>
+        <dd class="col-sm-10">
+            @if (Model.millingInserts != null && Model.millingInserts.Any())
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Płytka</th>
+                            <th>Zaokrąglenie</th>
+                            <th>Akcje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var parameter in Model.millingInserts)
+                        {
+                            <tr>
+                                <td>@parameter.Designation</td>
+                                <td>@parameter.Radius</td>
+                                <td>
+                                    <a asp-action="DeleteMillingInsertLink" asp-route-id="@parameter.Id" class="btn btn-danger">Usuń</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p>Brak dodanych płytek</p>
+            }
+        </dd>
+        <div>
+            <a asp-action="ViewMillingInserts" asp-route-id="@Model.Id" class="btn btn-primary" style="width: 200px;">Dodaj płytkę</a>
+            <dt class="col-sm-2">Checked Parameters:</dt>
+            <dd class="col-sm-10">
+                @if (Model.MillingToolCheckedParameters != null && Model.MillingToolCheckedParameters.Any())
+                {
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Materiał</th>
+                                <th>Obroty obr/min</th>
+                                <th>Posuw mm/min</th>
+                                <th>Uwagi</th>
+                                <th>Akcje</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var parameter in Model.MillingToolCheckedParameters)
+                            {
+                                <tr>
+                                    <td>@parameter.Material</td>
+                                    <td>@parameter.RevisionsPerMinute</td>
+                                    <td>@parameter.FeedPerMinute</td>
+                                    <td>@parameter.Comment</td>
+                                    <td>
+                                        <a asp-action="DeleteMillingToolCheckedParameters" asp-route-id="@parameter.Id" class="btn btn-danger">Usuń</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p>Brak dodanych parametrów</p>
+                }
+            </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="AddMillingToolCheckedParameters" asp-route-id="@Model.Id" class="btn btn-primary">Dodaj sprawdzone parametry</a>
+</div>
+<div>
+    <a asp-action="Index">Wróc do listy</a>
+</div>

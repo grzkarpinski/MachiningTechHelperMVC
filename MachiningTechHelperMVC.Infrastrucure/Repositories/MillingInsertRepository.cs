@@ -39,9 +39,9 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             return millingInsert;
         }
 
-        public List<MillingInsert> GetAllMillingInserts()
+        public IQueryable<MillingInsert> GetAllMillingInserts()
         {
-            return _context.MillingInserts.ToList();
+            return _context.MillingInserts;
         }
     }
 }

@@ -28,6 +28,11 @@ namespace MachiningTechelperMVC.Application.Services
             return id;
         }
 
+        public void DeleteMillingToolCheckedParameters(int id)
+        {
+            _millingToolCheckedParametersRepo.DeleteMillingToolCheckedParameters(id);
+        }
+
         public ListMillingToolCheckedParametersVm GetAllMillingToolCheckedParameters(int millingToolId)
         {
             var checkedParameters = _millingToolCheckedParametersRepo.GetMillingToolCheckedParametersbyTool(millingToolId);

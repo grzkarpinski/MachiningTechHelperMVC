@@ -9,7 +9,7 @@ namespace MachiningTechelperMVC.Application.Interfaces
 {
     public interface IMillingInsertService
     {
-        ListMillingInsertVm GetAllMillingInserts();
+        ListMillingInsertVm GetAllMillingInserts(int pageSize, int? pageNo, string searchString);
         int AddMillingInsert(MillingInsertVm millingInsert);
         void DeleteMillingInsert(int millingInsertId);
         MillingInsertVm GetMillingInsertById(int millingInsertId);

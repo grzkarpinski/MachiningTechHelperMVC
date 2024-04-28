@@ -11,6 +11,7 @@ namespace MachiningTechelperMVC.Application.Interfaces
     {
         ListMillingToolCheckedParametersVm GetAllMillingToolCheckedParameters(int millingToolId);
         int AddMillingToolCheckedParameters(MillingToolCheckedParametersVm checkedParameters);
+        void DeleteMillingToolCheckedParameters(int id);
         MillingToolCheckedParametersVm GetMillingToolCheckedParametersForEdit(int id);
         void UpdateMillingToolCheckedParameters(MillingToolCheckedParametersVm millingToolCheckedParameters);
         MillingToolCheckedParametersVm GetMillingToolCheckedParametersById(int milling);
