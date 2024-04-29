@@ -173,7 +173,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
         // 2. controller for view where user can add new insert
 
         [HttpGet]
-        public IActionResult AddMillingInsert(int millingToolId)
+        public IActionResult AddMillingInsert(int millingToolId) // Without parameter?
         {
             var model = new MillingInsertVm
             {
@@ -247,7 +247,6 @@ namespace MachiningTechHelperMVC.Web.Controllers
             return RedirectToAction("ViewMillingTool", new { id = tool.MillingToolId });
         }
 
-        // delete checked parameters
         public IActionResult DeleteMillingToolCheckedParameters(int id)
         {
             var millingToolCheckedParameters = _millingToolCheckedParametersService.GetMillingToolCheckedParametersById(id);
