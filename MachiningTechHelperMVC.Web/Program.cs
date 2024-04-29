@@ -16,7 +16,9 @@ using MachiningTechelperMVC.Application.ViewModels.DrillParametersRange;
 var builder = WebApplication.CreateBuilder(args);
 
 //use serilog logger
-// ???
+Log.Logger = new LoggerConfiguration()
+                .WriteTo.File("logs.txt")
+                .CreateLogger();
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
