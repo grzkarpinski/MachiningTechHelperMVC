@@ -132,14 +132,14 @@ namespace MachiningTechHelperMVC.Web.Controllers
 
         // 0. controller to delete insert from the tool
         [HttpPost]
-        IActionResult DeleteMillingInsertLink(int millingToolId, int millingInsertId)
+        public IActionResult DeleteMillingInsertLink(int millingToolId, int millingInsertId)
         {
             _millingToolMillingInsertService.DeleteMillingToolInsert(millingToolId, millingInsertId);
             return RedirectToAction("ViewMillingTool", new { id = millingToolId });
         }
 
         [HttpGet]
-        IActionResult ViewMillingInserts()
+        public IActionResult ViewMillingInserts()
         {
             var model = _millingInsertService.GetAllMillingInserts(10, 1, "");
             return View(model);
@@ -147,7 +147,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
 
         // 1. controller for view where user searches for insert to link to the tool (search by insert name)
         [HttpPost]
-        IActionResult ViewMillingInserts(int pageSize, int? pageNo, string searchString)
+        public IActionResult ViewMillingInserts(int pageSize, int? pageNo, string searchString)
         {
             if (!pageNo.HasValue)
             {
@@ -164,7 +164,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
         // 1.5. controller to link chosen insert to the tool when pressing add button
 
         [HttpPost]
-        IActionResult LinkMillingInsert(int millingToolId, int millingInsertId)
+         public IActionResult LinkMillingInsert(int millingToolId, int millingInsertId)
         {
             _millingToolMillingInsertService.AddMillingToolInsert(millingToolId, millingInsertId);
             return RedirectToAction("ViewMillingTool", new { id = millingToolId });
@@ -192,7 +192,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
 
         // 4. controller for view where user can see insert details and add insert parameters ranges
 
-        IActionResult ViewMillingInsert(int id)
+        public IActionResult ViewMillingInsert(int id)
         {
             var model = _millingInsertService.GetMillingInsertById(id);
             return View(model);
@@ -201,7 +201,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
         // 5. controller for view where user can add insert parameters ranges
 
         [HttpGet]
-        IActionResult AddMillingInsertParametersRange(int millingInsertId)
+        public IActionResult AddMillingInsertParametersRange(int millingInsertId)
         {
             var model = new MillingInsertParametersRangeVm
             {
@@ -212,7 +212,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpPost]
-        IActionResult AddMillingInsertParametersRange(MillingInsertParametersRangeVm millingInsertParametersRange)
+        public IActionResult AddMillingInsertParametersRange(MillingInsertParametersRangeVm millingInsertParametersRange)
         {
             _millingInsertParametersRangeService.AddMillingInsertParametersRange(millingInsertParametersRange);
             return RedirectToAction("ViewMillingInsert", new { id = millingInsertParametersRange.MillingInsertId });
@@ -220,7 +220,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
 
         // 6. controller for delete insert parameters range
 
-        IActionResult DeleteMillingInsertParametersRange(int id)
+        public IActionResult DeleteMillingInsertParametersRange(int id)
         {
             var millingInsertParametersRange = _millingInsertParametersRangeService.GetMillingInsertParametersRangeById(id);
             _millingInsertParametersRangeService.DeleteMillingInsertParametersRange(id);
@@ -230,25 +230,25 @@ namespace MachiningTechHelperMVC.Web.Controllers
         // add checked parameters to the milling tool
 
         [HttpGet]
-        IActionResult AddMillingToolCheckedParameters(int millingToolId)
+        public IActionResult AddMillingToolCheckedParameters(int id)
         {
             var model = new MillingToolCheckedParametersVm
             {
-                MillingToolId = millingToolId
+                MillingToolId = id
             };
 
             return View(model);
         }
 
         [HttpPost]
-        IActionResult AddMillingToolCheckedParameters(MillingToolCheckedParametersVm millingToolCheckedParameters)
+        public IActionResult AddMillingToolCheckedParameters(MillingToolCheckedParametersVm tool)
         {
-            _millingToolCheckedParametersService.AddMillingToolCheckedParameters(millingToolCheckedParameters);
-            return RedirectToAction("ViewMillingTool", new { id = millingToolCheckedParameters.MillingToolId });
+            _millingToolCheckedParametersService.AddMillingToolCheckedParameters(tool);
+            return RedirectToAction("ViewMillingTool", new { id = tool.MillingToolId });
         }
 
         // delete checked parameters
-        IActionResult DeleteMillingToolCheckedParameters(int id)
+        public IActionResult DeleteMillingToolCheckedParameters(int id)
         {
             var millingToolCheckedParameters = _millingToolCheckedParametersService.GetMillingToolCheckedParametersById(id);
             _millingToolCheckedParametersService.DeleteMillingToolCheckedParameters(id);

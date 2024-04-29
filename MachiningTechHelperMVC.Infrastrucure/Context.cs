@@ -92,11 +92,6 @@ namespace MachiningTechHelperMVC.Infrastrucure
                 .HasOne<SolidMillingTool>(smtcp => smtcp.SolidMillingTool)
                 .WithMany(smt => smt.SolidMillingToolCheckedParameters)
                 .HasForeignKey(smtcp => smtcp.SolidMillingToolId);
-
-            builder.Entity<MillingToolCheckedParameters>()
-                .HasOne<MillingInsert>(smtcp => smtcp.MillingInsert)
-                .WithMany(mi => mi.MillingToolCheckedParameters)
-                .HasForeignKey(smtcp => smtcp.MillingInsertId);
         }
     }
 }

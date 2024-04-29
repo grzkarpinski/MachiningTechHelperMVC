@@ -12,6 +12,7 @@ namespace MachiningTechelperMVC.Application.ViewModels.MillingToolCheckedParamet
     public class MillingToolCheckedParametersVm : IMapFrom<MachiningTechHelperMVC.Domain.Model.MillingToolCheckedParameters>
     {
         public int Id { get; set; }
+        public int MillingToolId { get; set; }
         [Display(Name = "Uwagi")]
         public string? Comment { get; set; }
         [Display(Name = "Materiał")]
@@ -20,10 +21,9 @@ namespace MachiningTechelperMVC.Application.ViewModels.MillingToolCheckedParamet
         public int RevisionsPerMinute { get; set; }
         [Display(Name = "Posuw mm/min")]
         public int FeedPerMinute { get; set; }
-        public int MillingToolId { get; set; }
 
-        [Display(Name = "Płytka")]
-        public MillingInsertVm? MillingInsert { get; set; }
+        //[Display(Name = "Płytka")]
+        //public MillingInsertVm? MillingInsert { get; set; }
 
         public void Mapping(AutoMapper.Profile profile)
         {

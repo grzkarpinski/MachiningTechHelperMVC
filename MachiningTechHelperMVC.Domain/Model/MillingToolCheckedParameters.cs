@@ -18,8 +18,5 @@ namespace MachiningTechHelperMVC.Domain.Model
 
         public int MillingToolId { get; set; }
         public virtual MillingTool MillingTool { get; set; }
-
-        public int MillingInsertId { get; set; }
-        public virtual MillingInsert MillingInsert { get; set; }
     }
 }
