@@ -6,6 +6,7 @@
 
 <h1>Magazyn Płytek</h1>
 
+<p>Nie znalazłeś właściwej płytki?</p>
 <p>
     <a asp-action="AddMillingInsert">Dodaj nową płytkę</a>
 </p>
@@ -39,7 +40,8 @@
                             @Html.DisplayFor(modelItem => item.Radius)
                         </td>
                         <td>
-                            @Html.ActionLink("Edytuj", "LinkMillingInsert", new { id = item.Id }) |
+                            @Html.ActionLink("Połącz płytkę", "LinkMillingInsert", new { id = item.Id }) |
+                            @Html.ActionLink("Szczegóły płytki", "ViewMillingInsert", new { id = item.Id })
                         </td>
                     </tr>
                 }

@@ -145,7 +145,6 @@ namespace MachiningTechHelperMVC.Web.Controllers
             return View(model);
         }
 
-        // 1. controller for view where user searches for insert to link to the tool (search by insert name)
         [HttpPost]
         public IActionResult ViewMillingInserts(int pageSize, int? pageNo, string searchString)
         {
@@ -173,12 +172,9 @@ namespace MachiningTechHelperMVC.Web.Controllers
         // 2. controller for view where user can add new insert
 
         [HttpGet]
-        public IActionResult AddMillingInsert(int millingToolId) // Without parameter?
+        public IActionResult AddMillingInsert() // Without parameter? Shoul be not yet linked to tool
         {
-            var model = new MillingInsertVm
-            {
-                MillingToolId = millingToolId
-            };
+            var model = new MillingInsertVm();
 
             return View(model);
         }
@@ -187,10 +183,11 @@ namespace MachiningTechHelperMVC.Web.Controllers
         public IActionResult AddMillingInsert(MillingInsertVm millingInsert)
         {
             var id = _millingInsertService.AddMillingInsert(millingInsert);
-            return RedirectToAction("ViewMillingInsert", new { id });
+            return RedirectToAction("ViewMillingInserts");
         }
 
         // 4. controller for view where user can see insert details and add insert parameters ranges
+        // DO NEXT
 
         public IActionResult ViewMillingInsert(int id)
         {
