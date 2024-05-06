@@ -16,15 +16,25 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
         {
             _context = context;
         }
-        public void Add(MillingToolMillingInsert millingToolMillingInsert)
+        public void Add(int millingToolId, int millingInsertId)
         {
-            _context.MillingToolMillingInserts.Add(millingToolMillingInsert);
+            var link = new MillingToolMillingInsert
+            {
+                MillingToolId = millingToolId,
+                MillingInsertId = millingInsertId
+            };
+            _context.MillingToolMillingInserts.Add(link);
             _context.SaveChanges();
         }
 
-        public void Delete(MillingToolMillingInsert millingToolMillingInsert)
+        public void Delete(int millingToolId, int millingInsertId)
         {
-            _context.MillingToolMillingInserts.Remove(millingToolMillingInsert);
+            var link = new MillingToolMillingInsert
+            {
+                MillingToolId = millingToolId,
+                MillingInsertId = millingInsertId
+            };
+            _context.MillingToolMillingInserts.Remove(link);
             _context.SaveChanges();
 
         }

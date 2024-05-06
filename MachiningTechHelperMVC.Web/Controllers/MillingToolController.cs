@@ -162,17 +162,22 @@ namespace MachiningTechHelperMVC.Web.Controllers
 
         // 1.5. controller to link chosen insert to the tool when pressing add button
 
-        [HttpPost]
          public IActionResult LinkMillingInsert(int millingToolId, int millingInsertId)
         {
             _millingToolMillingInsertService.AddMillingToolInsert(millingToolId, millingInsertId);
             return RedirectToAction("ViewMillingTool", new { id = millingToolId });
         }
 
-        // 2. controller for view where user can add new insert
+        // 2. controller to delete link between insert and tool
+
+        public IActionResult DeleteLinkMillingInsert(int millingToolId, int millingInsertId)
+        {
+            _millingToolMillingInsertService.DeleteMillingToolInsert(millingToolId, millingInsertId);
+            return RedirectToAction("ViewMillingTool", new { id = millingToolId });
+        }
 
         [HttpGet]
-        public IActionResult AddMillingInsert() // Without parameter? Shoul be not yet linked to tool
+        public IActionResult AddMillingInsert()
         {
             var model = new MillingInsertVm();
 
@@ -186,23 +191,24 @@ namespace MachiningTechHelperMVC.Web.Controllers
             return RedirectToAction("ViewMillingInserts");
         }
 
-        // 4. controller for view where user can see insert details and add insert parameters ranges
-        // DO NEXT
-
         public IActionResult ViewMillingInsert(int id)
         {
             var model = _millingInsertService.GetMillingInsertById(id);
             return View(model);
         }
 
-        // 5. controller for view where user can add insert parameters ranges
+        public IActionResult DeleteMillingInsert(int id)
+        {
+            _millingInsertService.DeleteMillingInsert(id);
+            return RedirectToAction("ViewMillingInserts");
+        }
 
         [HttpGet]
-        public IActionResult AddMillingInsertParametersRange(int millingInsertId)
+        public IActionResult AddMillingInsertParametersRange(int insertId)
         {
             var model = new MillingInsertParametersRangeVm
             {
-                MillingInsertId = millingInsertId
+                MillingInsertId = insertId
             };
 
             return View(model);
@@ -215,16 +221,12 @@ namespace MachiningTechHelperMVC.Web.Controllers
             return RedirectToAction("ViewMillingInsert", new { id = millingInsertParametersRange.MillingInsertId });
         }
 
-        // 6. controller for delete insert parameters range
-
         public IActionResult DeleteMillingInsertParametersRange(int id)
         {
             var millingInsertParametersRange = _millingInsertParametersRangeService.GetMillingInsertParametersRangeById(id);
             _millingInsertParametersRangeService.DeleteMillingInsertParametersRange(id);
             return RedirectToAction("ViewMillingInsert", new { id = millingInsertParametersRange.MillingInsertId });
         }
-
-        // add checked parameters to the milling tool
 
         [HttpGet]
         public IActionResult AddMillingToolCheckedParameters(int id)

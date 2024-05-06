@@ -1,5 +1,6 @@
 ﻿using MachiningTechHelperMVC.Domain.Interfaces;
 using MachiningTechHelperMVC.Domain.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +36,9 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
 
         public MillingInsert GetMillingInsertById(int milling)
         {
-            var millingInsert = _context.MillingInserts.Find(milling);
+            var millingInsert = _context.MillingInserts
+                .Include(m => m.MillingInsertParametersRanges)
+                .FirstOrDefault(m => m.Id == milling);
             return millingInsert;
         }
 

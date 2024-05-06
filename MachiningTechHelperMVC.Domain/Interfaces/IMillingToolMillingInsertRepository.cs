@@ -10,7 +10,7 @@ namespace MachiningTechHelperMVC.Domain.Interfaces
     public interface IMillingToolMillingInsertRepository // for junction table
     {
         MillingToolMillingInsert GetById(int millingToolId, int millingInsertId);
-        void Add(MillingToolMillingInsert millingToolMillingInsert);
-        void Delete(MillingToolMillingInsert millingToolMillingInsert);
+        void Add(int millingToolId, int millingInsertId);
+        void Delete(int millingToolId, int millingInsertId);
     }
 }
