@@ -16,6 +16,9 @@
         <input type="submit" value="Wyszukaj" style="width: 100px;" />
     </div>
     <input type="hidden" asp-for="MillingToolId" />
+    <input type="hidden" id="millingInsertId" name="millingInsertId" />
+    <input type="hidden" id="millingToolId" name="millingToolId" />
+
     <div class="row">
         <table class="table">
             <thead>
@@ -26,8 +29,12 @@
                     <th>
                         Promień
                     </th>
-
-                    <th></th>
+                    <th>
+                        Dodaj do narzędzia
+                    </th>
+                    <th>
+                        Sprawdź szczegóły
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -41,12 +48,11 @@
                             @Html.DisplayFor(modelItem => item.Radius)
                         </td>
                         <td>
-                            <form asp-controller="MillingTool" asp-action="LinkMillingInsert" method="post" style="display: inline;">
-                                <input type="hidden" name="millingInsertId" value="@item.Id" />
-                                <input type="hidden" name="millingToolId" value="@Model.MillingToolId" />
-                                <input type="submit" value="Połącz płytkę" class="btn btn-link" style="padding: 0; border: none; background: none;" />
-                            </form>
-                            @Html.ActionLink("Szczegóły płytki", "ViewMillingInsert", new { id = item.Id }) |
+                            <button onclick="linkMillingInsert(@item.Id, @Model.MillingToolId)" class="btn btn-link" style="padding: 0; border: none; background: none; display: inline">Połącz płytkę</button>
+                            </td>
+                            <td>
+
+                            @Html.ActionLink("Szczegóły płytki", "ViewMillingInsert", new { id = item.Id })
                         </td>
                     </tr>
                 }
@@ -81,6 +87,17 @@
     <script type="text/javascript">
         function PagerClick(index) {
             document.getElementById("pageNo").value = index;
+            document.forms[0].submit();
+        }
+    </script>
+
+@*     JS function to link milling insert with milling tool. *@
+
+    <script type="text/javascript">
+        function linkMillingInsert(millingInsertId, millingToolId) {
+            document.getElementById("millingInsertId").value = millingInsertId;
+            document.getElementById("millingToolId").value = millingToolId;
+            document.forms[0].action = '@Url.Action("LinkMillingInsert", "MillingTool")';
             document.forms[0].submit();
         }
     </script>

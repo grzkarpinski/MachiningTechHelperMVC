@@ -160,8 +160,6 @@ namespace MachiningTechHelperMVC.Web.Controllers
             return RedirectToAction("ViewMillingTool", new { id = millingToolId });
         }
 
-        // 2. controller to delete link between insert and tool
-
         public IActionResult DeleteLinkMillingInsert(int millingToolId, int millingInsertId)
         {
             _millingToolMillingInsertService.DeleteMillingToolInsert(millingToolId, millingInsertId);
