@@ -18,14 +18,26 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
         }
         public void Add(int millingToolId, int millingInsertId)
         {
-            var link = new MillingToolMillingInsert
+            var existingRecord = _context.MillingToolMillingInserts
+                .FirstOrDefault(m => m.MillingToolId == millingToolId && m.MillingInsertId == millingInsertId);
+
+            if (existingRecord == null)
             {
-                MillingToolId = millingToolId,
-                MillingInsertId = millingInsertId
-            };
-            _context.MillingToolMillingInserts.Add(link);
-            _context.SaveChanges();
+                var link = new MillingToolMillingInsert
+                {
+                    MillingToolId = millingToolId,
+                    MillingInsertId = millingInsertId
+                };
+                _context.MillingToolMillingInserts.Add(link);
+                _context.SaveChanges();
+            }
+            //else
+            //{
+            //    // Handle existing record (update, skip, etc.)
+            //    // For now, we'll just do nothing.
+            //}
         }
+
 
         public void Delete(int millingToolId, int millingInsertId)
         {

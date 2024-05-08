@@ -53,7 +53,8 @@
                                 <td>@parameter.Designation</td>
                                 <td>@parameter.Radius</td>
                                 <td>
-                                    <a asp-action="DeleteMillingInsertLink" asp-route-id="@parameter.Id" class="btn btn-danger">Usuń</a>
+                                    <a asp-action="DeleteLinkMillingInsert" asp-route-millingToolId="@Model.Id" asp-route-millingInsertId="@parameter.Id" class="btn btn-danger">Usuń</a> |
+                                    @Html.ActionLink("Szczegóły płytki", "ViewMillingInsert", new { id = parameter.Id })
                                 </td>
                             </tr>
                         }
