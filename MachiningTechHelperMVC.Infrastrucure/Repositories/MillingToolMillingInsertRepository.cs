@@ -29,13 +29,12 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
 
         public void Delete(int millingToolId, int millingInsertId)
         {
-            var link = new MillingToolMillingInsert
+            var link = _context.MillingToolMillingInserts.FirstOrDefault(x => x.MillingToolId == millingToolId && x.MillingInsertId == millingInsertId);
+            if (link != null)
             {
-                MillingToolId = millingToolId,
-                MillingInsertId = millingInsertId
-            };
-            _context.MillingToolMillingInserts.Remove(link);
-            _context.SaveChanges();
+                _context.MillingToolMillingInserts.Remove(link);
+                _context.SaveChanges();
+            }
 
         }
 

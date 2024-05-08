@@ -24,18 +24,12 @@ namespace MachiningTechelperMVC.Application.Services
 
         public void AddMillingToolInsert(int millingToolId, int millingInsertId)
         {
-            var millingToolMillingInsert = new MillingToolMillingInsert
-            {
-                MillingToolId = millingToolId,
-                MillingInsertId = millingInsertId
-            };
-            _millingToolMillingInsertRepo.Add(millingToolMillingInsert);
+            _millingToolMillingInsertRepo.Add(millingToolId, millingInsertId);
         }
 
         public void DeleteMillingToolInsert(int millingToolId, int millingInsertId)
         {
-            var millingToolMillingInsert = _millingToolMillingInsertRepo.GetById(millingToolId, millingInsertId);
-            _millingToolMillingInsertRepo.Delete(millingToolMillingInsert);
+            _millingToolMillingInsertRepo.Delete(millingToolId, millingInsertId);
         }
 
         public MillingInsertVm GetMillingToolInsert(int millingToolId, int millingInsertId)

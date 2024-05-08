@@ -121,16 +121,6 @@ namespace MachiningTechHelperMVC.Web.Controllers
             return RedirectToAction("Index");
         }
 
-        //milling inserts view: when insert / inserts are linked to the tool, display them in the ViewMillingTool.
-        // When specific insert selected go to view with theirs MillingInsertParametersRanges.
-        // If insert is not linked to the tool, display "there is no insert linked to this tool" message
-        // Add button to Add Milling Insert to the tool
-
-        // 1. contrller for view where user searches for insert to link to the tool (search by insert name)
-        // display list of inserts with add button next to each insert
-        // link at bottom of the page to create new insert
-
-        // 0. controller to delete insert from the tool
         [HttpPost]
         public IActionResult DeleteMillingInsertLink(int millingToolId, int millingInsertId)
         {
@@ -139,14 +129,15 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult ViewMillingInserts()
+        public IActionResult ViewMillingInserts(int millingToolId)
         {
             var model = _millingInsertService.GetAllMillingInserts(10, 1, "");
+            model.MillingToolId = millingToolId;
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult ViewMillingInserts(int pageSize, int? pageNo, string searchString)
+        public IActionResult ViewMillingInserts(int millingToolId, int pageSize, int? pageNo, string searchString)
         {
             if (!pageNo.HasValue)
             {
@@ -157,6 +148,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
                 searchString = String.Empty;
             }
             var model = _millingInsertService.GetAllMillingInserts(pageSize, pageNo, searchString);
+            model.MillingToolId = millingToolId;
             return View(model);
         }
 

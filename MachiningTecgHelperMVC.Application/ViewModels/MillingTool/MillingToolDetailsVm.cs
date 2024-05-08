@@ -30,6 +30,7 @@ namespace MachiningTechelperMVC.Application.ViewModels.MillingTool
         public void Mapping(AutoMapper.Profile profile)
         {
             profile.CreateMap<MachiningTechHelperMVC.Domain.Model.MillingTool, MillingToolDetailsVm>()
+                .ForMember(dest => dest.millingInserts, opt => opt.MapFrom(src => src.MillingToolMillingInserts.Select(p => p.MillingInsert)))
                 .ForMember(dest => dest.Producer, opt => opt.MapFrom(src => src.Producer));
         }
     }

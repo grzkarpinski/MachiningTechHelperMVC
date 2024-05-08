@@ -15,6 +15,7 @@
         <input type="text" value="symbol płytki" asp-for="SearchString" name="searchString" id="searchString" style="max-width: 200px; width: calc(100% - 120px);" />
         <input type="submit" value="Wyszukaj" style="width: 100px;" />
     </div>
+    <input type="hidden" asp-for="MillingToolId" />
     <div class="row">
         <table class="table">
             <thead>
@@ -40,8 +41,12 @@
                             @Html.DisplayFor(modelItem => item.Radius)
                         </td>
                         <td>
-                            @Html.ActionLink("Połącz płytkę", "LinkMillingInsert", new { id = item.Id }) |
-                            @Html.ActionLink("Szczegóły płytki", "ViewMillingInsert", new { id = item.Id })
+                            <form asp-controller="MillingTool" asp-action="LinkMillingInsert" method="post" style="display: inline;">
+                                <input type="hidden" name="millingInsertId" value="@item.Id" />
+                                <input type="hidden" name="millingToolId" value="@Model.MillingToolId" />
+                                <input type="submit" value="Połącz płytkę" class="btn btn-link" style="padding: 0; border: none; background: none;" />
+                            </form>
+                            @Html.ActionLink("Szczegóły płytki", "ViewMillingInsert", new { id = item.Id }) |
                         </td>
                     </tr>
                 }
