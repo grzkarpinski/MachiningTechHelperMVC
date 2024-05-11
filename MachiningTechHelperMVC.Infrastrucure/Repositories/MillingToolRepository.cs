@@ -94,7 +94,8 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             var millingTools = _context.MillingTools
                 .Include(m => m.Producer)
                 .Include(m => m.MillingToolMillingInserts)
-                .Include(m => m.MillingToolCheckedParameters);
+                .Include(m => m.MillingToolCheckedParameters)
+                .OrderBy(m => m.Diameter);
             return millingTools;
         }
     }

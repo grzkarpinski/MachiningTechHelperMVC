@@ -31,11 +31,6 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
                 _context.MillingToolMillingInserts.Add(link);
                 _context.SaveChanges();
             }
-            //else
-            //{
-            //    // Handle existing record (update, skip, etc.)
-            //    // For now, we'll just do nothing.
-            //}
         }
 
 

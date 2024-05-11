@@ -87,7 +87,8 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             var solidMillingTools = _context.SolidMillingTools
                 .Include(s => s.Producer)
                 .Include(s => s.SolidMillingToolParametersRanges)
-                .Include(s => s.SolidMillingToolCheckedParameters);
+                .Include(s => s.SolidMillingToolCheckedParameters)
+                .OrderBy(s => s.Diameter);
             return solidMillingTools;
         }
     }

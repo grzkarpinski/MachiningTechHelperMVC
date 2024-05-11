@@ -57,7 +57,8 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
 
         public IQueryable<Drill> GetAllDrills()
         {
-            return _context.Drills.Where(p => p.IsToolActive);
+            return _context.Drills.Where(p => p.IsToolActive)
+                .OrderBy(p => p.Diameter);
         }
 
         public void UpdateDrill(Drill drillToUpdate)

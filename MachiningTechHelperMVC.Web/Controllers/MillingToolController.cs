@@ -152,8 +152,6 @@ namespace MachiningTechHelperMVC.Web.Controllers
             return View(model);
         }
 
-        // 1.5. controller to link chosen insert to the tool when pressing add button
-
          public IActionResult LinkMillingInsert(int millingToolId, int millingInsertId)
         {
             _millingToolMillingInsertService.AddMillingToolInsert(millingToolId, millingInsertId);
