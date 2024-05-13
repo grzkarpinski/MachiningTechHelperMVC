@@ -8,22 +8,22 @@ namespace MachiningTechHelperMVC.Domain.Model.Common
 {
     public enum ToolType
     {
-        drillHSS,
-        drillSolidCarbide,
-        drillHeadCarbide,
-        drillIndexable,
+        drill_HSS,
+        drill_VHM,
+        drill_VHM_head,
+        drill_Indexable,
 
-        solidEndMillHSS,
-        solidEndMillCarbide,
-        SolidEndMillTSC,
-        solidBallNoseMill,
+        solid_EndMill_HSS,
+        solid_EndMill_VHM,
+        Solid_EndMill_TSC,
+        solid_BallNoseMill,
 
-        highFeedMill,
-        shoulderMill,
+        HF_Mill,
+        shoulder_Mill,
         faceMill,
-        tSlotMill,
-        profileMill,
-        chamferMill,
-        solidHeadMill,
+        tSlot_Mill,
+        profile_Mill,
+        chamfer_Mill,
+        solidHead_Mill,
     }
 }
