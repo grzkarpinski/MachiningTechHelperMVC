@@ -1,17 +1,16 @@
-using MachiningTechHelperMVC.Domain.Interfaces;
-using MachiningTechHelperMVC.Infrastrucure;
-using MachiningTechHelperMVC.Infrastrucure.Repositories;
-using MachiningTechHelperMVC.Web.Data;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using MachiningTechHelperMVC.Application;
-using FluentValidation.AspNetCore;
-using MachiningTechHelperMVC.Application.ViewModels.Drill;
 using FluentValidation;
-using Serilog;
-using Serilog.Events;
+using FluentValidation.AspNetCore;
 using MachiningTechelperMVC.Application.ViewModels.DrillCheckedParameters;
 using MachiningTechelperMVC.Application.ViewModels.DrillParametersRange;
+using MachiningTechelperMVC.Application.ViewModels.MillingInsertParametersRange;
+using MachiningTechelperMVC.Application.ViewModels.SolidMillingTool;
+using MachiningTechelperMVC.Application.ViewModels.SolidMillingToolParametersRange;
+using MachiningTechHelperMVC.Application;
+using MachiningTechHelperMVC.Application.ViewModels.Drill;
+using MachiningTechHelperMVC.Infrastrucure;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,6 +37,9 @@ builder.Services.AddControllersWithViews().AddFluentValidation(fv => fv.DisableD
 builder.Services.AddTransient<IValidator<NewDrillVm>, NewDrillValidation>();
 builder.Services.AddTransient<IValidator<DrillCheckedParametersVm>, DrillCheckedParametersValidation>();
 builder.Services.AddTransient<IValidator<DrillParametersRangeVm>, DrillParametersRangeValidation>();
+builder.Services.AddTransient<IValidator<MillingInsertParametersRangeVm>, MillingInsertParametersRangeValidation>();
+builder.Services.AddTransient<IValidator<NewSolidMillingToolVm>, NewSolidMillingToolValidation>();
+builder.Services.AddTransient<IValidator<SolidMillingToolParametersRangeVm>, SolidMillingToolParametersRangeValidation>();
 
 var app = builder.Build();
 
