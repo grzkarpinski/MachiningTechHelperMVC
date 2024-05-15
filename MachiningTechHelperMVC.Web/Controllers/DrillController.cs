@@ -82,14 +82,12 @@ namespace MachiningTechHelperMVC.Web.Controllers
         public IActionResult EditDrill(int id)
         {
             var drill = _drillService.GetDrillForEdit(id);
-            ViewBag.ToolTypeList = Enum.GetValues(typeof(ToolType))
-                           .Cast<ToolType>()
-                           .Select(t => new SelectListItem
-                           {
-                               Value = ((int)t).ToString(),
-                               Text = t.ToString()
-                           })
-                           .ToList();
+            ViewBag.ToolTypeList = new SelectList(
+               Enum.GetValues(typeof(ToolType))
+               .Cast<ToolType>()
+               .Select(t => new { Id = (int)t, Name = t.ToString() }),
+           "Id", "Name", drill.ToolType);
+
             if (drill.NewProducer != null)
             {
                 drill.NewProducer = new ProducerVm { CompanyName = drill.NewProducer.CompanyName };

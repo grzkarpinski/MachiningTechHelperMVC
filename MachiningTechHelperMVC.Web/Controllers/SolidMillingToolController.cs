@@ -3,6 +3,7 @@ using MachiningTechelperMVC.Application.ViewModels.Producer;
 using MachiningTechelperMVC.Application.ViewModels.SolidMillingTool;
 using MachiningTechelperMVC.Application.ViewModels.SolidMillingToolCheckedParameters;
 using MachiningTechelperMVC.Application.ViewModels.SolidMillingToolParametersRange;
+using MachiningTechHelperMVC.Domain.Model;
 using MachiningTechHelperMVC.Domain.Model.Common;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -81,14 +82,11 @@ namespace MachiningTechHelperMVC.Web.Controllers
         public IActionResult EditSolidMillingTool(int id) 
         {
             var tool = _solidMillingToolService.GetSolidMillingToolForEdit(id);
-            ViewBag.ToolTypeList = Enum.GetValues(typeof(ToolType))
-                           .Cast<ToolType>()
-                           .Select(t => new SelectListItem
-                           {
-                               Value = ((int)t).ToString(),
-                               Text = t.ToString()
-                           })
-                           .ToList();
+            ViewBag.ToolTypeList = new SelectList(
+               Enum.GetValues(typeof(ToolType))
+               .Cast<ToolType>()
+               .Select(t => new { Id = (int)t, Name = t.ToString() }),
+           "Id", "Name", tool.ToolType);
             if (tool.NewProducer != null) 
             {
                 tool.NewProducer = new ProducerVm {CompanyName = tool.NewProducer.CompanyName};

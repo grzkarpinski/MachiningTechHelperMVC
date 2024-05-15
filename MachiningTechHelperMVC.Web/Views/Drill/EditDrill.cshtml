@@ -30,7 +30,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="ToolType" class="control-label"></label>
-                <select asp-for="ToolType" asp-items="ViewBag.ToolTypeList" class="form-control"></select>
+                @Html.DropDownList("ToolType", (SelectList)ViewBag.ToolTypeList, Model.ToolType, new { @class = "form-control" })
                 <span asp-validation-for="ToolType" class="text-danger"></span>
             </div>
             <div class="form-group form-check">

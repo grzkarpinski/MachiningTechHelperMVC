@@ -91,15 +91,12 @@ namespace MachiningTechHelperMVC.Web.Controllers
         public IActionResult EditMillingTool(int id)
         {
             var tool = _millingToolService.GetMillingToolForEdit(id);
-            ViewBag.ToolTypeList = Enum.GetValues(typeof(ToolType))
-                           .Cast<ToolType>()
-                           .Select(t => new SelectListItem
-                           {
-                               Value = ((int)t).ToString(),
-                               Text = t.ToString(),
-                               Selected = t.ToString() == tool.ToolType // BUG: selected iten should be tool.toolType
-                           })
-                           .ToList();
+            ViewBag.ToolTypeList = new SelectList(
+                Enum.GetValues(typeof(ToolType))
+                .Cast<ToolType>()
+                .Select(t => new { Id = (int)t, Name = t.ToString() }),
+            "Id", "Name", tool.ToolType);
+
             if (tool.NewProducer != null)
             {
                 tool.NewProducer = new ProducerVm { CompanyName = tool.NewProducer.CompanyName };
