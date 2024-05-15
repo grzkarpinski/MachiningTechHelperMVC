@@ -22,6 +22,9 @@ namespace MachiningTechelperMVC.Application.ViewModels.MillingToolCheckedParamet
         [Display(Name = "Posuw mm/min")]
         public int FeedPerMinute { get; set; }
 
+        //[Display(Name = "Płytka")]
+        //public MillingInsertVm? MillingInsert { get; set; }
+
         public void Mapping(AutoMapper.Profile profile)
         {
             profile.CreateMap<MachiningTechHelperMVC.Domain.Model.MillingToolCheckedParameters, MillingToolCheckedParametersVm>().ReverseMap()
