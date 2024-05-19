@@ -1,9 +1,4 @@
 ﻿using MachiningTechHelperMVC.Domain.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MachiningTechHelperMVC.Domain.Interfaces
 {
@@ -13,13 +8,9 @@ namespace MachiningTechHelperMVC.Domain.Interfaces
 
         int AddMillingTool(MillingTool millingTool);
 
-        IQueryable<MillingTool> GetMillingToolByDiameter(double diameter);
-
         MillingTool GetMillingToolById(int millingToolId);
 
         IQueryable<MillingInsert> GetMillingInserts();
-
-        IQueryable<MillingTool> GetMillingToolByProducer(int ProducerId);
 
         void UpdateMillingTool(MillingTool millingToolToUpdate);
 

@@ -1,15 +1,10 @@
 ﻿using MachiningTechHelperMVC.Domain.Interfaces;
 using MachiningTechHelperMVC.Domain.Model;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MachiningTechHelperMVC.Infrastrucure.Repositories
 {
-    public class MillingToolRepository: IMillingToolRepository
+    public class MillingToolRepository : IMillingToolRepository
     {
         private readonly Context _context;
         public MillingToolRepository(Context context)
@@ -17,7 +12,7 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             _context = context;
         }
 
-        public void DeleteMillingTool(int millingToolId) 
+        public void DeleteMillingTool(int millingToolId)
         {
             var millingTool = _context.MillingTools.Find(millingToolId);
             if (millingTool != null)
@@ -34,13 +29,7 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             return millingTool.Id;
         }
 
-        public IQueryable<MillingTool> GetMillingToolByDiameter(double diameter)
-        {
-            var millingTools =  _context.MillingTools.Where(m => m.Diameter == diameter);
-            return millingTools;
-
-        }
-        public MillingTool GetMillingToolById(int millingToolId) // Need to add other nested properties !!!
+        public MillingTool GetMillingToolById(int millingToolId)
         {
             var millingTool = _context.MillingTools
                 .Include(m => m.Producer)
@@ -55,12 +44,6 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
         {
             var millingInserts = _context.MillingInserts;
             return millingInserts;
-        }
-
-        public IQueryable<MillingTool> GetMillingToolByProducer(int producerId)
-        {
-            var millingTools = _context.MillingTools.Where(m => m.ProducerId == producerId);
-            return millingTools;
         }
 
         public void UpdateMillingTool(MillingTool millingToolToUpdate)

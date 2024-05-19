@@ -3,11 +3,6 @@ using AutoMapper.QueryableExtensions;
 using MachiningTechelperMVC.Application.Interfaces;
 using MachiningTechelperMVC.Application.ViewModels.SolidMillingTool;
 using MachiningTechHelperMVC.Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MachiningTechelperMVC.Application.Services
 {
