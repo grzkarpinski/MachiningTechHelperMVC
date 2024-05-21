@@ -12,11 +12,8 @@ namespace MachiningTechHelperMVC.Domain.Interfaces
         void DeleteSolidMillingTool(int solidMillingToolId);
 
         int AddSolidMillingTool(SolidMillingTool solidMillingTool);
-        IQueryable<SolidMillingTool> GetSolidMillingToolByDiameter(double diameter);
 
         SolidMillingTool GetSolidMillingToolById(int solidMillingToolId);
-
-        IQueryable<SolidMillingTool> GetSolidMillingToolByProducer(int ProducerId);
 
         void UpdateSolidMillingTool(SolidMillingTool solidMillingToolToUpdate);
 

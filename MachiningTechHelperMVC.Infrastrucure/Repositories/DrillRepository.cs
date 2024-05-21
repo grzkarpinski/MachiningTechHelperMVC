@@ -33,12 +33,6 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             }
         }
 
-        public IQueryable<Drill> GetDrillByDiameter(double diameter)
-        {
-            var drills = _context.Drills.Where(d => d.Diameter == diameter);
-            return drills;
-        }
-
         public Drill GetDrillById(int drillId)
         {
             var drill = _context.Drills
@@ -47,12 +41,6 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
                 .Include(d => d.DrillCheckedParameters)
                 .FirstOrDefault(d => d.Id == drillId);
             return drill;
-        }
-
-        public IQueryable<Drill> GetDrillByProducer(int ProducerId)
-        {
-            var drills = _context.Drills.Where(d => d.ProducerId == ProducerId);
-            return drills;
         }
 
         public IQueryable<Drill> GetAllDrills()

@@ -13,13 +13,9 @@ namespace MachiningTechHelperMVC.Domain.Interfaces
 
         int AddMillingTool(MillingTool millingTool);
 
-        IQueryable<MillingTool> GetMillingToolByDiameter(double diameter);
-
         MillingTool GetMillingToolById(int millingToolId);
 
         IQueryable<MillingInsert> GetMillingInserts();
-
-        IQueryable<MillingTool> GetMillingToolByProducer(int ProducerId);
 
         void UpdateMillingTool(MillingTool millingToolToUpdate);
 

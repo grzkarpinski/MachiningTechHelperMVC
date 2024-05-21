@@ -34,13 +34,7 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             return millingTool.Id;
         }
 
-        public IQueryable<MillingTool> GetMillingToolByDiameter(double diameter)
-        {
-            var millingTools =  _context.MillingTools.Where(m => m.Diameter == diameter);
-            return millingTools;
-
-        }
-        public MillingTool GetMillingToolById(int millingToolId) // Need to add other nested properties !!!
+        public MillingTool GetMillingToolById(int millingToolId)
         {
             var millingTool = _context.MillingTools
                 .Include(m => m.Producer)
@@ -55,12 +49,6 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
         {
             var millingInserts = _context.MillingInserts;
             return millingInserts;
-        }
-
-        public IQueryable<MillingTool> GetMillingToolByProducer(int producerId)
-        {
-            var millingTools = _context.MillingTools.Where(m => m.ProducerId == producerId);
-            return millingTools;
         }
 
         public void UpdateMillingTool(MillingTool millingToolToUpdate)

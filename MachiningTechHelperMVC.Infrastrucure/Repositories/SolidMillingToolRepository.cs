@@ -33,13 +33,7 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             }
         }
 
-        public IQueryable<SolidMillingTool> GetSolidMillingToolByDiameter(double diameter)
-        {
-            var solidMillingTools = _context.SolidMillingTools.Where(s => s.Diameter == diameter);
-            return solidMillingTools;
-        }
-
-        public SolidMillingTool GetSolidMillingToolById(int solidMillingToolId) // Need to add other nested properties !!!
+        public SolidMillingTool GetSolidMillingToolById(int solidMillingToolId)
         {
             var solidMillingTool = _context.SolidMillingTools
                 .Include(s => s.Producer)
@@ -47,12 +41,6 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
                 .Include(s => s.SolidMillingToolCheckedParameters)
                 .FirstOrDefault(s => s.Id == solidMillingToolId);
             return solidMillingTool;
-        }
-
-        public IQueryable<SolidMillingTool> GetSolidMillingToolByProducer(int ProducerId)
-        {
-            var solidMillingTools = _context.SolidMillingTools.Where(s => s.ProducerId == ProducerId);
-            return solidMillingTools;
         }
 
         public void UpdateSolidMillingTool(SolidMillingTool solidMillingToolToUpdate)

@@ -10,14 +10,13 @@ namespace MachiningTechHelperMVC.Domain.Interfaces
     public interface IDrillRepository
     {
         IQueryable<Drill> GetAllDrills();
+
         void DeleteDrill(int drillId);
 
         int AddDrill(Drill drill);
-        IQueryable<Drill> GetDrillByDiameter(double diameter);
 
         Drill GetDrillById(int drillId);
 
-        IQueryable<Drill> GetDrillByProducer(int ProducerId);
         void UpdateDrill(Drill drillToUpdate);
     }
 }
