@@ -1,6 +1,11 @@
 ﻿using MachiningTechHelperMVC.Domain.Interfaces;
 using MachiningTechHelperMVC.Domain.Model;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MachiningTechHelperMVC.Infrastrucure.Repositories
 {
@@ -28,6 +33,12 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             }
         }
 
+        public IQueryable<Drill> GetDrillByDiameter(double diameter)
+        {
+            var drills = _context.Drills.Where(d => d.Diameter == diameter);
+            return drills;
+        }
+
         public Drill GetDrillById(int drillId)
         {
             var drill = _context.Drills
@@ -38,6 +49,12 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             return drill;
         }
 
+        public IQueryable<Drill> GetDrillByProducer(int ProducerId)
+        {
+            var drills = _context.Drills.Where(d => d.ProducerId == ProducerId);
+            return drills;
+        }
+
         public IQueryable<Drill> GetAllDrills()
         {
             return _context.Drills.Where(p => p.IsToolActive)
@@ -46,6 +63,7 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
 
         public void UpdateDrill(Drill drillToUpdate)
         {
+            // Check if the Drill already exists in the database
             var existingDrill = _context.Drills
                                         .Include(d => d.Producer)
                                         .Include(d => d.DrillParametersRanges)
@@ -54,6 +72,7 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
 
             if (existingDrill != null)
             {
+                // Update the properties of the existing Drill
                 existingDrill.Diameter = drillToUpdate.Diameter;
                 existingDrill.Designation = drillToUpdate.Designation;
                 existingDrill.Description = drillToUpdate.Description;
@@ -61,8 +80,10 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
                 existingDrill.LengthXDiameter = drillToUpdate.LengthXDiameter;
                 existingDrill.TipAngle = drillToUpdate.TipAngle;
 
+                // Check if the Producer is not null before trying to update it
                 if (drillToUpdate.Producer != null)
                 {
+                    // Update the properties of the existing Producer
                     existingDrill.Producer.CompanyName = drillToUpdate.Producer.CompanyName;
                 }
 

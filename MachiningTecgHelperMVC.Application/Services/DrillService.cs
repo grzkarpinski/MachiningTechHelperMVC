@@ -1,8 +1,14 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using MachiningTechelperMVC.Application.ViewModels.DrillCheckedParameters;
 using MachiningTechHelperMVC.Application.Interfaces;
 using MachiningTechHelperMVC.Application.ViewModels.Drill;
 using MachiningTechHelperMVC.Domain.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MachiningTechHelperMVC.Application.Services
 {
@@ -50,7 +56,7 @@ namespace MachiningTechHelperMVC.Application.Services
         public DrillDetailsVm GetDrillDetails(int id)
         {
             var drill = _drillRepo.GetDrillById(id);
-            var drillVm = _mapper.Map<DrillDetailsVm>(drill);
+            var drillVm = _mapper.Map<DrillDetailsVm>(drill); //Map - single object
             return drillVm;
         }
 
