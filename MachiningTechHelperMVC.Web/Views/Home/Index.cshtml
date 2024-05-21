@@ -3,6 +3,26 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <h1 class="display-4">Mały pomocnik technologa</h1>
+    <h2>Witaj w aplikacji MachiningTechHelperMVC</h2>
+    <section>
+        <h3>Obliczenia:</h3>
+        <div>
+            @Html.ActionLink("Szybkie parametry", "Index", "SimpleCalculator")
+        </div>
+        <div>
+            @Html.ActionLink("Szybka wycena", "Index", "CostEstimation")
+        </div>
+    </section>
+    <section>
+        <h3>Katalogi:</h3>
+        <div>
+            @Html.ActionLink("Wiertła", "Index", "Drill")
+        </div>
+        <div>
+            @Html.ActionLink("Frezy Monolityczne", "Index", "SolidMillingTool")
+        </div>
+        <div>
+            @Html.ActionLink("Frezy Składane", "Index", "MillingTool")
+        </div>
+    </section>
