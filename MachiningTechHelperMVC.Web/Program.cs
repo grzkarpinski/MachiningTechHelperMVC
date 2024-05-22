@@ -12,6 +12,7 @@ using Serilog;
 using Serilog.Events;
 using MachiningTechelperMVC.Application.ViewModels.DrillCheckedParameters;
 using MachiningTechelperMVC.Application.ViewModels.DrillParametersRange;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,6 +53,14 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.SignIn.RequireConfirmedEmail = false;
 
     options.User.RequireUniqueEmail = true;
+});
+
+//Add google authentication
+builder.Services.AddAuthentication().AddGoogle(options =>
+{
+    IConfigurationSection googleAuthNSection = builder.Configuration.GetSection("Authentication:Google");
+    options.ClientId = googleAuthNSection["ClientId"];
+    options.ClientSecret = googleAuthNSection["ClientSecret"];
 });
 
 var app = builder.Build();
