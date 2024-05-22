@@ -29,15 +29,30 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<Context>();
 
-// dependency injection
+//Add dependency injection
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure();
 
-builder.Services.AddControllersWithViews().AddFluentValidation(fv => fv.DisableDataAnnotationsValidation = true); //FluentValidation
+//Use fluentValidation libary
+builder.Services.AddControllersWithViews().AddFluentValidation(fv => fv.DisableDataAnnotationsValidation = true);
 
 builder.Services.AddTransient<IValidator<NewDrillVm>, NewDrillValidation>();
 builder.Services.AddTransient<IValidator<DrillCheckedParametersVm>, DrillCheckedParametersValidation>();
 builder.Services.AddTransient<IValidator<DrillParametersRangeVm>, DrillParametersRangeValidation>();
+
+// Configure register and login pages
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequireDigit = true;
+    options.Password.RequiredLength = 8;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireNonAlphanumeric = false;
+
+    options.SignIn.RequireConfirmedEmail = false;
+
+    options.User.RequireUniqueEmail = true;
+});
 
 var app = builder.Build();
 
