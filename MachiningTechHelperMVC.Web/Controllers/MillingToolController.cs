@@ -8,9 +8,11 @@ using MachiningTechHelperMVC.Domain.Model;
 using MachiningTechHelperMVC.Domain.Model.Common;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MachiningTechHelperMVC.Web.Controllers
 {
+    [Authorize]
     public class MillingToolController : Controller
     {
         private readonly IMillingToolService _millingToolService;

@@ -5,11 +5,13 @@ using MachiningTechelperMVC.Application.ViewModels.Producer;
 using MachiningTechHelperMVC.Application.Interfaces;
 using MachiningTechHelperMVC.Application.ViewModels.Drill;
 using MachiningTechHelperMVC.Domain.Model.Common;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MachiningTechHelperMVC.Web.Controllers
 {
+    [Authorize]
     public class DrillController : Controller
     {
         private readonly IDrillService _drillService;
