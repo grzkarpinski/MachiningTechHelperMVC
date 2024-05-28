@@ -1,9 +1,11 @@
 ﻿using MachiningTechelperMVC.Application.ViewModels.User;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MachiningTechHelperMVC.Web.Controllers
 {
+    [Authorize(Roles="admin")]
     public class AdminController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
@@ -19,16 +21,11 @@ namespace MachiningTechHelperMVC.Web.Controllers
             return View();
         }
 
-        //add security authentication only for admin
-
-
-        //DONE
         public IActionResult Roles()
         {
             return View(_roleManager.Roles);
         }
 
-        //DONE
         public IActionResult AddRole()
         {
             return View();
@@ -52,8 +49,6 @@ namespace MachiningTechHelperMVC.Web.Controllers
             return View(roleName);
         }
 
-
-        //DONE
         public IActionResult DeleteRole(string id)
         {
             IdentityRole role = _roleManager.FindByIdAsync(id).Result;
@@ -64,29 +59,14 @@ namespace MachiningTechHelperMVC.Web.Controllers
                 {
                     return RedirectToAction("Roles");
                 }
-                else
-                {
-                    foreach (IdentityError error in result.Errors)
-                    {
-                        ModelState.AddModelError("", error.Description);
-                    }
-                }
-            }
-            else
-            {
-                ModelState.AddModelError("", "No role found");
             }
             return View("Roles", _roleManager.Roles);
         }
-
-        //DONE. Add search functionality?
 
         public IActionResult Users()
         {
             return View(_userManager.Users);
         }
-
-        //DONE. TEST THIS!
 
         public IActionResult DeleteUser(string id)
         {
@@ -101,8 +81,6 @@ namespace MachiningTechHelperMVC.Web.Controllers
             }
             return View("Users", _userManager.Users);
         }
-
-        //DONE
 
         public async Task<IActionResult> UserDetails(string id)
         {
@@ -125,7 +103,6 @@ namespace MachiningTechHelperMVC.Web.Controllers
             }
         }
 
-        //DONE
         [HttpPost]
         public async Task<IActionResult> AssignRole(string id, UserDetailsVm model)
         {
@@ -141,7 +118,6 @@ namespace MachiningTechHelperMVC.Web.Controllers
             return RedirectToAction("Users");
         }
 
-        //DONE
         [HttpPost]
         public async Task<IActionResult> RemoveRole(string id, string role)
         {

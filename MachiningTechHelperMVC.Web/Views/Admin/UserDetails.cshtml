@@ -1,26 +1,26 @@
 ﻿@model MachiningTechelperMVC.Application.ViewModels.User.UserDetailsVm
 
-<h1>@Model.User.UserName</h1>
+<h2>Użytkownik: @Model.User.UserName</h2>
 
-<h2>Roles</h2>
+<h3>Dodane role:</h3>
 <ul>
     @foreach (var role in Model.Roles)
     {
         <li>
             @role
             <form asp-action="RemoveRole" asp-route-id="@Model.User.Id" asp-route-role="@role" method="post" style="display:inline;">
-                <button type="submit">Remove</button>
+                <button type="submit" class="btn btn-primary btn-sm">Usuń</button>
             </form>
         </li>
     }
 </ul>
 
-<h2>Assign New Role</h2>
+<h3>Przypisz nową rolę:</h3>
 <form asp-action="AssignRole" asp-route-id="@Model.User.Id">
     <select asp-for="SelectedRole" asp-items="new SelectList(Model.AllRoles)">
-        <option value="">Select a role</option>
+        <option value="">Rola</option>
     </select>
-    <button type="submit">Assign Role</button>
+    <button type="submit" class="btn btn-primary btn-sm">Przypisz rolę</button>
 </form>
 
-<a asp-action="Users" class="btn btn-primary">Back to Users</a>
+<a asp-action="Users" class="btn btn-primary">Wróć do listy użytkowników</a>
