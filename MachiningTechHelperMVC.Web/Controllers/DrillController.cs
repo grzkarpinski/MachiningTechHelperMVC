@@ -50,6 +50,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin, user")]
         public IActionResult AddDrill()
         {
             var model = new NewDrillVm
@@ -67,6 +68,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin, user")]
         public IActionResult AddDrill(NewDrillVm drill)
         {
             var id = _drillService.AddDrill(drill);
@@ -81,6 +83,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin, user")]
         public IActionResult EditDrill(int id)
         {
             var drill = _drillService.GetDrillForEdit(id);
@@ -99,18 +102,21 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin, user")]
         public IActionResult EditDrill(NewDrillVm drill)
         {
             _drillService.UpdateDrill(drill);
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "admin, user")]
         public IActionResult Delete(int id)
         {
             _drillService.DeleteDrill(id);
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "admin, user")]
         public IActionResult AddParametersRange(int id)
         {
             var model = new DrillParametersRangeVm
@@ -121,12 +127,14 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin, user")]
         public IActionResult AddParametersRange(DrillParametersRangeVm model)
         {
             _drillParametersRangeService.AddDrillParametersRange(model);
             return RedirectToAction("ViewDrill", new { id = model.DrillId });
         }
 
+        [Authorize(Roles = "admin, user")]
         public IActionResult DeleteParametersRange(int id)
         {
             var drillParametersRange = _drillParametersRangeService.GetDrillParametersRangeById(id);
@@ -135,6 +143,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin, user")]
         public IActionResult AddDrillCheckedParameters(int id)
         {
             var model = new DrillCheckedParametersVm
@@ -145,12 +154,14 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin, user")]
         public IActionResult AddDrillCheckedParameters(DrillCheckedParametersVm checkedParameters)
         {
             _drillCheckedParametersService.AddDrillCheckedParameters(checkedParameters);
             return RedirectToAction("ViewDrill", new { id = checkedParameters.DrillId });
         }
 
+        [Authorize(Roles = "admin, user")]
         public IActionResult DeleteDrillCheckedParameters(int id)
         {
             var drillCheckedParameters = _drillCheckedParametersService.GetDrillCheckedParametersById(id);

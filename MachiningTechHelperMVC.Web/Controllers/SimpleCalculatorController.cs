@@ -1,10 +1,12 @@
 ﻿using MachiningTechelperMVC.Application.Interfaces;
 using MachiningTechelperMVC.Application.ViewModels.SimpleCalculator;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MachiningTechHelperMVC.Web.Controllers
 {
-    public class SimpleCalculatorController : Controller
+	[AllowAnonymous]
+	public class SimpleCalculatorController : Controller
     {
         private readonly ISimpleCalculatorLogic _calculatorLogic;
 

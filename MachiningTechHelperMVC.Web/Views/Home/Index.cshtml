@@ -26,3 +26,12 @@
             @Html.ActionLink("Frezy Składane", "Index", "MillingTool")
         </div>
     </section>
+    <section>
+        @if (User.IsInRole("admin"))
+        {
+            <h3>Panel Admina:</h3>
+            <div>
+                @Html.ActionLink("Panel Admina", "Index", "Admin")
+            </div>
+        }
+    </section>

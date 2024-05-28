@@ -19,8 +19,8 @@ namespace MachiningTechHelperMVC.Web.Controllers
         private readonly ISolidMillingToolCheckedParametersService _solidMillingToolCheckedParametersService;
 
         public SolidMillingToolController(ISolidMillingToolService solidMillingToolService,
-                                                     ISolidMillingToolParametersRangeService solidMillingToolParametersRangeService,
-                                                                                              ISolidMillingToolCheckedParametersService solidMillingToolCheckedParametersService)
+                                          ISolidMillingToolParametersRangeService solidMillingToolParametersRangeService,
+                                          ISolidMillingToolCheckedParametersService solidMillingToolCheckedParametersService)
         {
             _solidMillingToolService = solidMillingToolService;
             _solidMillingToolParametersRangeService = solidMillingToolParametersRangeService;
@@ -51,6 +51,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin, user")]
         public IActionResult AddSolidMillingTool()
         {
             var model = new NewSolidMillingToolVm
@@ -67,6 +68,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin, user")]
         public IActionResult AddSolidMillingTool(NewSolidMillingToolVm tool) 
         {
             var id = _solidMillingToolService.AddSolidMillingTool(tool);
@@ -81,6 +83,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin, user")]
         public IActionResult EditSolidMillingTool(int id) 
         {
             var tool = _solidMillingToolService.GetSolidMillingToolForEdit(id);
@@ -97,6 +100,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin, user")]
         public IActionResult EditSolidMillingTool(NewSolidMillingToolVm tool)
         {
             _solidMillingToolService.UpdateSolidMillingTool(tool);
@@ -104,12 +108,14 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin, user")]
         public IActionResult Delete(int id)
         {
             _solidMillingToolService.DeleteSolidMillingTool(id);
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "admin, user")]
         public IActionResult AddParametersRange(int id)
         {
             var model = new SolidMillingToolParametersRangeVm
@@ -120,12 +126,14 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin, user")]
         public IActionResult AddParametersRange(SolidMillingToolParametersRangeVm range)
         {
             _solidMillingToolParametersRangeService.AddSolidMillingToolParametersRange(range);
             return RedirectToAction("ViewSolidMillingTool", new { id = range.SolidMillingToolId });
         }
 
+        [Authorize(Roles = "admin, user")]
         public IActionResult DeleteParametersRange(int id)
         {
             var range = _solidMillingToolParametersRangeService.GetSolidMillingToolParametersForEdit(id);
@@ -134,6 +142,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin, user")]
         public IActionResult AddSolidMillingToolCheckedParameters(int id)
         {
             var model = new SolidMillingToolCheckedParametersVm
@@ -144,12 +153,14 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin, user")]
         public IActionResult AddSolidMillingToolCheckedParameters(SolidMillingToolCheckedParametersVm tool)
         {
             _solidMillingToolCheckedParametersService.AddSolidMillingToolCheckedParameters(tool);
             return RedirectToAction("ViewSolidMillingTool", new { id = tool.SolidMillingToolId });
         }
 
+        [Authorize(Roles = "admin, user")]
         public IActionResult DeleteSolidMillingToolCheckedParameters(int id)
         {
             var checkedParameters = _solidMillingToolCheckedParametersService.GetSolidMillingToolCheckedParametersById(id);

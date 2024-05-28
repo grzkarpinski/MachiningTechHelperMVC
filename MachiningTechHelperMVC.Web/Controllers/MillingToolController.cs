@@ -59,6 +59,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin, user")]
         public IActionResult AddMillingTool()
         {
             var model = new NewMillingToolVm
@@ -76,6 +77,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin, user")]
         public IActionResult AddMillingTool(NewMillingToolVm millingTool)
         {
             var id = _millingToolService.AddMillingTool(millingTool);
@@ -90,6 +92,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin, user")]
         public IActionResult EditMillingTool(int id)
         {
             var tool = _millingToolService.GetMillingToolForEdit(id);
@@ -108,12 +111,14 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin, user")]
         public IActionResult EditMillingTool(NewMillingToolVm millingTool)
         {
             _millingToolService.UpdateMillingTool(millingTool);
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "admin, user")]
         public IActionResult DeleteMillingTool(int id)
         {
             _millingToolService.DeleteMillingTool(id);
@@ -121,6 +126,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin, user")]
         public IActionResult DeleteMillingInsertLink(int millingToolId, int millingInsertId)
         {
             _millingToolMillingInsertService.DeleteMillingToolInsert(millingToolId, millingInsertId);
@@ -151,12 +157,14 @@ namespace MachiningTechHelperMVC.Web.Controllers
             return View(model);
         }
 
-         public IActionResult LinkMillingInsert(int millingToolId, int millingInsertId)
+        [Authorize(Roles = "admin, user")]
+        public IActionResult LinkMillingInsert(int millingToolId, int millingInsertId)
         {
             _millingToolMillingInsertService.AddMillingToolInsert(millingToolId, millingInsertId);
             return RedirectToAction("ViewMillingTool", new { id = millingToolId });
         }
 
+        [Authorize(Roles = "admin, user")]
         public IActionResult DeleteLinkMillingInsert(int millingToolId, int millingInsertId)
         {
             _millingToolMillingInsertService.DeleteMillingToolInsert(millingToolId, millingInsertId);
@@ -164,6 +172,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin, user")]
         public IActionResult AddMillingInsert()
         {
             var model = new MillingInsertVm();
@@ -172,6 +181,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin, user")]
         public IActionResult AddMillingInsert(MillingInsertVm millingInsert)
         {
             var id = _millingInsertService.AddMillingInsert(millingInsert);
@@ -184,6 +194,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "admin, user")]
         public IActionResult DeleteMillingInsert(int id)
         {
             _millingInsertService.DeleteMillingInsert(id);
@@ -191,6 +202,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin, user")]
         public IActionResult AddMillingInsertParametersRange(int insertId)
         {
             var model = new MillingInsertParametersRangeVm
@@ -202,12 +214,14 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin, user")]
         public IActionResult AddMillingInsertParametersRange(MillingInsertParametersRangeVm millingInsertParametersRange)
         {
             _millingInsertParametersRangeService.AddMillingInsertParametersRange(millingInsertParametersRange);
             return RedirectToAction("ViewMillingInsert", new { id = millingInsertParametersRange.MillingInsertId });
         }
 
+        [Authorize(Roles = "admin, user")]
         public IActionResult DeleteMillingInsertParametersRange(int id)
         {
             var millingInsertParametersRange = _millingInsertParametersRangeService.GetMillingInsertParametersRangeById(id);
@@ -216,6 +230,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin, user")]
         public IActionResult AddMillingToolCheckedParameters(int id)
         {
             var model = new MillingToolCheckedParametersVm
@@ -227,12 +242,14 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin, user")]
         public IActionResult AddMillingToolCheckedParameters(MillingToolCheckedParametersVm tool)
         {
             _millingToolCheckedParametersService.AddMillingToolCheckedParameters(tool);
             return RedirectToAction("ViewMillingTool", new { id = tool.MillingToolId });
         }
 
+        [Authorize(Roles = "admin, user")]
         public IActionResult DeleteMillingToolCheckedParameters(int id)
         {
             var millingToolCheckedParameters = _millingToolCheckedParametersService.GetMillingToolCheckedParametersById(id);

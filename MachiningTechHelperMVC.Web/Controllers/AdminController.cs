@@ -14,7 +14,6 @@ namespace MachiningTechHelperMVC.Web.Controllers
             _roleManager = roleManager;
         }
 
-        //DONE
         public IActionResult Index()
         {
             return View();

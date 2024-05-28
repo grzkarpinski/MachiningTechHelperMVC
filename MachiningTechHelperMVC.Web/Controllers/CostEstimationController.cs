@@ -1,9 +1,11 @@
 ﻿using MachiningTechelperMVC.Application.Interfaces;
 using MachiningTechelperMVC.Application.ViewModels.CostEstimation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MachiningTechHelperMVC.Web.Controllers
 {
+    [Authorize(Roles = "admin, user")]
     public class CostEstimationController : Controller
     {
         private readonly ICostEstimationLogic _costEstimationLogic;
