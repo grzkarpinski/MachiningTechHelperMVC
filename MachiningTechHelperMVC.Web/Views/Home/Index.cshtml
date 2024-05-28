@@ -2,36 +2,31 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
+<div class="container text-center">
     <h1 class="display-4">Mały pomocnik technologa</h1>
     <h2>Witaj w aplikacji MachiningTechHelperMVC</h2>
     <section>
         <h3>Obliczenia:</h3>
-        <div>
-            @Html.ActionLink("Szybkie parametry", "Index", "SimpleCalculator")
-        </div>
-        <div>
-            @Html.ActionLink("Szybka wycena", "Index", "CostEstimation")
+        <div class="list-group">
+            @Html.ActionLink("Szybkie parametry", "Index", "SimpleCalculator", null, new { @class = "list-group-item list-group-item-action" })
+            @Html.ActionLink("Szybka wycena", "Index", "CostEstimation", null, new { @class = "list-group-item list-group-item-action" })
         </div>
     </section>
     <section>
         <h3>Katalogi:</h3>
-        <div>
-            @Html.ActionLink("Wiertła", "Index", "Drill")
-        </div>
-        <div>
-            @Html.ActionLink("Frezy Monolityczne", "Index", "SolidMillingTool")
-        </div>
-        <div>
-            @Html.ActionLink("Frezy Składane", "Index", "MillingTool")
+        <div class="list-group">
+            @Html.ActionLink("Wiertła", "Index", "Drill", null, new { @class = "list-group-item list-group-item-action" })
+            @Html.ActionLink("Frezy Monolityczne", "Index", "SolidMillingTool", null, new { @class = "list-group-item list-group-item-action" })
+            @Html.ActionLink("Frezy Składane", "Index", "MillingTool", null, new { @class = "list-group-item list-group-item-action" })
         </div>
     </section>
     <section>
         @if (User.IsInRole("admin"))
         {
             <h3>Panel Admina:</h3>
-            <div>
-                @Html.ActionLink("Panel Admina", "Index", "Admin")
+            <div class="list-group">
+                @Html.ActionLink("Panel Admina", "Index", "Admin", null, new { @class = "list-group-item list-group-item-action" })
             </div>
         }
     </section>
+</div>
