@@ -57,12 +57,17 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.User.RequireUniqueEmail = true;
 });
 
-//Add google authentication
+//Add google and facebook authentication
 builder.Services.AddAuthentication().AddGoogle(options =>
 {
     IConfigurationSection googleAuthNSection = builder.Configuration.GetSection("Authentication:Google");
     options.ClientId = googleAuthNSection["ClientId"];
     options.ClientSecret = googleAuthNSection["ClientSecret"];
+}).AddFacebook(options =>
+{
+    IConfigurationSection facebookAuthNSection = builder.Configuration.GetSection("Authentication:Facebook");
+    options.AppId = facebookAuthNSection["AppId"];
+    options.AppSecret = facebookAuthNSection["AppSecret"];
 });
 
 var app = builder.Build();
