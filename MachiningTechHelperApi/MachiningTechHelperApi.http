@@ -1,0 +1,6 @@
+@MachiningTechHelperApi_HostAddress = http://localhost:5084
+
+GET {{MachiningTechHelperApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

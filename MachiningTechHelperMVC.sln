@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MachiningTechHelperMVC.Test
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MachiningTechelperMVC.Application", "MachiningTecgHelperMVC.Application\MachiningTechelperMVC.Application.csproj", "{78BF87F3-133B-4D93-8AC7-9A2932A05B83}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachiningTechHelperApi", "MachiningTechHelperApi\MachiningTechHelperApi.csproj", "{C16CBF73-9724-469B-AF26-A3D34903745A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{78BF87F3-133B-4D93-8AC7-9A2932A05B83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78BF87F3-133B-4D93-8AC7-9A2932A05B83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78BF87F3-133B-4D93-8AC7-9A2932A05B83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C16CBF73-9724-469B-AF26-A3D34903745A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C16CBF73-9724-469B-AF26-A3D34903745A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C16CBF73-9724-469B-AF26-A3D34903745A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C16CBF73-9724-469B-AF26-A3D34903745A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +65,7 @@ Global
 		{A0A046A7-9165-4745-AD4E-B8CE5EDD9CBF} = {E41C1925-D48D-4F8D-8CFE-705268EED3D5}
 		{F9421855-EFC6-46BB-AF4B-C19A6723AF79} = {7AB1A89E-366F-40DB-8086-8B5E1AE2BB01}
 		{78BF87F3-133B-4D93-8AC7-9A2932A05B83} = {DCD4CC5B-C626-41DC-A278-AC05AFAF7965}
+		{C16CBF73-9724-469B-AF26-A3D34903745A} = {C5334B64-B9CF-4ED5-8677-98B6B5DC6ABB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5BF49CDD-6C8C-451B-B7A5-50741D29CBC9}
