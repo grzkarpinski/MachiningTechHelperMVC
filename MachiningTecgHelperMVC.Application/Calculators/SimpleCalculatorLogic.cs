@@ -1,4 +1,5 @@
-﻿using MachiningTechelperMVC.Application.Interfaces;
+﻿using MachiningTechelperMVC.Application.Calculators;
+using MachiningTechelperMVC.Application.Interfaces;
 using MachiningTechelperMVC.Application.ViewModels.SimpleCalculator;
 using System;
 using System.Collections.Generic;
@@ -15,32 +16,18 @@ namespace MachiningTechHelperMVC.Domain.Calculators
 			if (model == null)
 				throw new ArgumentNullException(nameof(model));
 
-			if (model.IsMilling == true)
+			ICalculationStrategy strategy;
+			if (model.IsMilling)
 			{
-				model.RevolutionsPerMinute = (int)CalculateRevitonsPerMinute(model.CuttingSpeed, model.Diameter);
-				model.FeedPerMinute = (int)CalculateMillingFeed(model.FeedPerTooth, model.Teeth, model.RevolutionsPerMinute);
+				strategy = new MillingCalculationStrategy();
 			}
 			else
-			{
-				model.RevolutionsPerMinute = (int)CalculateRevitonsPerMinute(model.CuttingSpeed, model.Diameter);
-				model.FeedPerMinute = (int)CalculateDrillingFeed(model.FeedPerRevolution, model.RevolutionsPerMinute);
-			}
+            {
+                strategy = new DrillingCalculationStrategy();
+            }
 
-			return model;
+			var context = new SimpleCalculatorContext(strategy);
+			return context.Calculate(model);
 		}
-		public double CalculateRevitonsPerMinute(double cuttingSpeed, double diameter)
-        {
-            return (1000 * cuttingSpeed) / (Math.PI * diameter);
-        }
-
-        public double CalculateMillingFeed(double feedPerTooth, int teeth, double revolutionsPerMinute)
-        {
-            return feedPerTooth * teeth * revolutionsPerMinute;
-        }
-
-        public double CalculateDrillingFeed(double feedPerRevolution, double revolutionsPerMinute)
-        {
-            return feedPerRevolution * revolutionsPerMinute;
-        }
     }
 }
