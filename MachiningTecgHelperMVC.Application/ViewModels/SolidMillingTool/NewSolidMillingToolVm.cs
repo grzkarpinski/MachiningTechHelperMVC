@@ -32,6 +32,8 @@ namespace MachiningTechelperMVC.Application.ViewModels.SolidMillingTool
         public double Radius { get; set; }
         [Display(Name = "Długość robocza")]
         public int Lcut { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public string? CreatedBy { get; set; }
 
         public ProducerVm NewProducer { get; set; }
 

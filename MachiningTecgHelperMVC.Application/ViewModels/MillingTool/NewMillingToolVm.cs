@@ -27,6 +27,8 @@ namespace MachiningTechelperMVC.Application.ViewModels.MillingTool
         public int TeethNumber { get; set; }
         public IEnumerable<SelectListItem> ToolTypes { get; set; } // To use in dropdown list
         public bool IsToolActive { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public string? CreatedBy { get; set; }
 
         public ProducerVm NewProducer { get; set; }
 

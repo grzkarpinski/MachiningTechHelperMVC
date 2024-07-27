@@ -80,6 +80,8 @@ namespace MachiningTechHelperMVC.Web.Controllers
         [Authorize(Roles = "admin, user")]
         public IActionResult AddMillingTool(NewMillingToolVm millingTool)
         {
+            millingTool.CreatedAt = DateTime.Now;
+            millingTool.CreatedBy = User.Identity.Name;
             var id = _millingToolService.AddMillingTool(millingTool);
             return RedirectToAction("Index");
         }
@@ -184,6 +186,8 @@ namespace MachiningTechHelperMVC.Web.Controllers
         [Authorize(Roles = "admin, user")]
         public IActionResult AddMillingInsert(MillingInsertVm millingInsert)
         {
+            millingInsert.CreatedAt = DateTime.Now;
+            millingInsert.CreatedBy = User.Identity.Name;
             var id = _millingInsertService.AddMillingInsert(millingInsert);
             return RedirectToAction("ViewMillingInserts");
         }
@@ -217,6 +221,8 @@ namespace MachiningTechHelperMVC.Web.Controllers
         [Authorize(Roles = "admin, user")]
         public IActionResult AddMillingInsertParametersRange(MillingInsertParametersRangeVm millingInsertParametersRange)
         {
+            millingInsertParametersRange.CreatedAt = DateTime.Now;
+            millingInsertParametersRange.CreatedBy = User.Identity.Name;
             _millingInsertParametersRangeService.AddMillingInsertParametersRange(millingInsertParametersRange);
             return RedirectToAction("ViewMillingInsert", new { id = millingInsertParametersRange.MillingInsertId });
         }
@@ -245,6 +251,8 @@ namespace MachiningTechHelperMVC.Web.Controllers
         [Authorize(Roles = "admin, user")]
         public IActionResult AddMillingToolCheckedParameters(MillingToolCheckedParametersVm tool)
         {
+            tool.CreatedAt = DateTime.Now;
+            tool.CreatedBy = User.Identity.Name;
             _millingToolCheckedParametersService.AddMillingToolCheckedParameters(tool);
             return RedirectToAction("ViewMillingTool", new { id = tool.MillingToolId });
         }

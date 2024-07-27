@@ -6,6 +6,7 @@ using MachiningTechHelperMVC.Application.Interfaces;
 using MachiningTechHelperMVC.Application.ViewModels.Drill;
 using MachiningTechHelperMVC.Domain.Model.Common;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -71,6 +72,8 @@ namespace MachiningTechHelperMVC.Web.Controllers
         [Authorize(Roles = "admin, user")]
         public IActionResult AddDrill(NewDrillVm drill)
         {
+            drill.CreatedAt = DateTime.Now;
+            drill.CreatedBy = User.Identity.Name;
             var id = _drillService.AddDrill(drill);
             return RedirectToAction("Index");
         }
@@ -130,6 +133,8 @@ namespace MachiningTechHelperMVC.Web.Controllers
         [Authorize(Roles = "admin, user")]
         public IActionResult AddParametersRange(DrillParametersRangeVm model)
         {
+            model.CreatedAt = DateTime.Now;
+            model.CreatedBy = User.Identity.Name;
             _drillParametersRangeService.AddDrillParametersRange(model);
             return RedirectToAction("ViewDrill", new { id = model.DrillId });
         }
@@ -157,6 +162,8 @@ namespace MachiningTechHelperMVC.Web.Controllers
         [Authorize(Roles = "admin, user")]
         public IActionResult AddDrillCheckedParameters(DrillCheckedParametersVm checkedParameters)
         {
+            checkedParameters.CreatedAt = DateTime.Now;
+            checkedParameters.CreatedBy = User.Identity.Name;
             _drillCheckedParametersService.AddDrillCheckedParameters(checkedParameters);
             return RedirectToAction("ViewDrill", new { id = checkedParameters.DrillId });
         }

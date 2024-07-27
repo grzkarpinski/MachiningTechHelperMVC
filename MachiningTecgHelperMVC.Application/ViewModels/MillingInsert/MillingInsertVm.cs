@@ -17,6 +17,8 @@ namespace MachiningTechelperMVC.Application.ViewModels.MillingInsert
         public string Designation { get; set; }
         [Display(Name = "R Płytki")]
         public double Radius { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public string? CreatedBy { get; set; }
 
         public List<MillingInsertParametersRangeVm>? millingInsertParametersRanges { get; set; }
 

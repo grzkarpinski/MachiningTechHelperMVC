@@ -16,6 +16,7 @@ namespace MachiningTechHelperMVC.Domain.Calculators
 			if (model == null)
 				throw new ArgumentNullException(nameof(model));
 
+			// use strategy pattern to calculate the result
 			ICalculationStrategy strategy;
 			if (model.IsMilling)
 			{

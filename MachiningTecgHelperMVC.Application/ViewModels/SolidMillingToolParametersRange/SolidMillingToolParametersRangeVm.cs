@@ -29,6 +29,8 @@ namespace MachiningTechelperMVC.Application.ViewModels.SolidMillingToolParameter
         public double FeedPerToothMinimum { get; set; }
         [Display(Name = "Posuw na ząb max mm/ Z")]
         public double FeedPerToothMaximum { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public string? CreatedBy { get; set; }
 
         public void Mapping(Profile profile)
         {

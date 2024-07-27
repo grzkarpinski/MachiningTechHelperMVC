@@ -21,9 +21,8 @@ namespace MachiningTechelperMVC.Application.ViewModels.MillingToolCheckedParamet
         public int RevisionsPerMinute { get; set; }
         [Display(Name = "Posuw mm/min")]
         public int FeedPerMinute { get; set; }
-
-        //[Display(Name = "Płytka")]
-        //public MillingInsertVm? MillingInsert { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public string? CreatedBy { get; set; }
 
         public void Mapping(AutoMapper.Profile profile)
         {

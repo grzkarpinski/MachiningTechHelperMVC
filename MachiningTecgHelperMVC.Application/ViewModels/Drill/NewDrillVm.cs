@@ -31,6 +31,8 @@ namespace MachiningTechHelperMVC.Application.ViewModels.Drill
         public string LengthXDiameter { get; set; }
         [Display(Name = "Kąt wierzchołka")]
         public int TipAngle { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public string? CreatedBy { get; set; }
 
         public ProducerVm NewProducer { get; set; }
 

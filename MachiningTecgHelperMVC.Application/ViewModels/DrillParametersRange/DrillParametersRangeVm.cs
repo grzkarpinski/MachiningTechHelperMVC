@@ -28,6 +28,8 @@ namespace MachiningTechelperMVC.Application.ViewModels.DrillParametersRange
         public double FeedPerRevisionMinimum { get; set; }
         [Display(Name = "Posuw na obrót max mm/rev")]
         public double FeedPerRevisionMaximum { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public string? CreatedBy { get; set; }
 
         public void Mapping(Profile profile)
         {

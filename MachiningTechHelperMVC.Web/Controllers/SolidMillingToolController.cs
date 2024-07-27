@@ -71,6 +71,8 @@ namespace MachiningTechHelperMVC.Web.Controllers
         [Authorize(Roles = "admin, user")]
         public IActionResult AddSolidMillingTool(NewSolidMillingToolVm tool) 
         {
+            tool.CreatedAt = DateTime.Now;
+            tool.CreatedBy = User.Identity.Name;
             var id = _solidMillingToolService.AddSolidMillingTool(tool);
             return RedirectToAction("Index");
         }
@@ -129,6 +131,8 @@ namespace MachiningTechHelperMVC.Web.Controllers
         [Authorize(Roles = "admin, user")]
         public IActionResult AddParametersRange(SolidMillingToolParametersRangeVm range)
         {
+            range.CreatedAt = DateTime.Now;
+            range.CreatedBy = User.Identity.Name;
             _solidMillingToolParametersRangeService.AddSolidMillingToolParametersRange(range);
             return RedirectToAction("ViewSolidMillingTool", new { id = range.SolidMillingToolId });
         }
@@ -156,6 +160,8 @@ namespace MachiningTechHelperMVC.Web.Controllers
         [Authorize(Roles = "admin, user")]
         public IActionResult AddSolidMillingToolCheckedParameters(SolidMillingToolCheckedParametersVm tool)
         {
+            tool.CreatedAt = DateTime.Now;
+            tool.CreatedBy = User.Identity.Name;
             _solidMillingToolCheckedParametersService.AddSolidMillingToolCheckedParameters(tool);
             return RedirectToAction("ViewSolidMillingTool", new { id = tool.SolidMillingToolId });
         }

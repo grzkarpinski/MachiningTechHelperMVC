@@ -21,6 +21,8 @@ namespace MachiningTechelperMVC.Application.ViewModels.DrillCheckedParameters
         [Display(Name = "Posuw mm/min")]
         public int FeedPerMinute { get; set; }
         public int DrillId { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public string? CreatedBy { get; set; }
         public void Mapping(AutoMapper.Profile profile)
         {
             profile.CreateMap<MachiningTechHelperMVC.Domain.Model.DrillCheckedParameters, DrillCheckedParametersVm>().ReverseMap()
