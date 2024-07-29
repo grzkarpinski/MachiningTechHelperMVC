@@ -127,7 +127,6 @@ namespace MachiningTechHelperMVC.Web.Controllers
             return RedirectToAction("Index");
         }
 
-        // implement this method in user interface
         [Authorize(Roles = "admin")]
         public IActionResult DeleteMillingToolPermanently(int id)
         {

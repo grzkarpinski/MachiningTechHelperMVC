@@ -52,7 +52,11 @@
                 <td>
                     @Html.ActionLink("Edytuj", "EditDrill", new { id=item.Id }) |
                         @Html.ActionLink("Szczegóły", "ViewDrill", new { id = item.Id }) |
-                    @Html.ActionLink("Usuń", "Delete", new { id=item.Id })
+                    @Html.ActionLink("Usuń", "Delete", new { id=item.Id }) |
+                            @if (User.IsInRole("admin"))
+                            {
+                                @Html.ActionLink("Usuń bezpowrotnie", "DeletePermanently", new { id = item.Id })
+                            }
                 </td>
             </tr>
     }

@@ -53,7 +53,11 @@
                         <td>
                             @Html.ActionLink("Edytuj", "EditMillingTool", new { id = item.Id }) |
                             @Html.ActionLink("Szczegóły", "ViewMillingTool", new { id = item.Id }) |
-                            @Html.ActionLink("Usuń", "DeleteMillingTool", new { id = item.Id })
+                            @Html.ActionLink("Usuń", "DeleteMillingTool", new { id = item.Id }) |
+                            @if (User.IsInRole("admin"))
+                            {
+                                @Html.ActionLink("Usuń Bezpowrotnie", "DeleteMillingToolPermanently", new { id = item.Id })
+                            }
                         </td>
                     </tr>
                 }
