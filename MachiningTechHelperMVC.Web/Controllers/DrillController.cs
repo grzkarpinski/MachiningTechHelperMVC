@@ -115,6 +115,14 @@ namespace MachiningTechHelperMVC.Web.Controllers
         [Authorize(Roles = "admin, user")]
         public IActionResult Delete(int id)
         {
+            _drillService.DeleteDrillSoft(id);
+            return RedirectToAction("Index");
+        }
+
+        // implement this method in user interface
+        [Authorize(Roles = "admin")]
+        public IActionResult DeletePermanently(int id)
+        {
             _drillService.DeleteDrill(id);
             return RedirectToAction("Index");
         }

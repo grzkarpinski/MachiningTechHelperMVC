@@ -113,6 +113,14 @@ namespace MachiningTechHelperMVC.Web.Controllers
         [Authorize(Roles = "admin, user")]
         public IActionResult Delete(int id)
         {
+            _solidMillingToolService.DeleteSolidMillingToolSoft(id);
+            return RedirectToAction("Index");
+        }
+
+        // implement this method in user interface
+        [Authorize(Roles = "admin")]
+        public IActionResult DeletePermanently(int id)
+            {
             _solidMillingToolService.DeleteSolidMillingTool(id);
             return RedirectToAction("Index");
         }
