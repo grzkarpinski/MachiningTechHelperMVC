@@ -10,6 +10,7 @@ namespace MachiningTechHelperMVC.Domain.Interfaces
     public interface ISolidMillingToolRepository
     {
         void DeleteSolidMillingTool(int solidMillingToolId);
+        void DeleteSolidMillingToolSoft(int solidMillingToolId);
 
         int AddSolidMillingTool(SolidMillingTool solidMillingTool);
 

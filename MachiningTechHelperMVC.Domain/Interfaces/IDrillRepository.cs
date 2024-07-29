@@ -13,6 +13,8 @@ namespace MachiningTechHelperMVC.Domain.Interfaces
 
         void DeleteDrill(int drillId);
 
+        void DeleteDrillSoft(int drillId);
+
         int AddDrill(Drill drill);
 
         Drill GetDrillById(int drillId);

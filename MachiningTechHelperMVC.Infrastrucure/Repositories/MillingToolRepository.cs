@@ -27,6 +27,16 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             }
         }
 
+        public void DeleteMillingToolSoft(int millingToolId)
+        {
+            var millingTool = _context.MillingTools.Find(millingToolId);
+            if (millingTool != null)
+            {
+                millingTool.IsToolActive = false;
+                _context.SaveChanges();
+            }
+        }
+
         public int AddMillingTool(MillingTool millingTool)
         {
             _context.MillingTools.Add(millingTool);

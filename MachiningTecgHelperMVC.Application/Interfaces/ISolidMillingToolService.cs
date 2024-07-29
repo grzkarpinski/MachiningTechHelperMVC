@@ -16,5 +16,6 @@ namespace MachiningTechelperMVC.Application.Interfaces
         NewSolidMillingToolVm GetSolidMillingToolForEdit(int id);
         void UpdateSolidMillingTool(NewSolidMillingToolVm solidMillingTool);
         void DeleteSolidMillingTool(int id);
+        void DeleteSolidMillingToolSoft(int id);
     }
 }

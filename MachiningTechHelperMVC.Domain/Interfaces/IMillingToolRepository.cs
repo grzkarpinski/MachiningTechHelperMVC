@@ -11,6 +11,8 @@ namespace MachiningTechHelperMVC.Domain.Interfaces
     {
         void DeleteMillingTool(int millingToolId);
 
+        void DeleteMillingToolSoft(int millingToolId);
+
         int AddMillingTool(MillingTool millingTool);
 
         MillingTool GetMillingToolById(int millingToolId);

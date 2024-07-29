@@ -34,6 +34,11 @@ namespace MachiningTechelperMVC.Application.Services
             _solidMillingToolRepo.DeleteSolidMillingTool(id);
         }
 
+        public void DeleteSolidMillingToolSoft(int id)
+        {
+            _solidMillingToolRepo.DeleteSolidMillingToolSoft(id);
+        }
+
         public ListSolidMillingToolForListVm GetAllSolidMillingToolsForList(int pageSize, int? pageNo, string searchString)
         {
             var solidMillingTools = _solidMillingToolRepo.GetAllSolidMillingTools()

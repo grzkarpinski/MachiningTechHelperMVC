@@ -32,6 +32,15 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
                 _context.SaveChanges();
             }
         }
+        public void DeleteDrillSoft(int drillId)
+        {
+            var drill = _context.Drills.Find(drillId);
+            if (drill != null)
+            {
+                drill.IsToolActive = false;
+                _context.SaveChanges();
+            }
+        }
 
         public Drill GetDrillById(int drillId)
         {

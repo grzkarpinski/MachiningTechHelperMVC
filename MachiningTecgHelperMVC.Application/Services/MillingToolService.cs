@@ -34,6 +34,11 @@ namespace MachiningTechelperMVC.Application.Services
             _millingToolRepo.DeleteMillingTool(id);
         }
 
+        public void DeleteMillingToolSoft(int id)
+        {
+            _millingToolRepo.DeleteMillingToolSoft(id);
+        }
+
         public ListMillingToolForListVm GetAllMillingToolsForList(int pageSize, int? pageNo, string searchString)
         {
             var millingTools = _millingToolRepo.GetAllMillingTools()

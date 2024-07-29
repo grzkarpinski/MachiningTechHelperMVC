@@ -34,6 +34,11 @@ namespace MachiningTechHelperMVC.Application.Services
             _drillRepo.DeleteDrill(id);
         }
 
+        public void DeleteDrillSoft(int id)
+        {
+            _drillRepo.DeleteDrillSoft(id);
+        }
+
         public ListDrillForListVm GetAllDrillsForList(int pageSize, int? pageNo, string searchString)
         {
             var drills = _drillRepo.GetAllDrills()

@@ -33,6 +33,16 @@ namespace MachiningTechHelperMVC.Infrastrucure.Repositories
             }
         }
 
+        public void DeleteSolidMillingToolSoft(int solidMillingToolId)
+        {
+            var solidMillingTool = _context.SolidMillingTools.Find(solidMillingToolId);
+            if (solidMillingTool != null)
+            {
+                solidMillingTool.IsToolActive = false;
+                _context.SaveChanges();
+            }
+        }
+
         public SolidMillingTool GetSolidMillingToolById(int solidMillingToolId)
         {
             var solidMillingTool = _context.SolidMillingTools
