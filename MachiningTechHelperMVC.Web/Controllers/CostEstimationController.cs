@@ -9,15 +9,18 @@ namespace MachiningTechHelperMVC.Web.Controllers
     public class CostEstimationController : Controller
     {
         private readonly ICostEstimationLogic _costEstimationLogic;
+        private readonly ILogger<CostEstimationController> _logger;
 
-        public CostEstimationController(ICostEstimationLogic costEstimationLogic)
+        public CostEstimationController(ICostEstimationLogic costEstimationLogic, ILogger<CostEstimationController> logger)
         {
             _costEstimationLogic = costEstimationLogic;
+            _logger = logger;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
+            _logger.LogInformation("costestimation/index");
             var model = new CostEstimationVm();
             return View(model);
         }

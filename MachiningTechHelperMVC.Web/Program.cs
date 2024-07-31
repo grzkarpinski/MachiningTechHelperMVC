@@ -15,8 +15,8 @@ var builder = WebApplication.CreateBuilder(args);
 Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(builder.Configuration)
                 .CreateLogger();
-builder.Services.AddSerilog();
 
+builder.Services.AddSerilog();
 Log.Information("Application starting up");
 
 // Add services to the container.

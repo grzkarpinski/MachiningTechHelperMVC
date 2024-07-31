@@ -17,19 +17,23 @@ namespace MachiningTechHelperMVC.Web.Controllers
         private readonly ISolidMillingToolService _solidMillingToolService;
         private readonly ISolidMillingToolParametersRangeService _solidMillingToolParametersRangeService;
         private readonly ISolidMillingToolCheckedParametersService _solidMillingToolCheckedParametersService;
+        private readonly ILogger<SolidMillingToolController> _logger;
 
         public SolidMillingToolController(ISolidMillingToolService solidMillingToolService,
                                           ISolidMillingToolParametersRangeService solidMillingToolParametersRangeService,
-                                          ISolidMillingToolCheckedParametersService solidMillingToolCheckedParametersService)
+                                          ISolidMillingToolCheckedParametersService solidMillingToolCheckedParametersService,
+                                          ILogger<SolidMillingToolController> logger)
         {
             _solidMillingToolService = solidMillingToolService;
             _solidMillingToolParametersRangeService = solidMillingToolParametersRangeService;
             _solidMillingToolCheckedParametersService = solidMillingToolCheckedParametersService;
+            _logger = logger;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
+            _logger.LogInformation("solidmillingtool/index");
             var model = _solidMillingToolService.GetAllSolidMillingToolsForList(10, 1, "");
             return View(model);
         }

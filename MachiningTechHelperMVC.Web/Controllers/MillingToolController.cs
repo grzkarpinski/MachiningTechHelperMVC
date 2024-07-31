@@ -20,24 +20,28 @@ namespace MachiningTechHelperMVC.Web.Controllers
         private readonly IMillingInsertParametersRangeService _millingInsertParametersRangeService;
         private readonly IMillingToolCheckedParametersService _millingToolCheckedParametersService;
         private readonly IMillingToolMillingInsertService _millingToolMillingInsertService;
+        private readonly ILogger<MillingToolController> _logger;
 
         public MillingToolController(IMillingToolService millingToolService,
                                      IMillingInsertService millingInsertService,
                                      IMillingInsertParametersRangeService millingInsertParametersRangeService,
                                      IMillingToolCheckedParametersService millingToolCheckedParametersService,
-                                     IMillingToolMillingInsertService millingToolMillingInsertService)
+                                     IMillingToolMillingInsertService millingToolMillingInsertService,
+                                     ILogger<MillingToolController> logger)
         {
             _millingToolService = millingToolService;
             _millingInsertService = millingInsertService;
             _millingInsertParametersRangeService = millingInsertParametersRangeService;
             _millingToolCheckedParametersService = millingToolCheckedParametersService;
             _millingToolMillingInsertService = millingToolMillingInsertService;
+            _logger = logger;
         }
 
 
         [HttpGet]
         public IActionResult Index()
         {
+            _logger.LogInformation("millingtool/index");
             var model = _millingToolService.GetAllMillingToolsForList(10, 1, "");
             return View(model);
         }

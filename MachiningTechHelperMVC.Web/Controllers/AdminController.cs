@@ -10,14 +10,18 @@ namespace MachiningTechHelperMVC.Web.Controllers
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        public AdminController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        private readonly ILogger<AdminController> _logger;
+
+        public AdminController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, ILogger<AdminController> logger)
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _logger = logger;
         }
 
         public IActionResult Index()
         {
+            _logger.LogInformation("admin/index");
             return View();
         }
 

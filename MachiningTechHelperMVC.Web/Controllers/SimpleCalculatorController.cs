@@ -9,15 +9,18 @@ namespace MachiningTechHelperMVC.Web.Controllers
 	public class SimpleCalculatorController : Controller
     {
         private readonly ISimpleCalculatorLogic _calculatorLogic;
+		private readonly ILogger<SimpleCalculatorController> _logger;
 
-        public SimpleCalculatorController(ISimpleCalculatorLogic SimpleCalculatorLogic)
+        public SimpleCalculatorController(ISimpleCalculatorLogic SimpleCalculatorLogic, ILogger<SimpleCalculatorController> logger)
         {
             _calculatorLogic = SimpleCalculatorLogic;
+            _logger = logger;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
+			_logger.LogInformation("simplecalculator/index");
 			var model = new SimpleCalculatorVm();
             return View(model);
         }

@@ -18,18 +18,22 @@ namespace MachiningTechHelperMVC.Web.Controllers
         private readonly IDrillService _drillService;
         private readonly IDrillParametersRangeService _drillParametersRangeService;
         private readonly IDrillCheckedParametersService _drillCheckedParametersService;
+        private readonly ILogger<DrillController> _logger;
         public DrillController(IDrillService drillService,
                                IDrillParametersRangeService drillParametersRangeService,
-                               IDrillCheckedParametersService drillCheckedParametersService)
+                               IDrillCheckedParametersService drillCheckedParametersService,
+                               ILogger<DrillController> logger)
         {
             _drillService = drillService;
             _drillParametersRangeService = drillParametersRangeService;
             _drillCheckedParametersService = drillCheckedParametersService;
+            _logger = logger;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
+            _logger.LogInformation("drill/index");
             var model = _drillService.GetAllDrillsForList(10, 1, "");
             return View(model);
         }
