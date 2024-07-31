@@ -1,25 +1,23 @@
-using MachiningTechHelperMVC.Domain.Interfaces;
-using MachiningTechHelperMVC.Infrastrucure;
-using MachiningTechHelperMVC.Infrastrucure.Repositories;
-using MachiningTechHelperMVC.Web.Data;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using MachiningTechHelperMVC.Application;
-using FluentValidation.AspNetCore;
-using MachiningTechHelperMVC.Application.ViewModels.Drill;
 using FluentValidation;
-using Serilog;
-using Serilog.Events;
+using FluentValidation.AspNetCore;
 using MachiningTechelperMVC.Application.ViewModels.DrillCheckedParameters;
 using MachiningTechelperMVC.Application.ViewModels.DrillParametersRange;
-using Microsoft.Extensions.Configuration;
+using MachiningTechHelperMVC.Application;
+using MachiningTechHelperMVC.Application.ViewModels.Drill;
+using MachiningTechHelperMVC.Infrastrucure;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
 //use serilog logger
 Log.Logger = new LoggerConfiguration()
-                .WriteTo.File("logs.txt")
+                .ReadFrom.Configuration(builder.Configuration)
                 .CreateLogger();
+builder.Services.AddSerilog();
+
+Log.Information("Application starting up");
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
@@ -97,3 +95,6 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 app.Run();
+
+// close serilog
+Log.CloseAndFlush();
