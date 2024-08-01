@@ -1,7 +1,9 @@
 ﻿@model MachiningTechelperMVC.Application.ViewModels.SimpleCalculator.SimpleCalculatorVm
 
+<div class="text-center">
 <h2>Prosty kalkulator parametrów</h2>
-
+</div>
+<div class="custom-width">
 <form method="post">
     <div class="form-check">
         <input asp-for="IsMilling" class="form-check-input" type="radio" value="true" />
@@ -12,7 +14,7 @@
         <label class="form-check-label">Wiercenie</label>
     </div>
     <div class="form-group">
-        <label>Średnica mm:</label>
+        <label>Średnica narzędzia mm:</label>
         <input asp-for="Diameter" class="form-control" />
     </div>
     <div class="form-group">
@@ -31,8 +33,9 @@
         <label>Z:</label>
         <input asp-for="Teeth" class="form-control" />
     </div>
-    <button type="submit" class="btn btn-primary">Oblicz</button>
+    <button type="submit" class="btn btn-primary margin-top">Oblicz</button>
 </form>
+</div>
 
 @section Scripts {
     <script>

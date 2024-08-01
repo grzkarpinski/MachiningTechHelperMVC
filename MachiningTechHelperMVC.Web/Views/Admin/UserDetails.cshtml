@@ -6,7 +6,7 @@
 <ul>
     @foreach (var role in Model.Roles)
     {
-        <li>
+        <li class="margin-top">
             @role
             <form asp-action="RemoveRole" asp-route-id="@Model.User.Id" asp-route-role="@role" method="post" style="display:inline;">
                 <button type="submit" class="btn btn-primary btn-sm">Usuń</button>
@@ -23,4 +23,4 @@
     <button type="submit" class="btn btn-primary btn-sm">Przypisz rolę</button>
 </form>
 
-<a asp-action="Users" class="btn btn-primary">Wróć do listy użytkowników</a>
+<a asp-action="Users" class="btn btn-primary margin-top">Wróć do listy użytkowników</a>
