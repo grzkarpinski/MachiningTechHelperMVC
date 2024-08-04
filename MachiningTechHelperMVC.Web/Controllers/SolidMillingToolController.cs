@@ -3,11 +3,10 @@ using MachiningTechelperMVC.Application.ViewModels.Producer;
 using MachiningTechelperMVC.Application.ViewModels.SolidMillingTool;
 using MachiningTechelperMVC.Application.ViewModels.SolidMillingToolCheckedParameters;
 using MachiningTechelperMVC.Application.ViewModels.SolidMillingToolParametersRange;
-using MachiningTechHelperMVC.Domain.Model;
 using MachiningTechHelperMVC.Domain.Model.Common;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Authorization;
 
 namespace MachiningTechHelperMVC.Web.Controllers
 {
@@ -73,7 +72,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
 
         [HttpPost]
         [Authorize(Roles = "admin, user")]
-        public IActionResult AddSolidMillingTool(NewSolidMillingToolVm tool) 
+        public IActionResult AddSolidMillingTool(NewSolidMillingToolVm tool)
         {
             tool.CreatedAt = DateTime.Now;
             tool.CreatedBy = User.Identity.Name;
@@ -82,7 +81,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult ViewSolidMillingTool(int id) 
+        public IActionResult ViewSolidMillingTool(int id)
         {
             var toolModel = _solidMillingToolService.GetSolidMillingToolDetails(id);
             return View(toolModel);
@@ -90,7 +89,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
 
         [HttpGet]
         [Authorize(Roles = "admin, user")]
-        public IActionResult EditSolidMillingTool(int id) 
+        public IActionResult EditSolidMillingTool(int id)
         {
             var tool = _solidMillingToolService.GetSolidMillingToolForEdit(id);
             ViewBag.ToolTypeList = new SelectList(
@@ -98,9 +97,9 @@ namespace MachiningTechHelperMVC.Web.Controllers
                .Cast<ToolType>()
                .Select(t => new { Id = (int)t, Name = t.ToString() }),
            "Id", "Name", tool.ToolType);
-            if (tool.NewProducer != null) 
+            if (tool.NewProducer != null)
             {
-                tool.NewProducer = new ProducerVm {CompanyName = tool.NewProducer.CompanyName};
+                tool.NewProducer = new ProducerVm { CompanyName = tool.NewProducer.CompanyName };
             }
             return View(tool);
         }
@@ -123,7 +122,7 @@ namespace MachiningTechHelperMVC.Web.Controllers
 
         [Authorize(Roles = "admin")]
         public IActionResult DeletePermanently(int id)
-            {
+        {
             _solidMillingToolService.DeleteSolidMillingTool(id);
             return RedirectToAction("Index");
         }

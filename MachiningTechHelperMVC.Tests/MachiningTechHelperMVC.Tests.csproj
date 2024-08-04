@@ -31,8 +31,4 @@
     <ProjectReference Include="..\MachiningTechHelperMVC.Web\MachiningTechHelperMVC.Web.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UITests\WEB\" />
-  </ItemGroup>
-
 </Project>
