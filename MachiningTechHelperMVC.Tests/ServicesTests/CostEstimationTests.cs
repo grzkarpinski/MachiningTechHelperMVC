@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MachiningTechHelperMVC.Tests
+namespace MachiningTechHelperMVC.Tests.ServicesTests
 {
     public class CostEstimationTests
     {
